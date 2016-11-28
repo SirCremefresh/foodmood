@@ -96,16 +96,17 @@ wsServer.on('request', function(request) {
                 }
                 else {
                   if(rows[0].password == password) {
-                    connection.sendUTF(JSON.stringify({type : "ERROR", content : "NO SUCH USER"}));
+                    connection.sendUTF(JSON.stringify({type : "SUCCESS", content : "LOGGED IN"}));
                     return;
                   }
+                  else {
+                    connection.sendUTF(JSON.stringify({type : "ERROR", content : "INCORRECT PASSWORD"}));
+                  }
                 }
-
-                console.log('The solution is: ', rows[0].solution);
               });
               break;
             default:
-
+              break;
           }
 
         }
@@ -116,8 +117,6 @@ wsServer.on('request', function(request) {
      *    ON CLOSE CONNECTION
      */
     connection.on('close', function(reasonCode, description) {
-      // REMOVE ALL_ACTIVE_CONNECTIONS ENTRY
-      all_active_connections[id] = null;
 
       /*   MAKE DATABASE ENTRY */
         // MAKE A DATABASE ENTRY WITH THE USER-IP, SESSION-ID AND THE ACTION
