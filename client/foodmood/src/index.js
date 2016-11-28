@@ -13,7 +13,6 @@ import Home from "./pages/Home";
 injectTapEventPlugin();
 
 
-
 ReactDOM.render(
   <MuiThemeProvider>
     <Router history={browserHistory}>

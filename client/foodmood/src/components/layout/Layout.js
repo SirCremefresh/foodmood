@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Navbar from './Navbar'
+import Footer from './Footer'
 
 var Layout = React.createClass({
   render() {
@@ -7,6 +9,7 @@ var Layout = React.createClass({
       <div>
         <Navbar />
         {this.props.children}
+        <Footer />
       </div>
     );
   }
