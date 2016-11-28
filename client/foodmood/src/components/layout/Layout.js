@@ -22,7 +22,7 @@ var Layout = React.createClass({
     return (
       <div>
         <Sidebar changeSidebarState={this.changeSidebarState} SidebarState={this.state.SidebarState} />
-        <Navbar changeSidebarState={this.changeSidebarState}/>
+        <Navbar changeSidebarState={this.changeSidebarState} SidebarState={this.state.SidebarState}/>
         <Content>
           {this.props.children}
         </Content>

@@ -4,7 +4,7 @@ var port = 61910;
 var sqlHost = 'localhost';
 var sqlUser = 'activeuser';
 var sqlPassword = 'activeuser';
-var sqlDatabase = 'globalchat';
+var sqlDatabase = 'foodmood';
 
 /*
  *    OPEN DATABASE CONNECTION
@@ -12,8 +12,8 @@ var sqlDatabase = 'globalchat';
 var mysql = require('mysql');
 var sqlconnection = mysql.createConnection({
   host     : sqlHost,
-  user     : sqlDatabase,
-  password : sqlUser,
+  user     : sqlUser,
+  password : sqlPassword,
   database : sqlDatabase
 });
 sqlconnection.connect(function(err) {
@@ -87,10 +87,9 @@ wsServer.on('request', function(request) {
             case 'LOGIN':
               var user = data.username;
               var password = data.password;
-              SELECT `password` FROM `user` WHERE `username` = "";
 
-              sqlconnection.query('SELECT `password` FROM `user` WHERE `username` = ?', [password], function(err, rows) {
-                if(err) {
+              sqlconnection.query('SELECT `password` FROM `user` WHERE `username` = ?', [user], function(err, rows, result) {
+                if(err || typeof rows[0] == 'undefined') {
                   connection.sendUTF(JSON.stringify({type : "ERROR", content : "NO SUCH USER"}));
                   return;
                 }
@@ -113,24 +112,24 @@ wsServer.on('request', function(request) {
     });
 
 
-    /*
-     *    ON CLOSE CONNECTION
-     */
-    connection.on('close', function(reasonCode, description) {
-
-      /*   MAKE DATABASE ENTRY */
-        // MAKE A DATABASE ENTRY WITH THE USER-IP, SESSION-ID AND THE ACTION
-        // IN THIS CASE THE ACTION IS DISCONNECT, WHICH IS CALLED WHEN THE CLIENT DISCONNECTS
-        sqlconnection.query('INSERT INTO useractivity ( sessionid, userip, action) VALUES (?,?,?)',[session_id, connection.remoteAddress, "disconnect"], function(err, results) {
-
-          if (err) {
-            console.error((new Date()) + ' | MYSQL | Writing to database error: ' + err.stack);
-            return;
-          }
-
-          console.log((new Date()) + ' | MYSQL | Logged closed connection successfully to database! UserIP:' + connection.remoteAddress);
-        });
-      console.log((new Date()) + ' | WEBSOCKET | Client ' + connection.remoteAddress + ' disconnected.');
-    });
+    // /*
+    //  *    ON CLOSE CONNECTION
+    //  */
+    // connection.on('close', function(reasonCode, description) {
+    //
+    //   /*   MAKE DATABASE ENTRY */
+    //     // MAKE A DATABASE ENTRY WITH THE USER-IP, SESSION-ID AND THE ACTION
+    //     // IN THIS CASE THE ACTION IS DISCONNECT, WHICH IS CALLED WHEN THE CLIENT DISCONNECTS
+    //     sqlconnection.query('INSERT INTO useractivity ( sessionid, userip, action) VALUES (?,?,?)',[session_id, connection.remoteAddress, "disconnect"], function(err, results) {
+    //
+    //       if (err) {
+    //         console.error((new Date()) + ' | MYSQL | Writing to database error: ' + err.stack);
+    //         return;
+    //       }
+    //
+    //       console.log((new Date()) + ' | MYSQL | Logged closed connection successfully to database! UserIP:' + connection.remoteAddress);
+    //     });
+    //   console.log((new Date()) + ' | WEBSOCKET | Client ' + connection.remoteAddress + ' disconnected.');
+    // });
 
 });
