@@ -5,6 +5,7 @@ import Color from "../../configs/Color";
 
 const footerStyle = {
   backgroundColor: Color.primaryColor,
+  color: Color.primaryColorText,
 };
 
 
@@ -13,7 +14,7 @@ var Footer = React.createClass({
     return (
       <Paper id="footer" zDepth={3} style={footerStyle}>
         <p>Copyright (c) 2016 Copyright Holder All Rights Reserved.</p>
-      </ Paper>
+      </Paper>
     );
   }
 });
