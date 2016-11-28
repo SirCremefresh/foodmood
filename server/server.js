@@ -88,19 +88,16 @@ wsServer.on('request', function(request) {
               var user = data.username;
               var password = data.password;
 
-              sqlconnection.query('SELECT `password` FROM `user` WHERE `username` = ?', [user], function(err, rows, result) {
-                if(err || typeof rows[0] == 'undefined') {
-                  connection.sendUTF(JSON.stringify({type : "ERROR", content : "NO SUCH USER"}));
-                  return;
-                }
-                else {
-                  if(rows[0].password == password) {
-                    connection.sendUTF(JSON.stringify({type : "SUCCESS", content : "LOGGED IN"}));
-                    return;
-                  }
-                  else {
-                    connection.sendUTF(JSON.stringify({type : "ERROR", content : "INCORRECT PASSWORD"}));
-                  }
+              sqlconnection.query('SELECT 1 FROM `user` WHERE `username` = ? AND `password` = ?', [user, password], function(err, rows, result) {
+                if(err) {
+                  connection.sendUTF(JSON.stringify({type : "SQL_ERROR", content : "NO SUCH USER"}));
+
+                } else if (typeof rows[0] == 'undefined') {
+                  connection.sendUTF(JSON.stringify({type : "LOGIN_ERROR", content : "NO SUCH USER"}));
+
+                } else {
+                  connection.sendUTF(JSON.stringify({type : "LOGIN_SUCCESS", content : "LOGGED IN"}));
+
                 }
               });
               break;
