@@ -1,13 +1,18 @@
 @import url(./normalize.css);
 @import url(./kickstart-grid.css);
 /* line 5, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* line 8, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
 html {
   box-sizing: border-box;
 }
 
-/* line 8, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
-*, *:before, *:after {
-  box-sizing: inherit;
+/* line 11, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
+body {
+  margin: 0;
 }
 
 /*# sourceMappingURL=../css/main.map */
