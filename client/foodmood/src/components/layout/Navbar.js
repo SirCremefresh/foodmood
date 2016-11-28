@@ -13,13 +13,17 @@ const navbartStyle = {
  *
  */
 var Navbar = React.createClass({
+  changeSidebarState() {
+    this.props.changeSidebarState();
+  },
+
   render() {
     return (
       <AppBar
-        title="Title"
-        iconClassNameRight="muidocs-icon-navigation-expand-more"
+        title="FoodMood"
         style={navbartStyle}
-        zDepth={2} />
+        zDepth={2}
+        onLeftIconButtonTouchTap={this.changeSidebarState}/>
     );
   }
 });
