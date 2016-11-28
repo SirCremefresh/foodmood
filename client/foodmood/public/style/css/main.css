@@ -2,9 +2,13 @@
 @import url(./kickstart-grid.css);
 /* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_footer.sass */
 #footer {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 /* line 7, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */

@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper';
 import Color from "../../configs/Color";
 
 const footerStyle = {
-  backgroundColor: Color.backgroundColor,
+  backgroundColor: Color.primaryColor,
 };
 
 
@@ -12,7 +12,7 @@ var Footer = React.createClass({
   render() {
     return (
       <Paper id="footer" zDepth={3} style={footerStyle}>
-        <h1>LKFASJDLKFJ</h1>
+        <p>Copyright (c) 2016 Copyright Holder All Rights Reserved.</p>
       </ Paper>
     );
   }
