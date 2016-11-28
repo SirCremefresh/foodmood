@@ -1,0 +1,20 @@
+@import "./normalize.css"
+@import "./constant.sass"
+
+// SET THE BASIC STRUCTURE
+html
+  box-sizing: border-box
+
+*, *:before, *:after
+  box-sizing: inherit
+
+body
+  background: $background-color
+  color: $primary-font-color
+  font-family: $primary-font-family
+  font-size: 1.4em
+
+@import "./layout/navbar.sass"
+@import "./layout/footer.sass"
+
+@import "./paper.sass"
