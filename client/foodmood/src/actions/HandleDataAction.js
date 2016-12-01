@@ -34,12 +34,18 @@ class HandleDataAction {
             Router.browserHistory.push('/home');
             dispatcher.dispatch({
               type: "NEW_SESSIONKEY",
-              sessionKey: data.content,
+              sessionKey: data.sessionKey,
             });
             break;
           case "LOGIN_ERROR":
             dispatcher.dispatch({
               type: "LOGIN_ERROR",
+            });
+            break;
+          case "LOGIN_SESSION_SUCSESS":
+            dispatcher.dispatch({
+              type: "NEW_SESSIONKEY",
+              sessionKey: data.sessionKey,
             });
             break;
           default:
