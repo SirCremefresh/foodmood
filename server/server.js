@@ -1,3 +1,6 @@
+//REQUIRED CLASSES AND METHODS
+const getNewUUID = require('./uuid-generate');
+
 // VARIABLES FOR LATER USE
 var port = 61910;
 
@@ -5,6 +8,13 @@ var sqlHost = 'localhost';
 var sqlUser = 'activeuser';
 var sqlPassword = 'activeuser';
 var sqlDatabase = 'foodmood';
+
+var sqlLoginData = {
+  sqlHost: sqlHost,
+  sqlUser: sqlUser,
+  sqlPassword: sqlPassword,
+  sqlDatabase: sqlDatabase
+}
 
 /*
  *    OPEN DATABASE CONNECTION
@@ -96,8 +106,7 @@ wsServer.on('request', function(request) {
                   connection.sendUTF(JSON.stringify({type : "LOGIN_ERROR", content : "NO SUCH USER"}));
 
                 } else {
-                  connection.sendUTF(JSON.stringify({type : "LOGIN_SUCCESS", content : "LOGGED IN"}));
-
+                  getNewUUID(user, sqlLoginData, connection.remoteAddress, connection, sqlconnection);
                 }
               });
               break;
