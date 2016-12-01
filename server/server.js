@@ -1,5 +1,6 @@
 //REQUIRED CLASSES AND METHODS
 const getNewUUID = require('./uuid-generate');
+const isValidSession = require('./SessionManager');
 
 // VARIABLES FOR LATER USE
 var port = 61910;
@@ -100,10 +101,27 @@ wsServer.on('request', function(request) {
 
                 } else {
                   var rowData = rows[0];
-                  getNewUUID(connection.remoteAddress, connection, sqlconnection, rowData["user-id"]);
+                  getNewUUID(connection.remoteAddress, connection, sqlconnection, rowData["user-id"], user);
                 }
               });
               break;
+              case 'LOGIN_SESSION':
+                var sessionKey = data.sessionKey;
+
+                sqlconnection.query('SELECT `user-id`, `datetime` FROM `session` WHERE `sessionKey` = ?', [user, sessionKey], function(err, rows, result) {
+                  if(err || typeof rows[0] == 'undefined') {
+
+                    connection.sendUTF(JSON.stringify({type : "LOGIN_SESSION_ERROR", content : "NO SUCH SESSIONKEY"}));
+
+                  } else {
+
+                    var userID = rows[0]["user-id"];
+                    var datetime = rows[0]["datetime"];
+
+                    isValidSession(sessionKey, userID, datetime, connection);
+                  }
+                });
+                break;
             default:
               break;
           }

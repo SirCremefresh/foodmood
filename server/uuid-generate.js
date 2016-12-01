@@ -2,7 +2,7 @@ const uuidV4 = require('uuid/v4');
 const uuid = uuidV4();
 
 
-function getNewUUID(remoteAddress = '', userconnection, sqlconnection, userID) {
+function getNewUUID(remoteAddress = '', userconnection, sqlconnection, userID, username) {
   var uuid;
   uuid = uuidV4();
 
@@ -14,7 +14,7 @@ function getNewUUID(remoteAddress = '', userconnection, sqlconnection, userID) {
 
       sqlconnection.query('UPDATE `session` SET sessionKey= ?, ip = ?, datetime = CURRENT_TIMESTAMP WHERE user-id = ?', [uuid, remoteAddress, userID], function(err, results) {
       });
-      userconnection.sendUTF(JSON.stringify({type : "LOGIN_SUCCESS", content : uuid}));
+      userconnection.sendUTF(JSON.stringify({type : "LOGIN_SUCCESS", sessionKey : uuid, username: username}));
 
     }
 
