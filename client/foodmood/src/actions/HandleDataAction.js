@@ -49,9 +49,35 @@ class HandleDataAction {
     };
   }
 
+  waitForConnection (callback, interval) {
+      if (client.readyState === 1) {
+          callback();
+      } else {
+          var that = this;
+          // optional: implement backoff for interval here
+          setTimeout(function () {
+              that.waitForConnection(callback, interval);
+          }, interval);
+      }
+  };
+
+  send (message, callback) {
+    this.waitForConnection(function () {
+        client.send(message);
+        if (typeof callback !== 'undefined') {
+          callback();
+        }
+    }, 1000);
+  };
+
+
 
   sendData(content = '') {
     client.send(JSON.stringify(content));
+  }
+
+  onLoadSendData(content = '') {
+    this.send(JSON.stringify(content));
   }
 
 
