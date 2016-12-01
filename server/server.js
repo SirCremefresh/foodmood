@@ -106,7 +106,7 @@ wsServer.on('request', function(request) {
                     var userID = rows[0]["user-id"];
                     var datetime = rows[0]["datetime"];
 
-                    isValidSession(sessionKey, userID, datetime, connection);
+                    isValidSession(sessionKey, userID, datetime, connection, sqlconnection);
                   }
                 });
                 break;
