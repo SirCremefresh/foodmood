@@ -33,9 +33,8 @@ class HandleDataAction {
           case "LOGIN_SUCCESS":
             Router.browserHistory.push('/home');
             dispatcher.dispatch({
-              type: "NEW_MESSAGE",
-              content: data.content,
-              sessionid: data.sessionid
+              type: "NEW_SESSIONKEY",
+              sessionKey: data.content,
             });
             break;
           case "LOGIN_ERROR":
