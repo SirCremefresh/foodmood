@@ -29,25 +29,26 @@ class HandleDataAction {
       if (typeof e.data === 'string') {
         var data = JSON.parse(e.data);
         console.log(data);
-        if(data.type === "LOGIN_SUCCESS"){
-          Router.browserHistory.push('/home');
-          dispatcher.dispatch({
-            type: "NEW_MESSAGE",
-            content: data.content,
-            sessionid: data.sessionid
-          });
-
-        }
-        else if(data.type === "LOGIN_ERROR"){
-          dispatcher.dispatch({
-            type: "LOGIN_ERROR",
-          });
-
+        switch (data.type) {
+          case "LOGIN_SUCCESS":
+            Router.browserHistory.push('/home');
+            dispatcher.dispatch({
+              type: "NEW_SESSIONKEY",
+              sessionKey: data.content,
+            });
+            break;
+          case "LOGIN_ERROR":
+            dispatcher.dispatch({
+              type: "LOGIN_ERROR",
+            });
+            break;
+          default:
 
         }
       }
     };
   }
+
 
   sendData(content = '') {
     client.send(JSON.stringify(content));

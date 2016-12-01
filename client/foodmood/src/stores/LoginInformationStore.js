@@ -1,7 +1,7 @@
 import { EventEmitter } from "events";
 
 import dispatcher from "../dispatcher";
-
+import setCookie from "../util/setCookie"
 
 class LoginInformationStore extends EventEmitter {
   constructor() {
@@ -11,6 +11,7 @@ class LoginInformationStore extends EventEmitter {
 
   setsessionKey(newsessionKey) {
     this.sessionKey = newsessionKey;
+    setCookie("sessionKey", this.sessionKey, 1);
   }
 
   handleActions(action) {
