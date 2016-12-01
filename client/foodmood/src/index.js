@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 
 import initial from "./initial"
 
@@ -23,6 +24,7 @@ ReactDOM.render(
       <Route path="/" component={Layout} >
         <IndexRoute component={Home} />
         <Route path="/home" component={Home} />
+        <Route path="/profile" component={Profile} />
       </Route>
       <Route path="*" component={NotFound}/>
     </Router>
