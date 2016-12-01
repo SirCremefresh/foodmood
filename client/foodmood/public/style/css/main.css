@@ -18,12 +18,23 @@
   right: 0;
 }
 
-/* line 8, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_login.sass */
+#login {
+  margin: 100px auto;
+  width: 400px;
+}
+
+/* line 5, E:/webiste/foodmood/client/foodmood/public/style/sass/_login.sass */
+#login .LoginInput {
+  width: 100%;
+}
+
+/* line 9, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-/* line 11, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 12, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
 html {
   box-sizing: border-box;
 }

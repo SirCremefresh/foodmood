@@ -1,6 +1,7 @@
 import dispatcher from "../dispatcher";
 var W3CWebSocket = require('websocket').w3cwebsocket;
 var client = new W3CWebSocket('ws://localhost:61910/', 'echo-protocol');
+var Router = require('react-router');
 
 class HandleDataAction {
   constructor() {
@@ -10,13 +11,13 @@ class HandleDataAction {
 
     client.onopen = function() {
         console.log('WebSocket Client Connected');
-        var data = {
-          type:"LOGIN",
-          username:"DonatoPot",
-          password:"Donato"
-        };
-
-        client.send(JSON.stringify(data));
+        // var data = {
+        //   type:"LOGIN",
+        //   username:"DonatoPot",
+        //   password:"Donato"
+        // };
+        //
+        // client.send(JSON.stringify(data));
 
     };
 
@@ -28,7 +29,8 @@ class HandleDataAction {
       if (typeof e.data === 'string') {
         var data = JSON.parse(e.data);
         console.log(data);
-        if(data.type === "message"){
+        if(data.type === "LOGIN_SUCCESS"){
+          Router.browserHistory.push('/home');
           dispatcher.dispatch({
             type: "NEW_MESSAGE",
             content: data.content,
@@ -36,8 +38,19 @@ class HandleDataAction {
           });
 
         }
+        else if(data.type === "LOGIN_ERROR"){
+          dispatcher.dispatch({
+            type: "LOGIN_ERROR",
+          });
+
+
+        }
       }
     };
+  }
+
+  sendData(content = '') {
+    client.send(JSON.stringify(content));
   }
 
 

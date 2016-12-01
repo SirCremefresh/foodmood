@@ -21,6 +21,9 @@ class LoginInformationStore extends EventEmitter {
         this.setsessionKey(action.sessionKey);
         this.emit("newsessionKey");
         break;
+      case "LOGIN_ERROR":
+        this.emit("loginError");
+        break;
     }
   }
 }
