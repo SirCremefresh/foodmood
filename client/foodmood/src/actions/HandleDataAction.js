@@ -50,6 +50,9 @@ class HandleDataAction {
     };
   }
 
+
+
+
   sendData(content = '') {
     client.send(JSON.stringify(content));
   }
