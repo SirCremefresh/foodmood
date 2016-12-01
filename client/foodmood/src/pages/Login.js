@@ -116,6 +116,12 @@ var Home = React.createClass({
   HandleDataAction.sendData(data);
   },
 
+  handleKeyPress(e) {
+    if(e.charCode==13){
+      this.handleSubmit();
+    }
+  },
+
   render() {
     return (
       <Paper zDepth={1} id="login">
@@ -139,6 +145,7 @@ var Home = React.createClass({
             style={loginInputStyle}
             underlineStyle={underlineStyle}
             floatingLabelStyle={floatingLabelStyle}
+            onKeyPress={this.handleKeyPress}
             className="loginInput"
             hintText="geheimespasswort"
             floatingLabelText="Passwort"
@@ -151,6 +158,7 @@ var Home = React.createClass({
             style={submitButtonStyle}
             overlayStyle={submitButtonOverlayStyle}
             labelStyle={submitButtonlabelStyle}
+            id="submitButton"
             type="submit"
             label="Submit"
           />
