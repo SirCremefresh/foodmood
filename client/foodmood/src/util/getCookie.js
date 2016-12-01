@@ -14,3 +14,5 @@ function getCookie(cname) {
 }
 
 module.exports = getCookie;
+
+//http://www.w3schools.com/js/js_cookies.asp
