@@ -11,7 +11,7 @@ class LoginInformationStore extends EventEmitter {
 
   setsessionKey(newsessionKey) {
     this.sessionKey = newsessionKey;
-    setCookie("sessionKey", this.sessionKey, 1);
+    setCookie("sessionKey", this.sessionKey, 2);
   }
 
   handleActions(action) {
