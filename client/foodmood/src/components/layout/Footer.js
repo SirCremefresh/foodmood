@@ -1,11 +1,13 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 
-import Color from "../../configs/Color";
+import Color from "../../stores/configs/Color";
+
+var color = Color.getColor();
 
 const footerStyle = {
-  backgroundColor: Color.primaryColor,
-  color: Color.primaryColorText,
+  backgroundColor: color.primaryColor,
+  color: color.primaryColorText,
 };
 
 

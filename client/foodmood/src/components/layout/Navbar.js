@@ -1,10 +1,13 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 
-import Color from "../../configs/Color";
+import Color from "../../stores/configs/Color";
+
+var color = Color.getColor();
+
 
 const navbartStyle = {
-  backgroundColor: Color.primaryColor,
+  backgroundColor: color.primaryColor,
 };
 
 /**
