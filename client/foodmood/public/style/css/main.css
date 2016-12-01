@@ -1,13 +1,13 @@
 @import url(./normalize.css);
 @import url(./kickstart-grid.css);
-/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_content.sass */
+/* line 1, F:/foodmood/client/foodmood/public/style/sass/_content.sass */
 #content {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
 }
 
-/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_footer.sass */
+/* line 1, F:/foodmood/client/foodmood/public/style/sass/_footer.sass */
 #footer {
   padding-top: 25px;
   padding-bottom: 25px;
@@ -18,23 +18,29 @@
   right: 0;
 }
 
-/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_login.sass */
+/* line 1, F:/foodmood/client/foodmood/public/style/sass/_login.sass */
 #login {
   margin: 100px auto;
   width: 400px;
 }
 
-/* line 5, E:/webiste/foodmood/client/foodmood/public/style/sass/_login.sass */
+/* line 5, F:/foodmood/client/foodmood/public/style/sass/_login.sass */
 #login .LoginInput {
   width: 100%;
 }
 
-/* line 9, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 1, F:/foodmood/client/foodmood/public/style/sass/_pagenotfound.sass */
+#pagenotfound {
+  margin: 100px auto;
+  width: 600px;
+}
+
+/* line 10, F:/foodmood/client/foodmood/public/style/sass/main.sass */
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-/* line 12, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 13, F:/foodmood/client/foodmood/public/style/sass/main.sass */
 html {
   box-sizing: border-box;
 }
