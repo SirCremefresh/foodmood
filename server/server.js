@@ -1,7 +1,7 @@
 //REQUIRED CLASSES AND METHODS
 const getNewUUID = require('./uuid-generate');
 const isValidSession = require('./SessionManager');
-
+const loginAction = require('./loginAction');
 // VARIABLES FOR LATER USE
 var port = 61910;
 
@@ -89,22 +89,7 @@ wsServer.on('request', function(request) {
 
           switch (data.type) {
             case 'LOGIN':
-              var user = data.username;
-              var password = data.password;
-
-              sqlconnection.query('SELECT `user-id` FROM `user` WHERE `username` = ? AND `password` = ?', [user, password], function(err, rows, result) {
-                if(err) {
-                  connection.sendUTF(JSON.stringify({type : "SQL_ERROR", content : "NO SUCH USER"}));
-
-                } else if (typeof rows[0] == 'undefined') {
-                  connection.sendUTF(JSON.stringify({type : "LOGIN_ERROR", content : "NO SUCH USER"}));
-
-                } else {
-                  var rowData = rows[0];
-                  getNewUUID(connection.remoteAddress, connection, sqlconnection, rowData["user-id"], user);
-                }
-              });
-
+              loginAction(data, sqlconnection, connection);
               break;
               case 'LOGIN_SESSION':
                 var sessionKey = data.sessionKey;
