@@ -9,13 +9,6 @@ var sqlUser = 'activeuser';
 var sqlPassword = 'activeuser';
 var sqlDatabase = 'foodmood';
 
-var sqlLoginData = {
-  sqlHost: sqlHost,
-  sqlUser: sqlUser,
-  sqlPassword: sqlPassword,
-  sqlDatabase: sqlDatabase
-}
-
 /*
  *    OPEN DATABASE CONNECTION
  */
@@ -98,7 +91,7 @@ wsServer.on('request', function(request) {
               var user = data.username;
               var password = data.password;
 
-              sqlconnection.query('SELECT 1 FROM `user` WHERE `username` = ? AND `password` = ?', [user, password], function(err, rows, result) {
+              sqlconnection.query('SELECT `user-id` FROM `user` WHERE `username` = ? AND `password` = ?', [user, password], function(err, rows, result) {
                 if(err) {
                   connection.sendUTF(JSON.stringify({type : "SQL_ERROR", content : "NO SUCH USER"}));
 
@@ -106,7 +99,8 @@ wsServer.on('request', function(request) {
                   connection.sendUTF(JSON.stringify({type : "LOGIN_ERROR", content : "NO SUCH USER"}));
 
                 } else {
-                  getNewUUID(user, sqlLoginData, connection.remoteAddress, connection, sqlconnection);
+                  var rowData = rows[0];
+                  getNewUUID(connection.remoteAddress, connection, sqlconnection, rowData["user-id"]);
                 }
               });
               break;
