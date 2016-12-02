@@ -78,6 +78,7 @@ class LoginInformationStore extends EventEmitter {
         this.setsessionKey(action.sessionKey);
         this.setUserInformation(action);
         this.setLogedInToTrue();
+        this.emit("newUserInformation");
         this.emit("newsessionKey");
         this.emit("loginState");
         break;
