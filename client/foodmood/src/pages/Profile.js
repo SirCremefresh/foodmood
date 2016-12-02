@@ -120,11 +120,109 @@ var Profile = React.createClass({
           <table>
             <thead>
               <tr>
+                <th></th>
                 <th>
+                  Montag
+                </th>
+                <th>
+                  Dienstag
+                </th>
+                <th>
+                  Mittwoch
+                </th>
+                <th>
+                  Donnerstag
+                </th>
+                <th>
+                  Freitag
+                </th>
+                <th>
+                  Samstag
+                </th>
+                <th>
+                  Sonntag
                 </th>
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <th>
+                  Morgen
+                </th>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Mittag
+                </th>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Abend
+                </th>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
