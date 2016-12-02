@@ -6,9 +6,18 @@ import setCookie from "../util/setCookie"
 class LoginInformationStore extends EventEmitter {
   constructor() {
     super()
+    this.userInformation;
     this.sessionKey = 0;
     this.logedIn = false;
     this.username = "";
+    this.berechtigung = "";
+    this.name = "";
+    this.lastname = "";
+    this.adress = "";
+    this.phone = "";
+    this.mail = "";
+    this.IBAN = "";
+    this.status = "";
   }
 
   signOut() {
@@ -34,8 +43,22 @@ class LoginInformationStore extends EventEmitter {
     return this.logedIn;
   }
 
-  setUsername(newUsername) {
-    this.username = newUsername;
+  setUserInformation(newUserInformation) {
+    this.userInformation = newUserInformation;
+    this.logedIn = newUserInformation.logedIn;
+    this.username = newUserInformation.username;
+    this.berechtigung = newUserInformation.berechtigung;
+    this.name = newUserInformation.name;
+    this.lastname = newUserInformation.lastname;
+    this.adress = newUserInformation.adress;
+    this.phone = newUserInformation.phone;
+    this.mail = newUserInformation.mail;
+    this.IBAN = newUserInformation.IBAN;
+    this.status = newUserInformation.status;
+  }
+
+  getUserInformation() {
+    return this.userInformation;
   }
 
   getUsername() {
@@ -53,7 +76,7 @@ class LoginInformationStore extends EventEmitter {
     switch(action.type) {
       case "NEW_SESSIONKEY":
         this.setsessionKey(action.sessionKey);
-        this.setUsername(action.username);
+        this.setUserInformation(action);
         this.setLogedInToTrue();
         this.emit("newsessionKey");
         this.emit("loginState");
