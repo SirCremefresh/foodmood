@@ -4,6 +4,8 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
+var Router = require('react-router');
+
 import SignOutAction from '../../../actions/SignOutAction'
 
 var LoggedIn = React.createClass({
@@ -11,16 +13,20 @@ var LoggedIn = React.createClass({
     SignOutAction.signOut();
   },
 
+  toProfilePage() {
+    Router.browserHistory.push('/profile');
+  },
+
   render() {
     return (
       <IconMenu
         iconButtonElement={
-          <IconButton><MoreVertIcon /></IconButton>
+          <IconButton ><MoreVertIcon /></IconButton>
         }
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
-        <MenuItem primaryText={"Hello " + this.props.username} />
+        <MenuItem primaryText={"Hello " + this.props.username} onTouchTap={this.toProfilePage} />
         <MenuItem primaryText="Sign out" onTouchTap={this.signOut} />
       </IconMenu>
     );
