@@ -1,6 +1,6 @@
-function getUserID(username, password, callbackFunc, sqlconnection, connection) {
+function getUserID(username, password, callbackFunc, sqlconnection) {
 
-  sqlconnection.query('SELECT `userID` FROM `session` WHERE `password` = ? AND `username` = ?', [password, username], function(err, rows, result) {
+  sqlconnection.query('SELECT `userID` FROM `user` WHERE `password` = ? AND `username` = ?', [password, username], function(err, rows, result) {
     if(err) {
       callbackFunc(false, "SQL_ERROR")
     }

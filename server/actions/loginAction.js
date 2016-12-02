@@ -2,6 +2,7 @@
 const validateUser = require('../functionsAsync/validateUser');
 const getUserID = require('../functionsAsync/getUserID');
 const updateSessionKey = require('../functionsAsync/updateSessionKey');
+const getUserInformation = require('../functionsAsync/getUserInformation');
 
 //sync
 const generateSessionKey = require('../functionssync/generateSessionKey');
@@ -21,17 +22,57 @@ function loginAction(username, password, sqlconnection, connection) {
   GLOBusername = username;
   GLOBpassword = password;
 
+
   validateUser(GLOBusername, GLOBpassword, loginAction2, GLOBsqlconnection, GLOBconnection);
 }
 
 function loginAction2(valid, report) {
-  getUserID(GLOBusername, GLOBpassword, loginAction3, GLOBsqlconnection, GLOBconnection)
+  if (valid) {
+    getUserID(GLOBusername, GLOBpassword, loginAction3, GLOBsqlconnection)
+  } else {
+    console.log(report);
+  }
+
 }
 
 function loginAction3(valid, report, userID) {
-  GLOBuserID = userID
-  GLOBsessionKey = generateSessionKey();
+  if (valid) {
+    GLOBuserID = userID
+    GLOBsessionKey = generateSessionKey();
+    updateSessionKey(GLOBuserID, GLOBsessionKey, loginAction4, GLOBsqlconnection, GLOBconnection);
 
+  } else {
+    console.log(report);
+  }
+
+}
+
+function loginAction4() {
+  getUserInformation(GLOBuserID, loginAction5, GLOBsqlconnection);
+}
+
+function loginAction5(valid, report, userData) {
+  if (valid) {
+    console.log(userData);
+    GLOBconnection.sendUTF(JSON.stringify(
+      {
+        type : "LOGIN_SUCCESS",
+        sessionKey : userData["username"],
+        username : userData["username"],
+        berechtigung: userData["berechtigung"],
+        name: userData["name"],
+        lastname: userData["lastname"],
+        adress: userData["adress"],
+        phone: userData["phone"],
+        mail: userData["mail"],
+        IBAN: userData["IBAN"],
+        status: userData["status"],
+      }
+    ));
+
+  } else {
+    console.log(report);
+  }
 }
 
 module.exports = loginAction;
