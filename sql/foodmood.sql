@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 02. Dez 2016 um 08:12
--- Server-Version: 10.1.16-MariaDB
--- PHP-Version: 7.0.9
+-- Erstellungszeit: 02. Dez 2016 um 21:56
+-- Server-Version: 10.1.19-MariaDB
+-- PHP-Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -81,7 +81,7 @@ CREATE TABLE `logs` (
 --
 
 CREATE TABLE `session` (
-  `user-id` varchar(40) NOT NULL,
+  `userID` varchar(40) NOT NULL,
   `sessionKey` varchar(120) NOT NULL,
   `ip` varchar(60) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -91,9 +91,9 @@ CREATE TABLE `session` (
 -- Daten für Tabelle `session`
 --
 
-INSERT INTO `session` (`user-id`, `sessionKey`, `ip`, `datetime`) VALUES
-('1', '94a0dc47-ae85-42d0-b0c7-ce1ce4eb475e', '::1', '2016-12-01 14:34:13'),
-('2', '123', '123', '2016-12-02 07:09:33');
+INSERT INTO `session` (`userID`, `sessionKey`, `ip`, `datetime`) VALUES
+('1', 'b86254ba-8bb1-4e10-ab98-f1ee277b3e92', '::1', '2016-12-02 20:38:05'),
+('2', '7734e0d6-f088-4ab9-a5de-cc5c67fb781f', '::1', '2016-12-02 20:46:29');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ INSERT INTO `session` (`user-id`, `sessionKey`, `ip`, `datetime`) VALUES
 --
 
 CREATE TABLE `user` (
-  `user-id` int(255) NOT NULL,
+  `userID` int(255) NOT NULL,
   `username` varchar(40) NOT NULL,
   `password` varchar(80) NOT NULL COMMENT 'MD5 Hashed',
   `berechtigung` int(255) NOT NULL COMMENT 'ADMIN / USER',
@@ -119,7 +119,7 @@ CREATE TABLE `user` (
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`user-id`, `username`, `password`, `berechtigung`, `name`, `lastname`, `adress`, `phone`, `mail`, `IBAN`, `status`) VALUES
+INSERT INTO `user` (`userID`, `username`, `password`, `berechtigung`, `name`, `lastname`, `adress`, `phone`, `mail`, `IBAN`, `status`) VALUES
 (1, 'DonatoPot', 'Donato', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'Pot', 'Pot', 0, 'Pottie', 'Potter', 'Potstreet 10', '0000000', 'pot@dot.com', '1234Gehim5678', 'Hey Mami!!!!');
 
@@ -149,14 +149,14 @@ ALTER TABLE `logs`
 -- Indizes für die Tabelle `session`
 --
 ALTER TABLE `session`
-  ADD PRIMARY KEY (`user-id`),
+  ADD PRIMARY KEY (`userID`),
   ADD UNIQUE KEY `sessionKey` (`sessionKey`);
 
 --
 -- Indizes für die Tabelle `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user-id`),
+  ADD PRIMARY KEY (`userID`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
@@ -177,7 +177,7 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `user-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
