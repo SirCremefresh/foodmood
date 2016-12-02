@@ -29,6 +29,18 @@ const multilineTextfieldStyle = {
 };
 
 var Profile = React.createClass({
+  getInitialState: function() {
+    return {
+      name: "",
+      lastname : "",
+      adress : "",
+      phone : "",
+      mail : "",
+      iban : "",
+      status : "",
+    };
+  },
+
   render() {
     return (
     <div className="grid flex">
@@ -38,19 +50,19 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <main>
-          <MenuItem primaryText={<TextField hintText="Vorname" style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >account_box</FontIcon>} />
+          <MenuItem primaryText={<TextField hintText="Vorname" defaultValue={this.state.name} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >account_box</FontIcon>} />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Nachname" style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >face</FontIcon>} />
+          <MenuItem primaryText={<TextField hintText="Nachname" defaultValue={this.state.lastname} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >face</FontIcon>} />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Adresse" style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >hotel</FontIcon>} />
+          <MenuItem primaryText={<TextField hintText="Adresse" defaultValue={this.state.adress} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >hotel</FontIcon>} />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Telefonnummer" style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >call</FontIcon>} />
+          <MenuItem primaryText={<TextField hintText="Telefonnummer" defaultValue={this.state.phone} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >call</FontIcon>} />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Email Adresse" style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >email</FontIcon>} />
+          <MenuItem primaryText={<TextField hintText="Email Adresse" defaultValue={this.state.mail} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >email</FontIcon>} />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="IBAN-Nummer" style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >credit_card</FontIcon>} />
+          <MenuItem primaryText={<TextField hintText="IBAN-Nummer" defaultValue={this.state.iban} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >credit_card</FontIcon>} />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Status" style={multilineTextfieldStyle} underlineShow={false} multiLine={true} rows={2} rowsMax={5}/>} leftIcon={<FontIcon className="material-icons"  >star_rate</FontIcon>} />
+          <MenuItem primaryText={<TextField hintText="Status" defaultValue={this.state.status} style={multilineTextfieldStyle} underlineShow={false} multiLine={true} rows={2} rowsMax={5}/>} leftIcon={<FontIcon className="material-icons"  >star_rate</FontIcon>} />
           <Divider />
         </main>
       </Paper>
