@@ -11,8 +11,7 @@ function getNewUUID(remoteAddress = '', userconnection, sqlconnection, userrows)
       userconnection.sendUTF(JSON.stringify({type : "LOGIN_SUCCESS", content : uuid}));
 
     } else if (typeof rows[0] == 'undefined') {
-
-      sqlconnection.query('UPDATE `session` SET sessionKey= ?, ip = ?, datetime = CURRENT_TIMESTAMP WHERE `user-id` = ?', [uuid, remoteAddress, userrows[0]["userID"]], function(err, results) {
+      sqlconnection.query('UPDATE `session` SET sessionKey= ?, ip = ?, datetime = CURRENT_TIMESTAMP WHERE `user-id` = ?', [uuid, remoteAddress, userrows[0]["user-id"]], function(err, results) {
         if(err)
           throw err;
       });
