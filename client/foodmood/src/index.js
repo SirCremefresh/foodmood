@@ -20,12 +20,12 @@ import initial from "./initial"
 ReactDOM.render(
   <MuiThemeProvider>
     <Router history={browserHistory}>
-      <Route path="/login" component={Login} />
       <Route path="/" component={Layout} >
         <IndexRoute component={Home} />
         <Route path="/home" component={Home} />
         <Route path="/profile" component={Profile} />
       </Route>
+      <Route path="/login" component={Login} />
       <Route path="*" component={NotFound}/>
     </Router>
   </MuiThemeProvider>,

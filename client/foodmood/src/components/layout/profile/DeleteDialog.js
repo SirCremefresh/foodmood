@@ -22,6 +22,12 @@ var DeleteDialog = React.createClass({
   render() {
     const actions = [
       <FlatButton
+          label="Abbrechen"
+          primary={true}
+          keyboardFocused={true}
+          onTouchTap={this.handleClose}
+      />,
+      <FlatButton
         label="Verlassen"
         secondary={true}
         onTouchTap={this.handleClose}
@@ -32,7 +38,7 @@ var DeleteDialog = React.createClass({
       <div>
         <RaisedButton label="Diese Gruppe verlassen" onTouchTap={this.handleOpen} />
         <Dialog
-          title="Diese Gruppe verlassen"
+          title= {"Gruppe \'" + this.props.groupName + "\' verlassen"}
           actions={actions}
           modal={true}
           open={this.state.open}

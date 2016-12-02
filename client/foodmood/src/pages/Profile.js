@@ -111,14 +111,18 @@ var Profile = React.createClass({
         <div>
           <List>
             <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <DeleteDialog groupName={"Sent mail"} />
             <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <DeleteDialog />
             <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <DeleteDialog />
             <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <DeleteDialog />
             <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
           </List>
         </div>
       </Paper>
-      <DeleteDialog />
+
       <Paper zDepth={1} className="col_12">
         <header>
           <h1 style={titleStyle}>Menüplan</h1>
