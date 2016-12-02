@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 01. Dez 2016 um 13:51
+-- Erstellungszeit: 02. Dez 2016 um 08:12
 -- Server-Version: 10.1.16-MariaDB
 -- PHP-Version: 7.0.9
 
@@ -19,6 +19,45 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `foodmood`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `groups`
+--
+
+CREATE TABLE `groups` (
+  `group-id` int(255) NOT NULL,
+  `Name` varchar(60) NOT NULL,
+  `Beschreibung` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `groups`
+--
+
+INSERT INTO `groups` (`group-id`, `Name`, `Beschreibung`) VALUES
+(1, 'Coole Gangster', 'Hallo wir sind coole Gangster!!!');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `groupsuser`
+--
+
+CREATE TABLE `groupsuser` (
+  `user-id` int(255) NOT NULL,
+  `group-id` int(255) NOT NULL,
+  `admin` tinyint(1) NOT NULL COMMENT 'TRUE / FALSE',
+  `joinDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `groupsuser`
+--
+
+INSERT INTO `groupsuser` (`user-id`, `group-id`, `admin`, `joinDate`) VALUES
+(2, 1, 0, '2016-12-02 07:12:23');
 
 -- --------------------------------------------------------
 
@@ -43,10 +82,18 @@ CREATE TABLE `logs` (
 
 CREATE TABLE `session` (
   `user-id` varchar(40) NOT NULL,
-  `sessionKey` varchar(3000) NOT NULL,
+  `sessionKey` varchar(120) NOT NULL,
   `ip` varchar(60) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `session`
+--
+
+INSERT INTO `session` (`user-id`, `sessionKey`, `ip`, `datetime`) VALUES
+('1', '94a0dc47-ae85-42d0-b0c7-ce1ce4eb475e', '::1', '2016-12-01 14:34:13'),
+('2', '123', '123', '2016-12-02 07:09:33');
 
 -- --------------------------------------------------------
 
@@ -73,11 +120,24 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user-id`, `username`, `password`, `berechtigung`, `name`, `lastname`, `adress`, `phone`, `mail`, `IBAN`, `status`) VALUES
-(1, 'DonatoPot', 'Donato', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'DonatoPot', 'Donato', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Pot', 'Pot', 0, 'Pottie', 'Potter', 'Potstreet 10', '0000000', 'pot@dot.com', '1234Gehim5678', 'Hey Mami!!!!');
 
 --
 -- Indizes der exportierten Tabellen
 --
+
+--
+-- Indizes für die Tabelle `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`group-id`);
+
+--
+-- Indizes für die Tabelle `groupsuser`
+--
+ALTER TABLE `groupsuser`
+  ADD PRIMARY KEY (`user-id`,`group-id`);
 
 --
 -- Indizes für die Tabelle `logs`
@@ -89,7 +149,8 @@ ALTER TABLE `logs`
 -- Indizes für die Tabelle `session`
 --
 ALTER TABLE `session`
-  ADD PRIMARY KEY (`user-id`);
+  ADD PRIMARY KEY (`user-id`),
+  ADD UNIQUE KEY `sessionKey` (`sessionKey`);
 
 --
 -- Indizes für die Tabelle `user`
@@ -103,15 +164,20 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT für Tabelle `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `group-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT für Tabelle `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `log-id` int(255) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `user-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
