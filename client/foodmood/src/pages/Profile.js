@@ -69,6 +69,11 @@ var Profile = React.createClass({
     LoginInformationStore.removeListener("newUserInformation", this.setData);
   },
 
+  handleChange(event) {
+    this.setState({name: event.target.value});
+  },
+
+
   render() {
     console.log(this.state.name);
     return (
@@ -79,7 +84,7 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div>
-          <MenuItem primaryText={<TextField hintText="Vorname" value={this.state.name} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons">account_box</FontIcon>} />
+          <MenuItem primaryText={<TextField hintText="Vorname" value={this.state.name} onChange={this.handleChange} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons">account_box</FontIcon>} />
           <Divider />
           <MenuItem primaryText={<TextField hintText="Nachname" defaultValue={this.state.lastname} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >face</FontIcon>} />
           <Divider />
@@ -120,109 +125,11 @@ var Profile = React.createClass({
           <table>
             <thead>
               <tr>
-                <th></th>
                 <th>
-                  Montag
-                </th>
-                <th>
-                  Dienstag
-                </th>
-                <th>
-                  Mittwoch
-                </th>
-                <th>
-                  Donnerstag
-                </th>
-                <th>
-                  Freitag
-                </th>
-                <th>
-                  Samstag
-                </th>
-                <th>
-                  Sonntag
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>
-                  Morgen
-                </th>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  Mittag
-                </th>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  Abend
-                </th>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
