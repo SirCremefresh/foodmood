@@ -30,8 +30,7 @@ function loginAction2(valid, report) {
   if (valid) {
     getUserIDByPwdANDUsrname(GLOBusername, GLOBpassword, loginAction3, GLOBsqlconnection)
   } else {
-    
-    console.log(report);
+    connection.sendUTF(JSON.stringify({type : "LOGIN_ERROR", content : "NO SUCH USER"}));
   }
 
 }

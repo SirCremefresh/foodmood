@@ -21,6 +21,8 @@ function sessionLoginAction(sessionKey, sqlconnection, connection) {
 function sessionLoginAction2(valid, report) {
   if (valid) {
     getUserIDBySessionKey(GLOBsessionKey, sessionLoginAction3, GLOBsqlconnection);
+  } else {
+    GLOBconnection.sendUTF(JSON.stringify({type : "LOGIN_SESSION_ERROR", content : "NO SUCH SESSIONKEY"}));
   }
 }
 

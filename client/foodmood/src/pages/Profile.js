@@ -23,10 +23,6 @@ const titleDividerStyle = {
 
 var Profile = React.createClass({
   getInitialState: function() {
-    if (LoginInformationStore.getlogedInState()) {
-      this.setData();
-    }
-
     return {
       name : "",
       lastname : "",
@@ -49,6 +45,12 @@ var Profile = React.createClass({
       IBAN      : userInfo["IBAN"],
       status    : userInfo["status"],
     });
+  },
+
+  componentDidMount: function() {
+    if (LoginInformationStore.getlogedInState()) {
+      this.setData();
+    }
   },
 
   componentWillMount() {
