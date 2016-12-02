@@ -1,5 +1,4 @@
 function getUserIDBySessionKey(sessionKey, callbackFunc, sqlconnection) {
-  console.log(sessionKey);
   sqlconnection.query('SELECT `userID` FROM `session` WHERE `sessionKey` = ?', [sessionKey], function(err, rows, result) {
     if(err) {
       callbackFunc(false, "SQL_ERROR")
