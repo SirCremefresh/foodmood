@@ -120,7 +120,8 @@ var Profile = React.createClass({
           <table>
             <thead>
               <tr>
-                th
+                <th>
+                </th>
               </tr>
             </thead>
             <tbody>
