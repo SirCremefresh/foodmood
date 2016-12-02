@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
@@ -7,6 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import {List, ListItem} from 'material-ui/List';
 
 import LoginInformationStore from "../stores/LoginInformationStore";
+import DeleteDialog from "../components/layout/profile/DeleteDialog";
 
 const titleStyle = {
   fontSize: 30,
@@ -116,6 +118,7 @@ var Profile = React.createClass({
           </List>
         </div>
       </Paper>
+      <DeleteDialog />
       <Paper zDepth={1} className="col_12">
         <header>
           <h1 style={titleStyle}>Menüplan</h1>
@@ -125,11 +128,109 @@ var Profile = React.createClass({
           <table>
             <thead>
               <tr>
+                <th></th>
                 <th>
+                  Montag
+                </th>
+                <th>
+                  Dienstag
+                </th>
+                <th>
+                  Mittwoch
+                </th>
+                <th>
+                  Donnerstag
+                </th>
+                <th>
+                  Freitag
+                </th>
+                <th>
+                  Samstag
+                </th>
+                <th>
+                  Sonntag
                 </th>
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <th>
+                  Morgen
+                </th>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Mittag
+                </th>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Abend
+                </th>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+                <td>
+                  Salami
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
