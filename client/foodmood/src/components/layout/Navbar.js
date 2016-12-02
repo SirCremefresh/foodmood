@@ -1,6 +1,8 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 
+var Router = require('react-router');
+
 import LoggedIn from './navbar/LoggedIn'
 import LoggedOut from './navbar/LoggedOut'
 
@@ -47,12 +49,17 @@ var Navbar = React.createClass({
     this.props.changeSidebarState();
   },
 
+  linkToHomePage() {
+    Router.browserHistory.push('/home')
+  },
+
   render() {
     return (
       <AppBar
         title="FoodMood"
         style={navbartStyle}
         zDepth={2}
+        onTitleTouchTap={this.linkToHomePage}
         onLeftIconButtonTouchTap={this.changeSidebarState}
         iconElementRight={this.state.logedIn ? <LoggedIn username={this.state.username}/> : <LoggedOut />}/>
     );
