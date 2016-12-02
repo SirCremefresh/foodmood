@@ -15,7 +15,7 @@ var LoggedOut = React.createClass({
     return (
       <IconMenu
         iconButtonElement={
-          <IconButton><MoreVertIcon /></IconButton>
+          <IconButton><MoreVertIcon color="#fff"/></IconButton>
         }
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
