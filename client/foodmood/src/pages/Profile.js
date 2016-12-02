@@ -90,6 +90,28 @@ var Profile = React.createClass({
           </List>
         </div>
       </Paper>
+      <Paper zDepth={1} className="col_8" style={{float: "right"}}>
+        <header>
+          <h1 style={titleStyle}>Menüplan</h1>
+          <Divider style={titleDividerStyle}/>
+        </header>
+        <div>
+          <List>
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+          </List>
+        </div>
+      </Paper>
     </div>
     );
   }
