@@ -10,6 +10,13 @@ const SideNavBarStyle = {
   backgroundColor: color.primaryColor,
 };
 
+
+
+
+
+
+
+
 /**
  *
  * Top navigation
@@ -26,7 +33,8 @@ var SideNavBar = React.createClass({
         title="FoodMood"
         style={SideNavBarStyle}
         zDepth={2}
-        onLeftIconButtonTouchTap={this.changeSidebarState}/>
+        onLeftIconButtonTouchTap={this.changeSidebarState}
+      />
     );
   }
 });

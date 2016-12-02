@@ -42,10 +42,11 @@ class HandleDataAction {
               type: "LOGIN_ERROR",
             });
             break;
-          case "LOGIN_SESSION_SUCSESS":
+          case "LOGIN_SESSION_SUCCESS":
             dispatcher.dispatch({
               type: "NEW_SESSIONKEY",
               sessionKey: data.sessionKey,
+              username: data.username,
             });
             break;
           default:
