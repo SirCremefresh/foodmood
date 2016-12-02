@@ -4,6 +4,7 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import FontIcon from 'material-ui/FontIcon';
 import MenuItem from 'material-ui/MenuItem';
+import {List, ListItem} from 'material-ui/List';
 
 const titleStyle = {
   fontSize: 30,
@@ -49,8 +50,8 @@ var Profile = React.createClass({
           <h1 style={titleStyle}>Dein Account</h1>
           <Divider style={titleDividerStyle}/>
         </header>
-        <main>
-          <MenuItem primaryText={<TextField hintText="Vorname" defaultValue={this.state.name} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >account_box</FontIcon>} />
+        <div>
+          <MenuItem primaryText={<TextField hintText="Vorname" defaultValue={this.state.name} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons">account_box</FontIcon>} />
           <Divider />
           <MenuItem primaryText={<TextField hintText="Nachname" defaultValue={this.state.lastname} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >face</FontIcon>} />
           <Divider />
@@ -64,17 +65,30 @@ var Profile = React.createClass({
           <Divider />
           <MenuItem primaryText={<TextField hintText="Status" defaultValue={this.state.status} style={multilineTextfieldStyle} underlineShow={false} multiLine={true} rows={2} rowsMax={5}/>} leftIcon={<FontIcon className="material-icons"  >star_rate</FontIcon>} />
           <Divider />
-        </main>
+        </div>
       </Paper>
+
       <Paper zDepth={1} className="col_8">
-        <TextField hintText="First name" style={textfieldStyle} underlineShow={false} />
-        <Divider />
-        <TextField hintText="Middle name" style={textfieldStyle} underlineShow={false} />
-        <Divider />
-        <TextField hintText="Last name" style={textfieldStyle} underlineShow={false} />
-        <Divider />
-        <TextField hintText="Email address" style={textfieldStyle} underlineShow={false} />
-        <Divider />
+        <header>
+          <h1 style={titleStyle}>Gruppen</h1>
+          <Divider style={titleDividerStyle}/>
+        </header>
+        <div>
+          <List>
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+          </List>
+        </div>
       </Paper>
     </div>
     );

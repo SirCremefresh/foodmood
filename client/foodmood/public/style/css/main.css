@@ -20,19 +20,23 @@
 
 /* line 1, F:/foodmood/client/foodmood/public/style/sass/_login.sass */
 #login {
+  width: 60%;
   margin: 100px auto;
-  width: 400px;
+  min-width: 280px;
+  max-width: 600px;
 }
 
-/* line 5, F:/foodmood/client/foodmood/public/style/sass/_login.sass */
+/* line 8, F:/foodmood/client/foodmood/public/style/sass/_login.sass */
 #login .LoginInput {
   width: 100%;
 }
 
 /* line 1, F:/foodmood/client/foodmood/public/style/sass/_pagenotfound.sass */
 #pagenotfound {
+  width: 60%;
   margin: 100px auto;
-  width: 600px;
+  min-width: 280px;
+  max-width: 600px;
 }
 
 /* line 1, F:/foodmood/client/foodmood/public/style/sass/_profile.sass */
