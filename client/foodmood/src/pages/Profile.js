@@ -47,13 +47,12 @@ var Profile = React.createClass({
     });
   },
 
-  componentDidMount: function() {
+
+
+  componentWillMount() {
     if (LoginInformationStore.getlogedInState()) {
       this.setData();
     }
-  },
-
-  componentWillMount() {
     LoginInformationStore.on("newUserInformation", this.setData);
   },
 
