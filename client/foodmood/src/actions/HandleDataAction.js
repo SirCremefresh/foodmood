@@ -32,22 +32,25 @@ class HandleDataAction {
         switch (data.type) {
           case "LOGIN_SUCCESS":
             Router.browserHistory.push('/home');
-            dispatcher.dispatch({
-              type: "NEW_SESSIONKEY",
-              sessionKey: data.sessionKey,
-              username: data.username,
-            });
-            break;
-          case "LOGIN_ERROR":
-            dispatcher.dispatch({
-              type: "LOGIN_ERROR",
-            });
-            break;
+
           case "LOGIN_SESSION_SUCCESS":
             dispatcher.dispatch({
               type: "NEW_SESSIONKEY",
               sessionKey: data.sessionKey,
               username: data.username,
+              berechtigung: data.berechtigung,
+              name: data.name,
+              lastname: data.lastname,
+              adress: data.adress,
+              phone: data.phone,
+              mail: data.mail,
+              IBAN: data.IBAN,
+              status: data.status,
+            });
+            break;
+          case "LOGIN_ERROR":
+            dispatcher.dispatch({
+              type: "LOGIN_ERROR",
             });
             break;
           default:
