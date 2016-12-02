@@ -1,4 +1,4 @@
-function getUserID(username, password, callbackFunc, sqlconnection) {
+function getUserIDByPwdANDUsrname(username, password, callbackFunc, sqlconnection) {
 
   sqlconnection.query('SELECT `userID` FROM `user` WHERE `password` = ? AND `username` = ?', [password, username], function(err, rows, result) {
     if(err) {
@@ -14,4 +14,4 @@ function getUserID(username, password, callbackFunc, sqlconnection) {
 }
 
 
-module.exports = getUserID;
+module.exports = getUserIDByPwdANDUsrname;

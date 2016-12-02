@@ -1,6 +1,6 @@
 // Async
 const validateUser = require('../functionsAsync/validateUser');
-const getUserID = require('../functionsAsync/getUserID');
+const getUserIDByPwdANDUsrname = require('../functionsAsync/getUserIDByPwdANDUsrname');
 const updateSessionKey = require('../functionsAsync/updateSessionKey');
 const getUserInformation = require('../functionsAsync/getUserInformation');
 
@@ -28,7 +28,7 @@ function loginAction(username, password, sqlconnection, connection) {
 
 function loginAction2(valid, report) {
   if (valid) {
-    getUserID(GLOBusername, GLOBpassword, loginAction3, GLOBsqlconnection)
+    getUserIDByPwdANDUsrname(GLOBusername, GLOBpassword, loginAction3, GLOBsqlconnection)
   } else {
     console.log(report);
   }

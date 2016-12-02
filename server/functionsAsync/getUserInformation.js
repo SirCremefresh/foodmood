@@ -1,5 +1,5 @@
 function getUserInformation(userID, callbackFunc, sqlconnection) {
-
+  console.log(userID);
   sqlconnection.query('SELECT *, (SELECT `sessionKey` FROM session WHERE `userID` = ? ) as sessionKey from user WHERE  `userID` = ? ', [userID, userID], function(err, rows, result) {
     if(err) {
       throw err;

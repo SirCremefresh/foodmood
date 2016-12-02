@@ -1,6 +1,6 @@
 //REQUIRE Actions
-
 const loginAction = require('./actions/loginAction');
+const sessionLoginAction = require('./actions/sessionLoginAction');
 
 // VARIABLES FOR LATER USE
 var port = 61910;
@@ -90,6 +90,9 @@ wsServer.on('request', function(request) {
           switch (data.type) {
             case 'LOGIN':
                 loginAction(data.username, data.password, sqlconnection, connection);
+              break;
+            case "LOGIN_SESSION":
+                sessionLoginAction(data.sessionKey, sqlconnection, connection);
               break;
           }
 
