@@ -2,10 +2,10 @@ import React from 'react';
 
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
 import FontIcon from 'material-ui/FontIcon';
-import MenuItem from 'material-ui/MenuItem';
 import {List, ListItem} from 'material-ui/List';
+
+import CustomTextField from '../components/CustomTextField'
 
 import LoginInformationStore from "../stores/LoginInformationStore";
 import DeleteDialog from "../components/layout/profile/DeleteDialog";
@@ -19,19 +19,7 @@ const titleDividerStyle = {
   height: 3,
 };
 
-const iconStyles = {
-  width: 25,
-};
 
-const textfieldStyle = {
-  marginLeft: "-15px",
-};
-
-const multilineTextfieldStyle = {
-  marginLeft: 20,
-  width: "100%",
-  marginLeft: "-15px",
-};
 
 var Profile = React.createClass({
   getInitialState: function() {
@@ -45,7 +33,7 @@ var Profile = React.createClass({
       adress : "",
       phone : "",
       mail : "",
-      iban : "",
+      IBAN : "",
       status : "",
     };
   },
@@ -58,7 +46,7 @@ var Profile = React.createClass({
       adress    : userInfo["adress"],
       phone     : userInfo["phone"],
       mail      : userInfo["mail"],
-      iban      : userInfo["iban"],
+      IBAN      : userInfo["IBAN"],
       status    : userInfo["status"],
     });
   },
@@ -71,13 +59,10 @@ var Profile = React.createClass({
     LoginInformationStore.removeListener("newUserInformation", this.setData);
   },
 
-  handleChange(event) {
-    this.setState({name: event.target.value});
-  },
-
 
   render() {
     console.log(this.state.name);
+    console.log(this.state.IBAN);
     return (
     <div className="grid flex">
       <Paper zDepth={1} className="col_4">
@@ -86,19 +71,19 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div>
-          <MenuItem primaryText={<TextField hintText="Vorname" value={this.state.name} onChange={this.handleChange} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons">account_box</FontIcon>} />
+          <CustomTextField value={this.state.name} FontIcon="account_box" multiLine={false} hintText="name"/>
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Nachname" defaultValue={this.state.lastname} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >face</FontIcon>} />
+          <CustomTextField value={this.state.lastname} FontIcon="face" multiLine={false} hintText="lastname"/>
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Adresse" defaultValue={this.state.adress} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >hotel</FontIcon>} />
+          <CustomTextField value={this.state.adress} FontIcon="hotel" multiLine={false} hintText="adress" />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Telefonnummer" defaultValue={this.state.phone} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >call</FontIcon>} />
+          <CustomTextField value={this.state.phone} FontIcon="call" multiLine={false} hintText="phone" />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Email Adresse" defaultValue={this.state.mail} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >email</FontIcon>} />
+          <CustomTextField value={this.state.mail} FontIcon="email" multiLine={false} hintText="mail" />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="IBAN-Nummer" defaultValue={this.state.iban} style={textfieldStyle} underlineShow={false}/>} leftIcon={<FontIcon className="material-icons"  >credit_card</FontIcon>} />
+          <CustomTextField value={this.state.IBAN} FontIcon="credit_card" multiLine={false} hintText="IBAN" />
           <Divider />
-          <MenuItem primaryText={<TextField hintText="Status" defaultValue={this.state.status} style={multilineTextfieldStyle} underlineShow={false} multiLine={true} rows={2} rowsMax={5}/>} leftIcon={<FontIcon className="material-icons"  >star_rate</FontIcon>} />
+          <CustomTextField value={this.state.status} FontIcon="star_rate" multiLine={true} hintText="status" />
           <Divider />
         </div>
       </Paper>
