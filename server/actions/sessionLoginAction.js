@@ -1,30 +1,41 @@
 // Async
 const getUserIDBySessionKey = require('../functionsAsync/getUserIDBySessionKey');
 const getUserInformation = require('../functionsAsync/getUserInformation');
+const checkSessionKey = require('../functionsAsync/checkSessionKey');
 
 
 var GLOBsqlconnection;
 var GLOBconnection;
 
-function sessionLoginAction(sessionKey, sqlconnection, connection) {
-  GLOBsqlconnection= sqlconnection;
-  GLOBconnection= connection;
+var GLOBsessionKey;
 
-  getUserIDBySessionKey(sessionKey, sessionLoginAction2, GLOBsqlconnection);
+function sessionLoginAction(sessionKey, sqlconnection, connection) {
+  GLOBsqlconnection = sqlconnection;
+  GLOBconnection = connection;
+
+  GLOBsessionKey = sessionKey;
+
+  checkSessionKey(GLOBsessionKey, sessionLoginAction2, GLOBsqlconnection);
 }
 
-function sessionLoginAction2(valid, report, userID) {
+function sessionLoginAction2(valid, report) {
   if (valid) {
-    getUserInformation(userID, sessionLoginAction3, GLOBsqlconnection)
+    getUserIDBySessionKey(GLOBsessionKey, sessionLoginAction3, GLOBsqlconnection);
   }
 }
 
-function sessionLoginAction3(valid, report, userData) {
+function sessionLoginAction3(valid, report, userID) {
+  if (valid) {
+    getUserInformation(userID, sessionLoginAction4, GLOBsqlconnection)
+  }
+}
+
+function sessionLoginAction4(valid, report, userData) {
   if (valid) {
     console.log(userData);
     GLOBconnection.sendUTF(JSON.stringify(
       {
-        type : "LOGIN_SUCCESS",
+        type : "LOGIN_SESSION_SUCCESS",
         sessionKey : userData["sessionKey"],
         username : userData["username"],
         berechtigung: userData["berechtigung"],

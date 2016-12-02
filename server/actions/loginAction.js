@@ -30,6 +30,7 @@ function loginAction2(valid, report) {
   if (valid) {
     getUserIDByPwdANDUsrname(GLOBusername, GLOBpassword, loginAction3, GLOBsqlconnection)
   } else {
+    
     console.log(report);
   }
 
