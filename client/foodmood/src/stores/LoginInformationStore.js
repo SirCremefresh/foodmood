@@ -7,6 +7,15 @@ class LoginInformationStore extends EventEmitter {
   constructor() {
     super()
     this.sessionKey = 0;
+    this.logedIn = false;
+  }
+
+  setLogedInToTrue() {
+    this.logedIn = true;
+  }
+
+  setLogedInToFalse() {
+    this.logedIn = false;
   }
 
   setsessionKey(newsessionKey) {
@@ -23,11 +32,17 @@ class LoginInformationStore extends EventEmitter {
         this.emit("newsessionKey");
         break;
       case "LOGIN_SESSION_SUCSESS":
+        this.setLogedInToTrue();
         this.setsessionKey(action.sessionKey);
         this.emit("newsessionKey");
+        this.emit("loginState");
         break;
       case "LOGIN_ERROR":
         this.emit("loginError");
+        break;
+      case "LOGOUT":
+        this.setLogedInToFalse()
+        this.emit("loginState");
         break;
     }
   }
