@@ -11,6 +11,17 @@ class LoginInformationStore extends EventEmitter {
     this.username = "";
   }
 
+  signOut() {
+    this.sessionKey = 0;
+    this.logedIn = false;
+    this.username = "";
+
+    setCookie("sessionKey", "", 0);
+
+    this.emit("newsessionKey");
+    this.emit("loginState");
+  }
+
   setLogedInToTrue() {
     this.logedIn = true;
   }
@@ -53,6 +64,9 @@ class LoginInformationStore extends EventEmitter {
       case "LOGOUT":
         this.setLogedInToFalse()
         this.emit("loginState");
+        break;
+      case "SIGN_OUT":
+        this.signOut();
         break;
     }
   }

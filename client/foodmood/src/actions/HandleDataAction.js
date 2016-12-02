@@ -35,6 +35,7 @@ class HandleDataAction {
             dispatcher.dispatch({
               type: "NEW_SESSIONKEY",
               sessionKey: data.sessionKey,
+              username: data.username,
             });
             break;
           case "LOGIN_ERROR":
