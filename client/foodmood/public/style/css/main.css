@@ -35,12 +35,19 @@
   width: 600px;
 }
 
-/* line 10, F:/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 1, F:/foodmood/client/foodmood/public/style/sass/_profile.sass */
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+/* line 11, F:/foodmood/client/foodmood/public/style/sass/main.sass */
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-/* line 13, F:/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 14, F:/foodmood/client/foodmood/public/style/sass/main.sass */
 html {
   box-sizing: border-box;
 }
