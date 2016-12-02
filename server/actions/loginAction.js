@@ -57,7 +57,7 @@ function loginAction5(valid, report, userData) {
     GLOBconnection.sendUTF(JSON.stringify(
       {
         type : "LOGIN_SUCCESS",
-        sessionKey : userData["username"],
+        sessionKey : userData["sessionKey"],
         username : userData["username"],
         berechtigung: userData["berechtigung"],
         name: userData["name"],
