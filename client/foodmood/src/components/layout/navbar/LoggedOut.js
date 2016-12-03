@@ -20,7 +20,7 @@ var LoggedOut = React.createClass({
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
-        <MenuItem primaryText= "Hello Guest" />
+        <MenuItem primaryText="Hello Guest" />
         <MenuItem primaryText="Log In" onTouchTap={this.logIn} />
       </IconMenu>
     );

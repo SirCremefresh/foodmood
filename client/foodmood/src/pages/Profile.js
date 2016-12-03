@@ -2,13 +2,13 @@ import React from 'react';
 
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import FontIcon from 'material-ui/FontIcon';
-import {List, ListItem} from 'material-ui/List';
+import {List} from 'material-ui/List';
 
 import CustomTextField from '../components/CustomTextField'
 
 import LoginInformationStore from "../stores/LoginInformationStore";
-import DeleteDialog from "../components/layout/profile/DeleteDialog";
+
+import GroupListItem from "../components/profile/GroupListItem";
 
 const titleStyle = {
   fontSize: 30,
@@ -31,6 +31,11 @@ var Profile = React.createClass({
       mail : "",
       IBAN : "",
       status : "",
+      groups: [
+        {name: "jfs", status: "Status"},
+        {name: "jgsfdgfs", status: "Statusgfdss"},
+        {name: "jgfsdgfs", status: "Statsfdsgdfgsdfus"},
+      ],
     };
   },
 
@@ -62,8 +67,12 @@ var Profile = React.createClass({
 
 
   render() {
-    console.log(this.state.name);
-    console.log(this.state.IBAN);
+
+
+    const messages = this.state.groups.map((arr, index) => {
+      return <GroupListItem groupName={arr.name} groupStatus={arr.status} key={arr.name + index + "GroupListProfilePage"} />;
+    });
+
     return (
     <div className="grid flex">
       <Paper zDepth={1} className="col_4">
@@ -96,15 +105,7 @@ var Profile = React.createClass({
         </header>
         <div>
           <List>
-            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
-            <DeleteDialog groupName={"Sent mail"} />
-            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
-            <DeleteDialog />
-            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
-            <DeleteDialog />
-            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
-            <DeleteDialog />
-            <ListItem primaryText="Sent mail" leftIcon={<FontIcon className="material-icons">supervisor_account</FontIcon>} rightIcon={<FontIcon className="material-icons">delete</FontIcon>} />
+          {messages}
           </List>
         </div>
       </Paper>

@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 
 import dispatcher from "../../dispatcher";
 
-
+// eslint-disable-next-line
 var colorTheme = {};
 
 class LoginInformationStore extends EventEmitter {

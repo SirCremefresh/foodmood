@@ -117,7 +117,7 @@ var Home = React.createClass({
   },
 
   handleKeyPress(e) {
-    if(e.charCode==13){
+    if(e.charCode===13){
       this.handleSubmit();
     }
   },
@@ -138,7 +138,7 @@ var Home = React.createClass({
             hintText="Max"
             floatingLabelText="Benutzername"
             type="text"
-            errorText= {this.state.errorMessageUsername}
+            errorText={this.state.errorMessageUsername}
             id="usernameField"
           /><br />
           <TextField
@@ -150,7 +150,7 @@ var Home = React.createClass({
             hintText="geheimespasswort"
             floatingLabelText="Passwort"
             type="password"
-            errorText= {this.state.errorMessagePassword}
+            errorText={this.state.errorMessagePassword}
             id="passwordField"
           /><br />
           <RaisedButton

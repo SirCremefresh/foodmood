@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute  } from 'react-router';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import HandleDataAction from "./actions/HandleDataAction";
 
 import Layout from "./components/layout/Layout";
 
@@ -16,6 +14,7 @@ import Profile from "./pages/Profile";
 
 import initial from "./initial"
 
+initial();
 
 ReactDOM.render(
   <MuiThemeProvider>

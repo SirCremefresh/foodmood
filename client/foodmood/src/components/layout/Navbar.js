@@ -57,9 +57,9 @@ var Navbar = React.createClass({
     return (
       <AppBar
         title="FoodMood"
+        onTitleTouchTap={this.linkToHomePage}
         style={navbartStyle}
         zDepth={2}
-        onTitleTouchTap={this.linkToHomePage}
         onLeftIconButtonTouchTap={this.changeSidebarState}
         iconElementRight={this.state.logedIn ? <LoggedIn username={this.state.username}/> : <LoggedOut />}/>
     );

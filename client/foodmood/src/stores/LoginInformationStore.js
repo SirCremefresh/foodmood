@@ -6,7 +6,7 @@ import setCookie from "../util/setCookie"
 class LoginInformationStore extends EventEmitter {
   constructor() {
     super()
-    this.userInformation;
+    this.userInformation = {};
     this.sessionKey = 0;
     this.logedIn = false;
     this.username = "";

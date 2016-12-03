@@ -29,10 +29,11 @@ class HandleDataAction {
       if (typeof e.data === 'string') {
         var data = JSON.parse(e.data);
         console.log(data);
+
         switch (data.type) {
           case "LOGIN_SUCCESS":
             Router.browserHistory.push('/home');
-
+          // eslint-disable-next-line
           case "LOGIN_SESSION_SUCCESS":
             dispatcher.dispatch({
               type: "NEW_SESSIONKEY",
