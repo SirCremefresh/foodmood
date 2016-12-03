@@ -1,6 +1,8 @@
 //REQUIRE Actions
 const loginAction = require('./actions/loginAction');
 const sessionLoginAction = require('./actions/sessionLoginAction');
+const getGroupsAction = require('./actions/getGroupsAction');
+
 
 // VARIABLES FOR LATER USE
 var port = 61910;
@@ -93,6 +95,9 @@ wsServer.on('request', function(request) {
               break;
             case "LOGIN_SESSION":
                 sessionLoginAction(data.sessionKey, sqlconnection, connection);
+              break;
+            case "GET_GROUPS":
+                getGroupsAction(data.sessionKey, sqlconnection, connection);
               break;
           }
 
