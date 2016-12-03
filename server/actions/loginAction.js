@@ -4,6 +4,8 @@ const getUserIDByPwdANDUsrname = require('../functionsAsync/getUserIDByPwdANDUsr
 const updateSessionKey = require('../functionsAsync/updateSessionKey');
 const getUserInformation = require('../functionsAsync/getUserInformation');
 
+const getGroupsAction = require('./getGroupsAction');
+
 //sync
 const generateSessionKey = require('../functionssync/generateSessionKey');
 
@@ -69,7 +71,7 @@ function loginAction5(valid, report, userData) {
         status: userData["status"],
       }
     ));
-
+    getGroupsAction(userData["sessionKey"], GLOBsqlconnection, GLOBconnection);
   } else {
     console.log(report);
   }

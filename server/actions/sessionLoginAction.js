@@ -3,6 +3,7 @@ const getUserIDBySessionKey = require('../functionsAsync/getUserIDBySessionKey')
 const getUserInformation = require('../functionsAsync/getUserInformation');
 const checkSessionKey = require('../functionsAsync/checkSessionKey');
 
+const getGroupsAction = require('./getGroupsAction');
 
 var GLOBsqlconnection;
 var GLOBconnection;
@@ -34,7 +35,6 @@ function sessionLoginAction3(valid, report, userID) {
 
 function sessionLoginAction4(valid, report, userData) {
   if (valid) {
-    console.log(userData);
     GLOBconnection.sendUTF(JSON.stringify(
       {
         type : "LOGIN_SESSION_SUCCESS",
@@ -50,7 +50,7 @@ function sessionLoginAction4(valid, report, userData) {
         status: userData["status"],
       }
     ));
-
+    getGroupsAction(userData["sessionKey"], GLOBsqlconnection, GLOBconnection);
   } else {
     console.log(report);
   }
