@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Group from "./pages/Group";
 
@@ -27,6 +28,7 @@ ReactDOM.render(
         <Route path="/group(/:id)" component={Group} />
       </Route>
       <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
       <Route path="*" component={NotFound}/>
     </Router>
   </MuiThemeProvider>,

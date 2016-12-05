@@ -2,6 +2,8 @@
 const loginAction = require('./actions/loginAction');
 const sessionLoginAction = require('./actions/sessionLoginAction');
 const getGroupsAction = require('./actions/getGroupsAction');
+const registerNewUserAction = require('./actions/registerNewUserAction');
+
 
 
 // VARIABLES FOR LATER USE
