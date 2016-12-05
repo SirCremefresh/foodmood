@@ -1,5 +1,5 @@
-@import url(./normalize.css);
 @import url(./kickstart-grid.css);
+@import url(./normalize.css);
 /* line 1, F:/foodmood/client/foodmood/public/style/sass/_content.sass */
 #content {
   margin-left: auto;
@@ -46,12 +46,18 @@
   width: 90%;
 }
 
-/* line 11, F:/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 1, F:/foodmood/client/foodmood/public/style/sass/_group.sass */
+.contentTitle {
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+/* line 13, F:/foodmood/client/foodmood/public/style/sass/main.sass */
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-/* line 14, F:/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 16, F:/foodmood/client/foodmood/public/style/sass/main.sass */
 html {
   box-sizing: border-box;
 }

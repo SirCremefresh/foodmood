@@ -1,15 +1,27 @@
 import React from 'react';
 
+import Divider from 'material-ui/Divider';
 
-var Group = React.createClass({
+const titleDividerStyle = {
+  height: 3,
+};
+
+
+var Bills = React.createClass({
   render() {
     return (
       <div>
-        <h1>Bill</h1>
-        <p>Text</p>
+        <header>
+          <h1 className="contentTitle">Rechnungen</h1>
+          <Divider style={titleDividerStyle}/>
+        </header>
+        <div>
+          <p>
+          </p>
+        </div>
       </div>
     );
   }
 });
 
-module.exports = Group;
+module.exports = Bills;
