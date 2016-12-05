@@ -121,16 +121,6 @@ var Profile = React.createClass({
           </List>
         </div>
       </Paper>
-
-      <Paper zDepth={1} className="col_12">
-        <header>
-          <h1 style={titleStyle}>Menüplan</h1>
-          <Divider style={titleDividerStyle}/>
-        </header>
-        <div>
-
-        </div>
-      </Paper>
     </div>
     );
   }

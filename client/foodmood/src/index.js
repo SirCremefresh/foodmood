@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import Group from "./pages/Group";
 
 import initial from "./initial"
 
@@ -23,6 +24,7 @@ ReactDOM.render(
         <IndexRoute component={Home} />
         <Route path="/home" component={Home} />
         <Route path="/profile" component={Profile} />
+        <Route path="/group(/:id)" component={Group} />
       </Route>
       <Route path="/login" component={Login} />
       <Route path="*" component={NotFound}/>
