@@ -12,9 +12,8 @@ class HandleDataAction {
     client.onopen = function() {
         console.log('WebSocket Client Connected');
         // var data = {
-        //   type:"LOGIN",
-        //   username:"DonatoPot",
-        //   password:"Donato"
+        //   type:"GET_GROUPS",
+        //   sessionKey:"5b8a5feb-a5a8-4a56-90ee-c1b967abb1fe",
         // };
         //
         // client.send(JSON.stringify(data));
@@ -52,6 +51,12 @@ class HandleDataAction {
           case "LOGIN_ERROR":
             dispatcher.dispatch({
               type: "LOGIN_ERROR",
+            });
+            break;
+          case "USER_GROUPS":
+            dispatcher.dispatch({
+              type: "USER_GROUPS",
+              groups: data.groups
             });
             break;
           default:

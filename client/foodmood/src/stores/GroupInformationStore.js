@@ -3,24 +3,34 @@ import { EventEmitter } from "events";
 import dispatcher from "../dispatcher";
 import setCookie from "../util/setCookie"
 
-class LoginInformationStore extends EventEmitter {
+class GroupInformationStore extends EventEmitter {
   constructor() {
     super()
-
+    this.groups = [];
   }
 
+  setGroups(newgroups) {
+    this.groups = newgroups;
+  }
+
+  getGroups() {
+    return this.groups;
+  }
 
   handleActions(action) {
     // warnung für kein default case ausschalten
     // eslint-disable-next-line
 
-    // switch(action.type) {
-    //
-    // }
+    switch(action.type) {
+      case "USER_GROUPS":
+        this.setGroups(action.groups);
+        this.emit("newGroups");
+        break;
+    }
   }
 }
 
-const loginInformationStore = new LoginInformationStore();
-dispatcher.register(loginInformationStore.handleActions.bind(loginInformationStore));
+const groupInformationStore = new GroupInformationStore();
+dispatcher.register(groupInformationStore.handleActions.bind(groupInformationStore));
 
-export default loginInformationStore;
+export default groupInformationStore;
