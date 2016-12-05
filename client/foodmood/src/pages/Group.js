@@ -6,15 +6,22 @@ import Paper from 'material-ui/Paper';
 var Group = React.createClass({
   getInitialState: function() {
     return {
-      content: "", 
+      content: "nothing to show",
     };
   },
+
+  changeContentState(newcontent) {
+    this.setState({
+      content: newcontent
+    });
+  },
+
   render() {
     return (
       <div className="grid flex">
-        <Sidebar groupName="Gruppe123" admin="1" />
+        <Sidebar changeContentState={this.changeContentState} groupName="Gruppe123" admin="1" />
         <Paper className="col_9">
-          <h1>sdgdsg</h1>
+          <h1>{this.state.content}</h1>
         </Paper>
       </div>
     );

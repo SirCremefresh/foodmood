@@ -16,8 +16,11 @@ const titleDividerStyle = {
 };
 
 var Sidebar = React.createClass({
-  render() {
+  changeContentState(content){
+    this.props.changeContentState(content);
+  },
 
+  render() {
     var adminStuff = "";
 
     if(this.props.admin == "1") {
@@ -25,10 +28,10 @@ var Sidebar = React.createClass({
                     <Divider />
                     <List>
                       <Subheader>Erweiterte Einstellungen</Subheader>
-                      <ListItem primaryText="Menü" leftIcon={<FontIcon className="material-icons">shopping_cart</FontIcon>} />
-                      <ListItem primaryText="Rechnungen" leftIcon={<FontIcon className="material-icons">credit_card</FontIcon>} />
-                      <ListItem primaryText="Nutzer" leftIcon={<FontIcon className="material-icons">accessibility</FontIcon>} />
-                      <ListItem primaryText="Allgemeine Einstellungen" leftIcon={<FontIcon className="material-icons">settings</FontIcon>} />
+                      <ListItem onTouchTap={this.changeContentState.bind(this, "menuSettings")} primaryText="Menü" leftIcon={<FontIcon className="material-icons">shopping_cart</FontIcon>} />
+                      <ListItem onTouchTap={this.changeContentState.bind(this, "billsSettings")} primaryText="Rechnungen" leftIcon={<FontIcon className="material-icons">credit_card</FontIcon>} />
+                      <ListItem onTouchTap={this.changeContentState.bind(this, "userSettings")} primaryText="Nutzer" leftIcon={<FontIcon className="material-icons">accessibility</FontIcon>} />
+                      <ListItem onTouchTap={this.changeContentState.bind(this, "settings")} primaryText="Allgemeine Einstellungen" leftIcon={<FontIcon className="material-icons">settings</FontIcon>} />
                     </List>
                   </div>;
     }
@@ -41,9 +44,9 @@ var Sidebar = React.createClass({
           </header>
           <div>
             <List>
-              <ListItem primaryText="Menüplan" leftIcon={ <FontIcon className="material-icons">class</FontIcon>} />
-              <ListItem primaryText="Rechnungen" leftIcon={ <FontIcon className="material-icons">attach_money</FontIcon>} />
-              <ListItem primaryText="Informationen" leftIcon={ <FontIcon className="material-icons">info</FontIcon>} />
+              <ListItem onTouchTap={this.changeContentState.bind(this, "menu")} primaryText="Menüplan" leftIcon={ <FontIcon className="material-icons">class</FontIcon>} />
+              <ListItem onTouchTap={this.changeContentState.bind(this, "bills")} primaryText="Rechnungen" leftIcon={ <FontIcon className="material-icons">attach_money</FontIcon>} />
+              <ListItem onTouchTap={this.changeContentState.bind(this, "informations")} primaryText="Informationen" leftIcon={ <FontIcon className="material-icons">info</FontIcon>} />
             </List>
             {adminStuff}
           </div>
