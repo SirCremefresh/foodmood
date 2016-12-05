@@ -55,7 +55,6 @@ function loginAction4() {
 
 function loginAction5(valid, report, userData) {
   if (valid) {
-    console.log(userData);
     GLOBconnection.sendUTF(JSON.stringify(
       {
         type : "LOGIN_SUCCESS",

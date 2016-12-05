@@ -7,6 +7,7 @@ import {List} from 'material-ui/List';
 import CustomTextField from '../components/CustomTextField'
 
 import LoginInformationStore from "../stores/LoginInformationStore";
+import GroupInformationStore from "../stores/GroupInformationStore";
 
 import GroupListItem from "../components/profile/GroupListItem";
 
@@ -31,23 +32,7 @@ var Profile = React.createClass({
       mail : "",
       IBAN : "",
       status : "",
-      groups: [
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jfs", status: "Status"},
-        {name: "jgsfdgfs", status: "Statusgfdss"},
-        {name: "jgfsdgfs", status: "Statsfdsgdfgsdfus"},
-        {name: "HalloABC", status: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse"},
-
-      ],
+      groups: [],
     };
   },
 
@@ -64,17 +49,23 @@ var Profile = React.createClass({
     });
   },
 
-
+  setGroups() {
+    this.setState({
+      groups: GroupInformationStore.getGroups(),
+    });
+  },
 
   componentWillMount() {
     if (LoginInformationStore.getlogedInState()) {
       this.setData();
     }
     LoginInformationStore.on("newUserInformation", this.setData);
+    GroupInformationStore.on("newGroups", this.setGroups);
   },
 
   componentWillUnmount() {
     LoginInformationStore.removeListener("newUserInformation", this.setData);
+    GroupInformationStore.removeListener("newGroups", this.setGroups);
   },
 
 
@@ -82,7 +73,7 @@ var Profile = React.createClass({
 
 
     const messages = this.state.groups.map((arr, index) => {
-      return <GroupListItem groupName={arr.name} groupStatus={arr.status} key={arr.name + index + "GroupListProfilePage"} />;
+      return <GroupListItem groupName={arr.Name} groupStatus={arr.Beschreibung} key={arr.Name + index + "GroupListProfilePage"} />;
     });
 
     return (
