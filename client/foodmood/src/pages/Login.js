@@ -160,7 +160,7 @@ var Home = React.createClass({
             labelStyle={submitButtonlabelStyle}
             id="submitButton"
             type="submit"
-            label="Submit"
+            label="Anmelden"
           />
         </div>
       </Paper>
