@@ -15,6 +15,8 @@ var color = Color.getColor();
 
 const navbartStyle = {
   backgroundColor: color.primaryColor,
+  position: 'fixed',
+  top: 0,
 };
 
 /**

@@ -33,8 +33,20 @@ var Profile = React.createClass({
       status : "",
       groups: [
         {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
+        {name: "jfs", status: "Status"},
         {name: "jgsfdgfs", status: "Statusgfdss"},
         {name: "jgfsdgfs", status: "Statsfdsgdfgsdfus"},
+        {name: "HalloABC", status: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse"},
+
       ],
     };
   },
@@ -81,19 +93,19 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div>
-          <CustomTextField value={this.state.name} FontIcon="account_box" multiLine={false} hintText="name"/>
+          <CustomTextField value={this.state.name} FontIcon="account_box" multiLine={false} hintText="Vorname"/>
           <Divider />
-          <CustomTextField value={this.state.lastname} FontIcon="face" multiLine={false} hintText="lastname"/>
+          <CustomTextField value={this.state.lastname} FontIcon="face" multiLine={false} hintText="Nachname"/>
           <Divider />
-          <CustomTextField value={this.state.adress} FontIcon="hotel" multiLine={false} hintText="adress" />
+          <CustomTextField value={this.state.adress} FontIcon="hotel" multiLine={false} hintText="Adresse" />
           <Divider />
-          <CustomTextField value={this.state.phone} FontIcon="call" multiLine={false} hintText="phone" />
+          <CustomTextField value={this.state.phone} FontIcon="call" multiLine={false} hintText="Telefonnummer" />
           <Divider />
-          <CustomTextField value={this.state.mail} FontIcon="email" multiLine={false} hintText="mail" />
+          <CustomTextField value={this.state.mail} FontIcon="email" multiLine={false} hintText="E-Mail Adresse" />
           <Divider />
           <CustomTextField value={this.state.IBAN} FontIcon="credit_card" multiLine={false} hintText="IBAN" />
           <Divider />
-          <CustomTextField value={this.state.status} FontIcon="star_rate" multiLine={true} hintText="status" />
+          <CustomTextField value={this.state.status} FontIcon="star_rate" multiLine={true} hintText="Status" />
           <Divider />
         </div>
       </Paper>
@@ -116,114 +128,7 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div>
-          <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>
-                  Montag
-                </th>
-                <th>
-                  Dienstag
-                </th>
-                <th>
-                  Mittwoch
-                </th>
-                <th>
-                  Donnerstag
-                </th>
-                <th>
-                  Freitag
-                </th>
-                <th>
-                  Samstag
-                </th>
-                <th>
-                  Sonntag
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>
-                  Morgen
-                </th>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  Mittag
-                </th>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  Abend
-                </th>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-                <td>
-                  Salami
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          
         </div>
       </Paper>
     </div>
