@@ -30,6 +30,7 @@ var CustomTextField = React.createClass({
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    console.log(event.target.id + " -> " + event.target.value);
   },
 
 
@@ -46,6 +47,7 @@ var CustomTextField = React.createClass({
             multiLine={this.props.multiLine}
             rows={this.props.multiLine ? 2 : 1}
             rowsMax={this.props.multiLine ? 5 : 1}
+            id={this.props.id}
             />
         }
         leftIcon={

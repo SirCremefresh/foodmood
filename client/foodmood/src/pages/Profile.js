@@ -93,19 +93,19 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div>
-          <CustomTextField value={this.state.name} FontIcon="account_box" multiLine={false} hintText="Vorname"/>
+          <CustomTextField value={this.state.name} FontIcon="account_box" multiLine={false} hintText="Vorname" id="name"/>
           <Divider />
-          <CustomTextField value={this.state.lastname} FontIcon="face" multiLine={false} hintText="Nachname"/>
+          <CustomTextField value={this.state.lastname} FontIcon="face" multiLine={false} hintText="Nachname" id="lastname"/>
           <Divider />
-          <CustomTextField value={this.state.adress} FontIcon="hotel" multiLine={false} hintText="Adresse" />
+          <CustomTextField value={this.state.adress} FontIcon="hotel" multiLine={false} hintText="Adresse" id="adress"/>
           <Divider />
-          <CustomTextField value={this.state.phone} FontIcon="call" multiLine={false} hintText="Telefonnummer" />
+          <CustomTextField value={this.state.phone} FontIcon="call" multiLine={false} hintText="Telefonnummer" id="phone"/>
           <Divider />
-          <CustomTextField value={this.state.mail} FontIcon="email" multiLine={false} hintText="E-Mail Adresse" />
+          <CustomTextField value={this.state.mail} FontIcon="email" multiLine={false} hintText="E-Mail Adresse" id="email"/>
           <Divider />
-          <CustomTextField value={this.state.IBAN} FontIcon="credit_card" multiLine={false} hintText="IBAN" />
+          <CustomTextField value={this.state.IBAN} FontIcon="credit_card" multiLine={false} hintText="IBAN" id="IBAN"/>
           <Divider />
-          <CustomTextField value={this.state.status} FontIcon="star_rate" multiLine={true} hintText="Status" />
+          <CustomTextField value={this.state.status} FontIcon="star_rate" multiLine={true} hintText="Status" id="status"/>
           <Divider />
         </div>
       </Paper>
@@ -128,7 +128,7 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div>
-          
+
         </div>
       </Paper>
     </div>
