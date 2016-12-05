@@ -1,6 +1,6 @@
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import getCookie from "./util/getCookie"
-import HandleDataAction from "./actions/HandleDataAction"
+import getCookie from "./util/getCookie";
+import HandleDataAction from "./actions/HandleDataAction";
 
 function initial() {
   injectTapEventPlugin();
