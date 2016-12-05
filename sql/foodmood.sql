@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 02. Dez 2016 um 21:56
+-- Erstellungszeit: 05. Dez 2016 um 14:47
 -- Server-Version: 10.1.19-MariaDB
 -- PHP-Version: 7.0.13
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `groups` (
-  `group-id` int(255) NOT NULL,
+  `groupID` int(255) NOT NULL,
   `Name` varchar(60) NOT NULL,
   `Beschreibung` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -36,8 +36,9 @@ CREATE TABLE `groups` (
 -- Daten für Tabelle `groups`
 --
 
-INSERT INTO `groups` (`group-id`, `Name`, `Beschreibung`) VALUES
-(1, 'Coole Gangster', 'Hallo wir sind coole Gangster!!!');
+INSERT INTO `groups` (`groupID`, `Name`, `Beschreibung`) VALUES
+(1, 'Coole Gangster', 'Hallo wir sind coole Gangster!!!'),
+(2, 'Gruppe 2', 'Gruppe 2');
 
 -- --------------------------------------------------------
 
@@ -46,8 +47,8 @@ INSERT INTO `groups` (`group-id`, `Name`, `Beschreibung`) VALUES
 --
 
 CREATE TABLE `groupsuser` (
-  `user-id` int(255) NOT NULL,
-  `group-id` int(255) NOT NULL,
+  `userID` int(255) NOT NULL,
+  `groupID` int(255) NOT NULL,
   `admin` tinyint(1) NOT NULL COMMENT 'TRUE / FALSE',
   `joinDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -56,8 +57,9 @@ CREATE TABLE `groupsuser` (
 -- Daten für Tabelle `groupsuser`
 --
 
-INSERT INTO `groupsuser` (`user-id`, `group-id`, `admin`, `joinDate`) VALUES
-(2, 1, 0, '2016-12-02 07:12:23');
+INSERT INTO `groupsuser` (`userID`, `groupID`, `admin`, `joinDate`) VALUES
+(2, 1, 0, '2016-12-02 07:12:23'),
+(2, 2, 1, '2016-12-05 12:49:35');
 
 -- --------------------------------------------------------
 
@@ -66,8 +68,8 @@ INSERT INTO `groupsuser` (`user-id`, `group-id`, `admin`, `joinDate`) VALUES
 --
 
 CREATE TABLE `logs` (
-  `log-id` int(255) NOT NULL,
-  `user-id` varchar(40) NOT NULL,
+  `logID` int(255) NOT NULL,
+  `userID` varchar(40) NOT NULL,
   `type` varchar(6) NOT NULL COMMENT 'LOGIN / LOGOUT',
   `ip` varchar(60) NOT NULL,
   `sessionKey` varchar(60) NOT NULL,
@@ -93,7 +95,7 @@ CREATE TABLE `session` (
 
 INSERT INTO `session` (`userID`, `sessionKey`, `ip`, `datetime`) VALUES
 ('1', 'b86254ba-8bb1-4e10-ab98-f1ee277b3e92', '::1', '2016-12-02 20:38:05'),
-('2', '7734e0d6-f088-4ab9-a5de-cc5c67fb781f', '::1', '2016-12-02 20:46:29');
+('2', '5b8a5feb-a5a8-4a56-90ee-c1b967abb1fe', '::1', '2016-12-03 14:06:14');
 
 -- --------------------------------------------------------
 
@@ -131,19 +133,19 @@ INSERT INTO `user` (`userID`, `username`, `password`, `berechtigung`, `name`, `l
 -- Indizes für die Tabelle `groups`
 --
 ALTER TABLE `groups`
-  ADD PRIMARY KEY (`group-id`);
+  ADD PRIMARY KEY (`groupID`);
 
 --
 -- Indizes für die Tabelle `groupsuser`
 --
 ALTER TABLE `groupsuser`
-  ADD PRIMARY KEY (`user-id`,`group-id`);
+  ADD PRIMARY KEY (`userID`,`groupID`);
 
 --
 -- Indizes für die Tabelle `logs`
 --
 ALTER TABLE `logs`
-  ADD PRIMARY KEY (`log-id`);
+  ADD PRIMARY KEY (`logID`);
 
 --
 -- Indizes für die Tabelle `session`
@@ -167,12 +169,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `group-id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `groupID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log-id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `logID` int(255) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
