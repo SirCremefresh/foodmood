@@ -59,6 +59,8 @@ var Profile = React.createClass({
     if (LoginInformationStore.getlogedInState()) {
       this.setData();
     }
+    this.setGroups();
+
     LoginInformationStore.on("newUserInformation", this.setData);
     GroupInformationStore.on("newGroups", this.setGroups);
   },
