@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 05. Dez 2016 um 14:47
+-- Erstellungszeit: 07. Dez 2016 um 20:00
 -- Server-Version: 10.1.19-MariaDB
 -- PHP-Version: 7.0.13
 
@@ -95,7 +95,7 @@ CREATE TABLE `session` (
 
 INSERT INTO `session` (`userID`, `sessionKey`, `ip`, `datetime`) VALUES
 ('1', 'b86254ba-8bb1-4e10-ab98-f1ee277b3e92', '::1', '2016-12-02 20:38:05'),
-('2', '5b8a5feb-a5a8-4a56-90ee-c1b967abb1fe', '::1', '2016-12-03 14:06:14');
+('2', '95d9a513-7f4a-47e1-83cb-77e515b982b3', '::1', '2016-12-05 15:11:28');
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,6 @@ CREATE TABLE `user` (
   `adress` varchar(40) DEFAULT NULL,
   `phone` varchar(40) DEFAULT NULL COMMENT 'Private Telefon- oder Handynummer',
   `mail` varchar(120) DEFAULT NULL COMMENT 'Private E-Mail Adresse',
-  `IBAN` varchar(300) DEFAULT NULL COMMENT 'Bankverbindung bei Rechnungsstellung',
   `status` varchar(400) DEFAULT NULL COMMENT 'Status kann selbst gesetzt und formatiert werden'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -121,9 +120,9 @@ CREATE TABLE `user` (
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`userID`, `username`, `password`, `berechtigung`, `name`, `lastname`, `adress`, `phone`, `mail`, `IBAN`, `status`) VALUES
-(1, 'DonatoPot', 'Donato', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Pot', 'Pot', 0, 'Pottie', 'Potter', 'Potstreet 10', '0000000', 'pot@dot.com', '1234Gehim5678', 'Hey Mami!!!!');
+INSERT INTO `user` (`userID`, `username`, `password`, `berechtigung`, `name`, `lastname`, `adress`, `phone`, `mail`, `status`) VALUES
+(1, 'DonatoPot', 'Donato', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Pot', 'Pot', 0, 'Pottie', 'Potter', 'Potstreet 10', '0000000', 'pot@dot.com', 'Hey Mami!!!!');
 
 --
 -- Indizes der exportierten Tabellen

@@ -16,7 +16,6 @@ class LoginInformationStore extends EventEmitter {
     this.adress = "";
     this.phone = "";
     this.mail = "";
-    this.IBAN = "";
     this.status = "";
   }
 
@@ -53,7 +52,6 @@ class LoginInformationStore extends EventEmitter {
     this.adress = newUserInformation.adress;
     this.phone = newUserInformation.phone;
     this.mail = newUserInformation.mail;
-    this.IBAN = newUserInformation.IBAN;
     this.status = newUserInformation.status;
   }
 

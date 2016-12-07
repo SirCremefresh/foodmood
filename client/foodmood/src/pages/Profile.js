@@ -30,7 +30,6 @@ var Profile = React.createClass({
       adress : "",
       phone : "",
       mail : "",
-      IBAN : "",
       status : "",
       groups: [],
     };
@@ -44,7 +43,6 @@ var Profile = React.createClass({
       adress    : userInfo["adress"],
       phone     : userInfo["phone"],
       mail      : userInfo["mail"],
-      IBAN      : userInfo["IBAN"],
       status    : userInfo["status"],
     });
   },
@@ -94,8 +92,6 @@ var Profile = React.createClass({
           <CustomTextField value={this.state.phone} FontIcon="call" multiLine={false} hintText="Telefonnummer" id="phone"/>
           <Divider />
           <CustomTextField value={this.state.mail} FontIcon="email" multiLine={false} hintText="E-Mail Adresse" id="email"/>
-          <Divider />
-          <CustomTextField value={this.state.IBAN} FontIcon="credit_card" multiLine={false} hintText="IBAN" id="IBAN"/>
           <Divider />
           <CustomTextField value={this.state.status} FontIcon="star_rate" multiLine={true} hintText="Status" id="status"/>
           <Divider />

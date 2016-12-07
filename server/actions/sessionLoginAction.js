@@ -46,7 +46,6 @@ function sessionLoginAction4(valid, report, userData) {
         adress: userData["adress"],
         phone: userData["phone"],
         mail: userData["mail"],
-        IBAN: userData["IBAN"],
         status: userData["status"],
       }
     ));

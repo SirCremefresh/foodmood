@@ -44,7 +44,6 @@ class HandleDataAction {
               adress: data.adress,
               phone: data.phone,
               mail: data.mail,
-              IBAN: data.IBAN,
               status: data.status,
             });
             break;
