@@ -32,6 +32,11 @@ var Sidebar = React.createClass({
     this.changeSidebarState();
   },
 
+  gotoRegister() {
+    Router.browserHistory.push('/register');
+    this.changeSidebarState();
+  },
+
   render() {
     return (
       <div>
@@ -40,8 +45,9 @@ var Sidebar = React.createClass({
             <MenuItem onTouchTap={this.gotoHome}>Home</MenuItem>
             <MenuItem onTouchTap={this.gotoProfile}>Profil</MenuItem>
             <MenuItem onTouchTap={this.gotoGroup}>Gruppe</MenuItem>
-              <MenuItem onTouchTap={this.gotoNotFound}>404</MenuItem>
-              <MenuItem onTouchTap={this.gotoLogin}>Login</MenuItem>
+            <MenuItem onTouchTap={this.gotoNotFound}>404</MenuItem>
+            <MenuItem onTouchTap={this.gotoLogin}>Login</MenuItem>
+            <MenuItem onTouchTap={this.gotoRegister}>Register</MenuItem>
           </Drawer>
       </div>
     );
