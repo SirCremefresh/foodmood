@@ -3,7 +3,7 @@ const loginAction = require('./actions/loginAction');
 const sessionLoginAction = require('./actions/sessionLoginAction');
 const getGroupsAction = require('./actions/getGroupsAction');
 const registerNewUserAction = require('./actions/registerNewUserAction');
-
+const isUsernameTakenAction = require('./actions/isUsernameTakenAction');
 
 
 // VARIABLES FOR LATER USE
@@ -100,6 +100,9 @@ wsServer.on('request', function(request) {
               break;
             case "GET_GROUPS":
                 getGroupsAction(data.sessionKey, sqlconnection, connection);
+              break;
+            case "IS_USERNAME_TAKEN":
+                isUsernameTakenAction("sfsdf", sqlconnection, connection); 
               break;
           }
 
