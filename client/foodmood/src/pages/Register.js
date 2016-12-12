@@ -56,21 +56,25 @@ const errorMsgstyle = {
 var Register = React.createClass({
   getInitialState: function() {
     return {
+      valid: false,
       username: "",
       password : "",
       passwordrep : "",
       name: "",
       lastname : "",
+      passwordErrMsg: "",
       passwordrepErrMsg: "",
     };
   },
 
   handleChangeUsername(event) {
     this.setState({username: event.target.value});
+    this.validateUsername(event.target.value)
   },
 
   handleChangePassword(event) {
     this.setState({password: event.target.value});
+    this.validatePassword(event.target.value);
     this.validatePasswordrep({passval: true, vall: event.target.value});
   },
 
@@ -87,6 +91,25 @@ var Register = React.createClass({
     this.setState({lastname: event.target.value});
   },
 
+  validatePassword(value) {
+    if (value.length <= 6) {
+      this.setState({
+        passwordErrMsg: "Password is too short",
+        valid: false,
+      });
+    } else {
+      this.setState({
+        passwordErrMsg: "",
+        valid: true,
+      });
+    }
+  },
+
+  validateUsername(value) {
+    console.log(value);
+    HandleDataAction.sendData({type: "IS_USERNAME_TAKEN", value: value});
+  },
+
   validatePasswordrep(dataobj) {
     var pwdRepVal;
     var pwdVal;
@@ -98,9 +121,6 @@ var Register = React.createClass({
       pwdVal = this.state.password;
       pwdRepVal = dataobj.vall;
     }
-
-    console.log("rep :" + pwdRepVal);
-    console.log("pas :" + pwdVal);
 
     if (pwdVal == pwdRepVal) {
       this.setState({
@@ -115,8 +135,17 @@ var Register = React.createClass({
     }
   },
 
-  validateInput() {
-    console.log(this.state.username);
+  sendInput() {
+    if (this.state.valid) {
+      HandleDataAction.sendData({type: "REGISTER_NEW_USER", value: {
+                                                                    username: this.state.username,
+                                                                    name: this.state.name,
+                                                                    lastname: this.state.lastname,
+                                                                    password: this.state.password,
+                                                                    passwordrep: this.state.passwordrep,
+                                                                    }
+                                });
+    }
   },
 
   render() {
@@ -137,6 +166,7 @@ var Register = React.createClass({
             hintText="Max"
             floatingLabelText="Benutzername"
             type="text"
+            maxLength={40}
             id="usernameField"
           /><br />
 
@@ -146,6 +176,7 @@ var Register = React.createClass({
             floatingLabelStyle={floatingLabelStyle}
             onChange={this.handleChangeName}
             value={this.state.name}
+            maxLength={40}
             className="RegisterInput"
             hintText="Max"
             floatingLabelText="name"
@@ -161,6 +192,7 @@ var Register = React.createClass({
             value={this.state.lastname}
             className="RegisterInput"
             hintText="Max"
+            maxLength={40}
             floatingLabelText="lastname"
             type="text"
             id="lastnameField"
@@ -176,6 +208,8 @@ var Register = React.createClass({
             hintText="Max"
             floatingLabelText="password"
             type="password"
+            maxLength={200}
+            errorText={this.state.passwordErrMsg}
             id="passwordField"
           /><br />
 
@@ -189,6 +223,7 @@ var Register = React.createClass({
             hintText="Max"
             floatingLabelText="password Repeat"
             type="password"
+            maxLength={200}
             errorText={this.state.passwordrepErrMsg}
             id="passwordRepField"
           /><br />
@@ -198,7 +233,7 @@ var Register = React.createClass({
             style={registerButtonStyle}
             overlayStyle={registerButtonOverlayStyle}
             labelStyle={registerButtonlabelStyle}
-            onTouchTap={this.validateInput}
+            onTouchTap={this.sendInput}
             id="registerButton"
             type="register"
             label="Register"
