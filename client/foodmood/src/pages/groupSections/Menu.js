@@ -3,6 +3,10 @@ import React from 'react';
 import Divider from 'material-ui/Divider';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
+import Color from "../../stores/configs/Color";
+
+var color = Color.getColor();
+
 const titleDividerStyle = {
   height: 3,
 };
@@ -14,6 +18,14 @@ const menuStyle = {
     marginBottom: 12,
     fontWeight: 400,
   },
+};
+
+const tabStyle = {
+  backgroundColor: "#287eff",
+};
+
+const tabInkbarStyle = {
+  backgroundColor: color.accentColor,
 };
 
 var Menu = React.createClass({
@@ -76,6 +88,8 @@ var Menu = React.createClass({
                value="mo"
                icon={<img src="./icons/mo-icon.svg" width="30px"></img>}
                label="Lasagne"
+               style={tabStyle}
+               inkBarStyle={tabInkbarStyle}
              >
                <div>
                  <h2 style={menuStyle.headline}>Controllable Tab A</h2>
@@ -90,6 +104,8 @@ var Menu = React.createClass({
                value="di"
                icon={<img src="./icons/di-icon.svg" width="30px"></img>}
                label="Burger"
+               style={tabStyle}
+               inkBarStyle={tabInkbarStyle}
              >
                <div>
                  <h2 style={menuStyle.headline}>sdf Tab A</h2>
@@ -104,6 +120,8 @@ var Menu = React.createClass({
                value="mi"
                icon={<img src="./icons/mi-icon.svg" width="30px"></img>}
                label="Suppe"
+               style={tabStyle}
+               inkBarStyle={tabInkbarStyle}
              >
                <div>
                  <h2 style={menuStyle.headline}>Controllable Tab A</h2>
@@ -118,6 +136,8 @@ var Menu = React.createClass({
                value="do"
                icon={<img src="./icons/do-icon.svg" width="30px"></img>}
                label="Kuchen"
+               style={tabStyle}
+               inkBarStyle={tabInkbarStyle}
              >
                <div>
                  <h2 style={menuStyle.headline}>Controllable Tab A</h2>
@@ -132,6 +152,8 @@ var Menu = React.createClass({
                value="fr"
                icon={<img src="./icons/fr-icon.svg" width="30px"></img>}
                label="Chicken Nuggets"
+               style={tabStyle}
+               inkBarStyle={tabInkbarStyle}
              >
                <div>
                  <h2 style={menuStyle.headline}>Controllable Tab A</h2>
@@ -146,6 +168,8 @@ var Menu = React.createClass({
                value="sa"
                icon={<img src="./icons/sa-icon.svg" width="30px"></img>}
                label="Fischstäbchen"
+               style={tabStyle}
+               inkBarStyle={tabInkbarStyle}
              >
                <div>
                  <h2 style={menuStyle.headline}>Controllable Tab A</h2>
@@ -160,6 +184,8 @@ var Menu = React.createClass({
                value="so"
                icon={<img src="./icons/so-icon.svg" width="30px"></img>}
                label="Lasagne"
+               style={tabStyle}
+               inkBarStyle={tabInkbarStyle}
              >
                <div>
                  <h2 style={menuStyle.headline}>Controllable Tab A</h2>
