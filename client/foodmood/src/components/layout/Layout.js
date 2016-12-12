@@ -26,7 +26,7 @@ var Layout = React.createClass({
         <Content>
           {this.props.children}
         </Content>
-        <Footer />
+        {/*<Footer />*/}
       </div>
     );
   }

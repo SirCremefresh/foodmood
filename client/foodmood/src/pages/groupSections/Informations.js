@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Divider from 'material-ui/Divider';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
@@ -13,7 +14,14 @@ const subTitleStyle = {
 };
 
 const contentStyle = {
-  margin: "0 30 30 30",
+  marginLeft: 30,
+  marginRight: 30,
+};
+
+const buttonStyle = {
+  marginTop: 30,
+  marginRight: 30,
+  marginBottom: 15,
 };
 
 var Informations = React.createClass({
@@ -25,6 +33,8 @@ var Informations = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div style={contentStyle}>
+          <h2>Beschreibung</h2>
+          <p>{this.props.groupDescription}</p>
           <h2>Mitglieder</h2>
             <Table
               height="400px"
@@ -90,6 +100,7 @@ var Informations = React.createClass({
                 </TableRow>
               </TableBody>
             </Table>
+            <RaisedButton label="Gruppe verlassen" secondary={true} fullWidth={true} style={buttonStyle}/>
         </div>
       </div>
     );

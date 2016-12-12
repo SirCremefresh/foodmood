@@ -46,6 +46,7 @@ var Sidebar = React.createClass({
             <List>
               <ListItem onTouchTap={this.changeContentState.bind(this, "menu")} primaryText="Menüplan" leftIcon={ <FontIcon className="material-icons">class</FontIcon>} />
               <ListItem onTouchTap={this.changeContentState.bind(this, "bills")} primaryText="Rechnungen" leftIcon={ <FontIcon className="material-icons">attach_money</FontIcon>} />
+              <ListItem onTouchTap={this.changeContentState.bind(this, "addmenu")} primaryText="Menü hinzufügen" leftIcon={ <FontIcon className="material-icons">note_add</FontIcon>} />
               <ListItem onTouchTap={this.changeContentState.bind(this, "informations")} primaryText="Informationen" leftIcon={ <FontIcon className="material-icons">info</FontIcon>} />
             </List>
             {adminStuff}

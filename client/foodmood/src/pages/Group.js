@@ -1,8 +1,11 @@
 import React from 'react';
 
-import Sidebar from './groupSections/Sidebar.js';
-import Bills from './groupSections/Bills.js';
-import Informations from './groupSections/Informations.js';
+import Sidebar from './groupSections/Sidebar';
+
+import Bills from './groupSections/Bills';
+import Informations from './groupSections/Informations';
+import Menu from './groupSections/Menu';
+
 
 import Paper from 'material-ui/Paper';
 
@@ -24,11 +27,14 @@ var Group = React.createClass({
     var content;
 
     switch (this.state.content) {
+      case "menu":
+          content = <Menu />;
+        break;
       case "bills":
           content = <Bills />;
         break;
       case "informations":
-          content = <Informations groupName="Gruppe123" />;
+          content = <Informations groupDescription="lalala alsaFD AF A FSG FDG  dfg  gfd  dsg fds hg fhd f hfdg ddyafg dsfh  gfsh fdh gh fsh  dfsh gfh gfs h gf"/>;
         break;
       default:
           content = <h1>{this.state.content}</h1>;
