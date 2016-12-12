@@ -6,19 +6,21 @@
 		"../sass/_content.sass",
 		"../sass/_footer.sass",
 		"../sass/_login.sass",
+		"../sass/_register.sass",
 		"../sass/_pagenotfound.sass",
 		"../sass/_profile.sass",
 		"../sass/_group.sass"
 	],
 	"sourcesContent": [
-		"@import \"./kickstart-grid.css\";\n\n@import \"./content.sass\";\n@import \"./footer.sass\";\n@import \"./login.sass\";\n@import \"./pagenotfound.sass\";\n@import \"./profile.sass\";\n@import \"./group.sass\";\n\n@import \"./normalize.css\";\n\n// SET THE BASIC STRUCTURE\n*, *:before, *:after {\n  box-sizing: inherit; }\n\nhtml {\n  box-sizing: border-box; }\n",
+		"@import \"./kickstart-grid.css\";\n\n@import \"./content.sass\";\n@import \"./footer.sass\";\n@import \"./login.sass\";\n@import \"./register.sass\";\n@import \"./pagenotfound.sass\";\n@import \"./profile.sass\";\n@import \"./group.sass\";\n\n@import \"./normalize.css\";\n\n// SET THE BASIC STRUCTURE\n*, *:before, *:after {\n  box-sizing: inherit; }\n\nhtml {\n  box-sizing: border-box; }\n",
 		"#content {\n  margin-left: auto;\n  margin-right: auto;\n  width: 90%; }\n",
 		"#footer {\n  padding-top: 25px;\n  padding-bottom: 25px;\n  text-align: center;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  right: 0; }\n",
 		"#login {\n  width: 60%;\n  margin: 100px auto;\n  min-width: 280px;\n  max-width: 600px;\n\n\n  .LoginInput {\n    width: 100%; } }\n",
+		"#register {\n  width: 60%;\n  margin: 100px auto;\n  min-width: 280px;\n  max-width: 600px;\n\n\n  .RegisterInput {\n    width: 100%; } }\n",
 		"#pagenotfound {\n  width: 60%;\n  margin: 100px auto;\n  min-width: 280px;\n  max-width: 600px; }\n",
 		"#content {\n  margin-left: auto;\n  margin-right: auto;\n  width: 90%; }\n",
 		".contentTitle {\n  font-size: 30px;\n  margin-left: 30px; }\n"
 	],
-	"mappings": "AAAA,OAAO,CAAP,yBAAO;AASP,OAAO,CAAP,oBAAO;;ACTP,AAAA,QAAQ,CAAC;EACP,WAAW,EAAE,IAAK;EAClB,YAAY,EAAE,IAAK;EACnB,KAAK,EAAE,GAAI;CAAG;;;ACHhB,AAAA,OAAO,CAAC;EACN,WAAW,EAAE,IAAK;EAClB,cAAc,EAAE,IAAK;EACrB,UAAU,EAAE,MAAO;EACnB,QAAQ,EAAE,KAAM;EAChB,MAAM,EAAE,CAAE;EACV,IAAI,EAAE,CAAE;EACR,KAAK,EAAE,CAAE;CAAG;;;ACPd,AAAA,MAAM,CAAC;EACL,KAAK,EAAE,GAAI;EACX,MAAM,EAAE,UAAW;EACnB,SAAS,EAAE,KAAM;EACjB,SAAS,EAAE,KAAM;CAIE;;;AARrB,AAOE,MAPI,CAOJ,WAAW,CAAC;EACV,KAAK,EAAE,IAAK;CAAG;;;ACRnB,AAAA,aAAa,CAAC;EACZ,KAAK,EAAE,GAAI;EACX,MAAM,EAAE,UAAW;EACnB,SAAS,EAAE,KAAM;EACjB,SAAS,EAAE,KAAM;CAAG;;;ACJtB,AAAA,QAAQ,CAAC;EACP,WAAW,EAAE,IAAK;EAClB,YAAY,EAAE,IAAK;EACnB,KAAK,EAAE,GAAI;CAAG;;;ACHhB,AAAA,aAAa,CAAC;EACZ,SAAS,EAAE,IAAK;EAChB,WAAW,EAAE,IAAK;CAAG;;;ANUvB,AAAA,CAAC,EAAE,AAAC,CAAA,AAAA,OAAO,EAAE,AAAC,CAAA,AAAA,MAAM,CAAC;EACnB,UAAU,EAAE,OAAQ;CAAG;;;AAEzB,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,UAAW;CAAG",
+	"mappings": "AAAA,OAAO,CAAP,yBAAO;AAUP,OAAO,CAAP,oBAAO;;ACVP,AAAA,QAAQ,CAAC;EACP,WAAW,EAAE,IAAK;EAClB,YAAY,EAAE,IAAK;EACnB,KAAK,EAAE,GAAI;CAAG;;;ACHhB,AAAA,OAAO,CAAC;EACN,WAAW,EAAE,IAAK;EAClB,cAAc,EAAE,IAAK;EACrB,UAAU,EAAE,MAAO;EACnB,QAAQ,EAAE,KAAM;EAChB,MAAM,EAAE,CAAE;EACV,IAAI,EAAE,CAAE;EACR,KAAK,EAAE,CAAE;CAAG;;;ACPd,AAAA,MAAM,CAAC;EACL,KAAK,EAAE,GAAI;EACX,MAAM,EAAE,UAAW;EACnB,SAAS,EAAE,KAAM;EACjB,SAAS,EAAE,KAAM;CAIE;;;AARrB,AAOE,MAPI,CAOJ,WAAW,CAAC;EACV,KAAK,EAAE,IAAK;CAAG;;;ACRnB,AAAA,SAAS,CAAC;EACR,KAAK,EAAE,GAAI;EACX,MAAM,EAAE,UAAW;EACnB,SAAS,EAAE,KAAM;EACjB,SAAS,EAAE,KAAM;CAIE;;;AARrB,AAOE,SAPO,CAOP,cAAc,CAAC;EACb,KAAK,EAAE,IAAK;CAAG;;;ACRnB,AAAA,aAAa,CAAC;EACZ,KAAK,EAAE,GAAI;EACX,MAAM,EAAE,UAAW;EACnB,SAAS,EAAE,KAAM;EACjB,SAAS,EAAE,KAAM;CAAG;;;ACJtB,AAAA,QAAQ,CAAC;EACP,WAAW,EAAE,IAAK;EAClB,YAAY,EAAE,IAAK;EACnB,KAAK,EAAE,GAAI;CAAG;;;ACHhB,AAAA,aAAa,CAAC;EACZ,SAAS,EAAE,IAAK;EAChB,WAAW,EAAE,IAAK;CAAG;;;APWvB,AAAA,CAAC,EAAE,AAAC,CAAA,AAAA,OAAO,EAAE,AAAC,CAAA,AAAA,MAAM,CAAC;EACnB,UAAU,EAAE,OAAQ;CAAG;;;AAEzB,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,UAAW;CAAG",
 	"names": []
 }

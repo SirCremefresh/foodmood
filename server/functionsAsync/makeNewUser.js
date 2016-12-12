@@ -8,15 +8,11 @@ function makeNewUser(userInfo, callbackFunc, sqlconnection) {
   var mail = userInfo["mail"];
   var status = userInfo["status"];
 
-  sqlconnection.query('INSERT INTO `user`(`username`, `password`, `name`, `lastname`, `adress`, `phone`, `mail`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [username, password, name, lastname, adress, phone, mail, status], function(err, rows, result) {
+  sqlconnection.query('INSERT INTO `user`(`username`, `password`, `name`, `lastname`, `adress`, `phone`, `mail`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [username, password, name, lastname, adress, phone, mail, status], function(err, results) {
     if(err) {
-      callbackFunc(false, "SQL_ERROR")
-    }
-    else if(typeof rows[0] === 'undefined') {
-      callbackFunc(false, "USER_NOTFOUND")
-
+      throw err;
     } else {
-      callbackFunc(true, "USER_FOUND", rows[0]["userID"])
+      callbackFunc();
     }
   });
 }
