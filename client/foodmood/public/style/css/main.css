@@ -1,18 +1,76 @@
-@import url(./normalize.css);
 @import url(./kickstart-grid.css);
-/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_footer.sass */
-#footer {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  text-align: center;
+@import url(./normalize.css);
+/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_content.sass */
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
 
-/* line 7, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_footer.sass */
+#footer {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_login.sass */
+#login {
+  width: 60%;
+  margin: 100px auto;
+  min-width: 280px;
+  max-width: 600px;
+}
+
+/* line 8, E:/webiste/foodmood/client/foodmood/public/style/sass/_login.sass */
+#login .LoginInput {
+  width: 100%;
+}
+
+/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_register.sass */
+#register {
+  width: 60%;
+  margin: 100px auto;
+  min-width: 280px;
+  max-width: 600px;
+}
+
+/* line 8, E:/webiste/foodmood/client/foodmood/public/style/sass/_register.sass */
+#register .RegisterInput {
+  width: 100%;
+}
+
+/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_pagenotfound.sass */
+#pagenotfound {
+  width: 60%;
+  margin: 100px auto;
+  min-width: 280px;
+  max-width: 600px;
+}
+
+/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_profile.sass */
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+/* line 1, E:/webiste/foodmood/client/foodmood/public/style/sass/_group.sass */
+.contentTitle {
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+/* line 14, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-/* line 10, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
+/* line 17, E:/webiste/foodmood/client/foodmood/public/style/sass/main.sass */
 html {
   box-sizing: border-box;
 }

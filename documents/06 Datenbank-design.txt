@@ -1,0 +1,8 @@
+group
+user
+groupuser
+
+select u.username, g.groupname from user u 
+inner join groupuser gu on u.userid = gu.userid 
+inner join group g on g.groupid = gu.groupid 
+where gu.groupid = 5
