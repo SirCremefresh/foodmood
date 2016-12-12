@@ -102,7 +102,10 @@ wsServer.on('request', function(request) {
                 getGroupsAction(data.sessionKey, sqlconnection, connection);
               break;
             case "IS_USERNAME_TAKEN":
-                isUsernameTakenAction("sfsdf", sqlconnection, connection); 
+                isUsernameTakenAction("sfsdf", sqlconnection, connection);
+              break;
+            default:
+              console.log(data);
               break;
           }
 
