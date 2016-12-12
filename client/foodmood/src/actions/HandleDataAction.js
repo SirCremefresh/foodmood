@@ -58,6 +58,12 @@ class HandleDataAction {
               groups: data.groups
             });
             break;
+          case "USER_TAKEN":
+            dispatcher.dispatch({
+              type: "USER_TAKEN",
+              userTaken: data.userTaken
+            });
+            break;
           default:
 
         }

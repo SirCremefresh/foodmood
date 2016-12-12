@@ -8,6 +8,8 @@ import Color from "../stores/configs/Color";
 
 import HandleDataAction from "../actions/HandleDataAction";
 
+import RegistrationStore from "../stores/RegistrationStore";
+
 var color = Color.getColor();
 
 const RegisterTitleStyle = {
@@ -57,6 +59,7 @@ var Register = React.createClass({
   getInitialState: function() {
     return {
       valid: false,
+      isUsernameTaken: false,
       username: "",
       password : "",
       passwordrep : "",
@@ -64,7 +67,16 @@ var Register = React.createClass({
       lastname : "",
       passwordErrMsg: "",
       passwordrepErrMsg: "",
+      usernameErrMsg: "",
     };
+  },
+
+  componentWillMount() {
+    RegistrationStore.on("userTaken", this.handleIsUsernameTaken);
+  },
+
+  componentWillUnmount() {
+    RegistrationStore.removeListener("userTaken", this.handleIsUsernameTaken);
   },
 
   handleChangeUsername(event) {
@@ -91,6 +103,23 @@ var Register = React.createClass({
     this.setState({lastname: event.target.value});
   },
 
+  handleIsUsernameTaken() {
+    var isUsernameTaken = RegistrationStore.getIsUsernameTaken();
+    if (isUsernameTaken) {
+      this.setState({
+        isUsernameTaken: true,
+        valid: false,
+        usernameErrMsg: "username already taken",
+      });
+    } else {
+      this.setState({
+        isUsernameTaken: false,
+        valid: true,
+        usernameErrMsg: "",
+      });
+    }
+  },
+
   validatePassword(value) {
     if (value.length <= 6) {
       this.setState({
@@ -106,7 +135,6 @@ var Register = React.createClass({
   },
 
   validateUsername(value) {
-    console.log(value);
     HandleDataAction.sendData({type: "IS_USERNAME_TAKEN", value: value});
   },
 
@@ -142,7 +170,6 @@ var Register = React.createClass({
                                                                     name: this.state.name,
                                                                     lastname: this.state.lastname,
                                                                     password: this.state.password,
-                                                                    passwordrep: this.state.passwordrep,
                                                                     }
                                 });
     }
@@ -166,6 +193,7 @@ var Register = React.createClass({
             hintText="Max"
             floatingLabelText="Benutzername"
             type="text"
+            errorText={this.state.usernameErrMsg}
             maxLength={40}
             id="usernameField"
           /><br />

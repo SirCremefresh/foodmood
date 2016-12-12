@@ -19,10 +19,10 @@ function isUsernameTakenAction(username, sqlconnection, connection) {
 
 function isUsernameTakenAction2(result) {
   if(result == 0) {
-    GLOBconnection.sendUTF(JSON.stringify({type : "USER_TAKEN", content : false}));
+    GLOBconnection.sendUTF(JSON.stringify({type : "USER_TAKEN", userTaken : false}));
   }
   else {
-    GLOBconnection.sendUTF(JSON.stringify({type : "USER_TAKEN", content : true}));
+    GLOBconnection.sendUTF(JSON.stringify({type : "USER_TAKEN", userTaken : true}));
   }
 }
 module.exports = isUsernameTakenAction;
