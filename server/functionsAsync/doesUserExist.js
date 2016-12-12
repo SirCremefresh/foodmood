@@ -4,8 +4,7 @@ function doesUserExist(username, callbackFunc, sqlconnection) {
     if(err) {
       throw err;
     } else {
-      console.log(results);
-      callbackFunc();
+      callbackFunc(results[0].amount);
     }
   });
 }

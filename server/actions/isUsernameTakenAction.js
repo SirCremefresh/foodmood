@@ -6,19 +6,23 @@ const doesUserExist = require('../functionsAsync/doesUserExist');
 
 var GLOBsqlconnection;
 var GLOBconnection;
+var GLOBusername;
 
 
 function isUsernameTakenAction(username, sqlconnection, connection) {
   GLOBsqlconnection = sqlconnection;
   GLOBconnection    = connection;
+  GLOBusername      = username;
 
-  doesUserExist("pot", quit, GLOBsqlconnection);
-
-
-  return true;
+  doesUserExist(username, isUsernameTakenAction2, GLOBsqlconnection);
 }
 
-function quit() {
-  console.log("lala");
+function isUsernameTakenAction2(result) {
+  if(result == 0) {
+    GLOBconnection.sendUTF(JSON.stringify({type : "USER_TAKEN", content : false}));
+  }
+  else {
+    GLOBconnection.sendUTF(JSON.stringify({type : "USER_TAKEN", content : true}));
+  }
 }
 module.exports = isUsernameTakenAction;
