@@ -9,10 +9,6 @@ const titleDividerStyle = {
   height: 3,
 };
 
-const subTitleStyle = {
-  fontSize: 20,
-};
-
 const contentStyle = {
   marginLeft: 30,
   marginRight: 30,
