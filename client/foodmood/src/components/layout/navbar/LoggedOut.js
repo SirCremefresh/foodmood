@@ -11,6 +11,10 @@ var LoggedOut = React.createClass({
     Router.browserHistory.push('/login');
   },
 
+  register() {
+    Router.browserHistory.push('/register');
+  },
+
   render() {
     return (
       <IconMenu
@@ -22,6 +26,7 @@ var LoggedOut = React.createClass({
       >
         <MenuItem primaryText="Hello Guest" />
         <MenuItem primaryText="Log In" onTouchTap={this.logIn} />
+        <MenuItem primaryText="Register" onTouchTap={this.register} />
       </IconMenu>
     );
   }
