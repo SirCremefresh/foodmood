@@ -1,5 +1,7 @@
 //Async
 const getUserIDByUsername = require('./getUserIDByUsername');
+//sync
+const generateSessionKey = require('../functionsSync/generateSessionKey');
 
 var GLOBsqlconnection;
 var GLOBcallbackFunc;
@@ -14,7 +16,7 @@ function makeNewUser(userInfo, callbackFunc, sqlconnection) {
   GLOBsqlconnection = sqlconnection;
   GLOBcallbackFunc = callbackFunc;
 
-  GLOBsqlconnection.query('INSERT INTO `user`(`username`, `password`, `name`, `lastname`, `adress`, `phone`, `mail`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [username, password, name, lastname, adress, phone, mail, status], function(err, results) {
+  GLOBsqlconnection.query('INSERT INTO `user`(`username`, `password`, `name`, `lastname`) VALUES (?, ?, ?, ?)', [username, password, name, lastname], function(err, results) {
     if(err) {
       throw err;
     } else {
@@ -25,7 +27,7 @@ function makeNewUser(userInfo, callbackFunc, sqlconnection) {
 
 function makeNewUser2(valid, report, userID) {
   if (valid) {
-    sqlconnection.query('INSERT INTO `session`(`userID`, `sessionKey`, `ip`) VALUES (?, ?, ?)', [userID, "initialSession", "1"], function(err, results) {
+    GLOBsqlconnection.query('INSERT INTO `session`(`userID`, `sessionKey`, `ip`) VALUES (?, ?, ?)', [userID, generateSessionKey(), "1"], function(err, results) {
       if(err) {
         throw err;
       } else {

@@ -14,4 +14,4 @@ function isValidRegisterInput(username, name, lastname, password) {
 function isNullOrWhitespace( input ) {
   return !input || !input.trim();
 }
-module.exports = isValidRegisterInput
+module.exports = isValidRegisterInput;

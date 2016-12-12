@@ -3,7 +3,7 @@ const doesUserExist = require('../functionsAsync/doesUserExist');
 const makeNewUser = require('../functionsAsync/makeNewUser');
 
 //sync
-const isValid = require('../functionsSync/isValidRegisterInput');
+const isValidRegisterInput = require('../functionsSync/isValidRegisterInput');
 
 var GLOBsqlconnection;
 var GLOBconnection;
@@ -12,6 +12,8 @@ var GLOBusername;
 var GLOBname;
 var GLOBlastname;
 var GLOBpassword;
+
+var GLOBuserInfo;
 
 
 function registerNewUserAction(userInfo, sqlconnection, connection) {
@@ -22,9 +24,10 @@ function registerNewUserAction(userInfo, sqlconnection, connection) {
   GLOBname          = userInfo.name;
   GLOBlastname      = userInfo.lastname;
   GLOBpassword      = userInfo.password;
+  GLOBuserInfo      = userInfo;
 
-  if(isValidaRegisterInput(GLOBusername, GLOBname, GLOBlastname, GLOBpassword)) {
-    doesUserExist(username, registerNewUserAction2, GLOBsqlconnection);
+  if(isValidRegisterInput(GLOBusername, GLOBname, GLOBlastname, GLOBpassword)) {
+    doesUserExist(GLOBusername, registerNewUserAction2, GLOBsqlconnection);
   }
   else {
     GLOBconnection.sendUTF(JSON.stringify({type : "REGISTRATION_ERROR", errormessage : "INVALID INPUTS"}));
@@ -33,7 +36,7 @@ function registerNewUserAction(userInfo, sqlconnection, connection) {
 
 function registerNewUserAction2(result) {
   if(result == 0) {
-    makeNewUser(userInfo, registerNewUserAction3, GLOBsqlconnection);
+    makeNewUser(GLOBuserInfo, registerNewUserAction3, GLOBsqlconnection);
   }
   else {
     GLOBconnection.sendUTF(JSON.stringify({type : "USER_TAKEN", content : true}));

@@ -104,6 +104,9 @@ wsServer.on('request', function(request) {
             case "IS_USERNAME_TAKEN":
                 isUsernameTakenAction(data.value, sqlconnection, connection);
               break;
+            case "REGISTER_NEW_USER":
+                registerNewUserAction(data.value, sqlconnection, connection);
+              break;
             default:
               console.log(data);
               break;
