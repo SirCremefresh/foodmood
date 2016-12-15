@@ -5,7 +5,7 @@ import Sidebar from './groupSections/Sidebar';
 import Bills from './groupSections/Bills';
 import Informations from './groupSections/Informations';
 import Menu from './groupSections/Menu';
-
+import Addmenu from './groupSections/Addmenu';
 
 import Paper from 'material-ui/Paper';
 
@@ -24,7 +24,6 @@ var Group = React.createClass({
 
   render() {
     var content;
-
     switch (this.state.content) {
       case "menu":
           content = <Menu />;
@@ -34,6 +33,9 @@ var Group = React.createClass({
         break;
       case "informations":
           content = <Informations groupDescription={this.props.params.id} groupName={this.props.params.id} groupID={this.props.params.id}/>;
+        break;
+      case "addmenu":
+          content = <Addmenu groupID={this.props.params.id} />
         break;
       default:
           content = <h1>{this.state.content}</h1>;
