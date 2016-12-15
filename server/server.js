@@ -91,6 +91,8 @@ wsServer.on('request', function(request) {
 
         if (message.type === 'utf8') {
 
+          console.log(data);
+
           switch (data.type) {
             case 'LOGIN':
                 loginAction(data.username, data.password, sqlconnection, connection);

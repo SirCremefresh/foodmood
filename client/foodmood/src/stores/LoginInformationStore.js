@@ -68,6 +68,10 @@ class LoginInformationStore extends EventEmitter {
     setCookie("sessionKey", this.sessionKey, 2);
   }
 
+  getSessionKey() {
+    return this.sessionKey;
+  }
+
   handleActions(action) {
     // warnung für kein default case ausschalten
     // eslint-disable-next-line

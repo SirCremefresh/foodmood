@@ -23,7 +23,6 @@ var Group = React.createClass({
   },
 
   render() {
-
     var content;
 
     switch (this.state.content) {
@@ -34,7 +33,7 @@ var Group = React.createClass({
           content = <Bills />;
         break;
       case "informations":
-          content = <Informations groupDescription="lalala alsaFD AF A FSG FDG  dfg  gfd  dsg fds hg fhd f hfdg ddyafg dsfh  gfsh fdh gh fsh  dfsh gfh gfs h gf"/>;
+          content = <Informations groupDescription={this.props.params.id} groupName={this.props.params.id} groupID={this.props.params.id}/>;
         break;
       default:
           content = <h1>{this.state.content}</h1>;
@@ -42,7 +41,7 @@ var Group = React.createClass({
 
     return (
       <div className="grid flex">
-        <Sidebar changeContentState={this.changeContentState} groupName="Gruppe123" admin="1" />
+        <Sidebar changeContentState={this.changeContentState} groupName={this.props.params.id} admin="1" />
         <Paper className="col_9">
           {content}
         </Paper>

@@ -43,11 +43,8 @@ function getGroupsAction4(valid, report, userData) {
       {
         type : "USER_GROUPS",
         groups: userData,
-
       }
     ));
-  } else {
-    GLOBconnection.sendUTF(JSON.stringify({type : "SESSION_ERROR", content : "NO SUCH SESSIONKEY"}));
   }
 }
 

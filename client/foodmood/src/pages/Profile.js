@@ -72,7 +72,8 @@ var Profile = React.createClass({
   render() {
 
     const messages = this.state.groups.map((arr, index) => {
-      return <GroupListItem groupName={arr.Name} groupStatus={arr.Beschreibung} key={arr.Name + index + "GroupListProfilePage"} />;
+      console.log(arr);
+      return <GroupListItem groupName={arr.Name} groupStatus={arr.Beschreibung} key={arr.Name + index + "GroupListProfilePage"} groupID={arr.groupID} />;
     });
 
     return (

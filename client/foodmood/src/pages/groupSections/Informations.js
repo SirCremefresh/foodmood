@@ -5,15 +5,18 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
+import LeaveGroupDialog from '../../components/group/LeaveGroupDialog';
+
+/*
+ *  STYLES
+ */
 const titleDividerStyle = {
   height: 3,
 };
-
 const contentStyle = {
   marginLeft: 30,
   marginRight: 30,
 };
-
 const buttonStyle = {
   marginTop: 30,
   marginRight: 30,
@@ -21,6 +24,16 @@ const buttonStyle = {
 };
 
 var Informations = React.createClass({
+  getInitialState: function() {
+    return {
+      dialogOpen : false,
+    };
+  },
+  changeDialogState() {
+    this.setState({
+      dialogOpen : !(this.state.dialogOpen)
+    });
+  },
   render() {
     return (
       <div>
@@ -96,7 +109,14 @@ var Informations = React.createClass({
                 </TableRow>
               </TableBody>
             </Table>
-            <RaisedButton label="Gruppe verlassen" secondary={true} fullWidth={true} style={buttonStyle}/>
+            <RaisedButton
+              label="Gruppe verlassen"
+              secondary={true}
+              fullWidth={true}
+              style={buttonStyle}
+              onTouchTap={this.changeDialogState}
+            />
+          <LeaveGroupDialog open={this.state.dialogOpen} groupName={this.props.groupName} groupID={this.props.groupID}/>
         </div>
       </div>
     );

@@ -1,6 +1,7 @@
 // Async
 const doesUserExist = require('../functionsAsync/doesUserExist');
 const makeNewUser = require('../functionsAsync/makeNewUser');
+const loginAction = require('./loginAction');
 
 //sync
 const isValidRegisterInput = require('../functionsSync/isValidRegisterInput');
@@ -44,7 +45,7 @@ function registerNewUserAction2(result) {
 }
 
 function registerNewUserAction3() {
-
+  loginAction(GLOBusername, GLOBpassword, GLOBsqlconnection, GLOBconnection);
 }
 
 module.exports = registerNewUserAction;

@@ -71,7 +71,7 @@ var Menu = React.createClass({
           >
              <Tab
                value="mo"
-               icon={<img src="./icons/mo-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src="../icons/mo-icon.svg" width="30px" role="presentation"></img>}
                label="Lasagne"
                style={tabStyle}
              >
@@ -86,7 +86,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="di"
-               icon={<img src="./icons/di-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src="../icons/di-icon.svg" width="30px" role="presentation"></img>}
                label="Burger"
                style={tabStyle}
              >
@@ -101,7 +101,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="mi"
-               icon={<img src="./icons/mi-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src="../icons/mi-icon.svg" width="30px" role="presentation"></img>}
                label="Suppe"
                style={tabStyle}
              >
@@ -116,7 +116,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="do"
-               icon={<img src="./icons/do-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src="../icons/do-icon.svg" width="30px" role="presentation"></img>}
                label="Kuchen"
                style={tabStyle}
              >
@@ -131,7 +131,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="fr"
-               icon={<img src="./icons/fr-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src="../icons/fr-icon.svg" width="30px" role="presentation"></img>}
                label="Chicken Nuggets"
                style={tabStyle}
              >
@@ -146,7 +146,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="sa"
-               icon={<img src="./icons/sa-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src="../icons/sa-icon.svg" width="30px" role="presentation"></img>}
                label="Fischstäbchen"
                style={tabStyle}
              >
@@ -161,7 +161,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="so"
-               icon={<img src="./icons/so-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src="../icons/so-icon.svg" width="30px" role="presentation"></img>}
                label="Lasagne"
                style={tabStyle}
              >

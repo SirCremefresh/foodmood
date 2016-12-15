@@ -12,4 +12,4 @@ function checkSessionDate(datetime) {
     return false;
   }
 }
-module.exports = checkSessionDate
+module.exports = checkSessionDate;
