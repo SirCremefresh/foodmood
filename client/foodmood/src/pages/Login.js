@@ -1,8 +1,11 @@
 import React from 'react';
+var Router = require('react-router');
 
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import Color from "../stores/configs/Color";
 
@@ -14,7 +17,15 @@ var color = Color.getColor();
 const loginTitleStyle = {
   backgroundColor: color.primaryColor,
   padding: 10,
-  color: "#fff"
+  color: "#fff",
+};
+
+const loginTitleHStyle = {
+  marginBottom: 0,
+};
+
+const loginTitleButton = {
+  float: "right",
 };
 
 const loginInputStyle = {
@@ -68,6 +79,9 @@ var Home = React.createClass({
 
   sendErrorMsg() {
     document.getElementById("errorTextField").innerHTML = "Deine Angeben sind ungültig!";
+  },
+  redirectToRegister() {
+    Router.browserHistory.push('/register');
   },
 
   handleSubmit() {
@@ -127,7 +141,10 @@ var Home = React.createClass({
       <Paper zDepth={1} id="login">
         <div>
           <Paper zDepth={1} style={loginTitleStyle}>
-            <h1>Login</h1>
+            <h1 style={loginTitleHStyle}>Login</h1>
+            <FloatingActionButton secondary={true} style={loginTitleButton} onTouchTap={this.redirectToRegister}>
+              <ContentAdd />
+            </FloatingActionButton>
             <p id="errorTextField" style={errorMsgstyle}></p>
           </Paper>
           <TextField
