@@ -17,6 +17,14 @@ class GroupInformationStore extends EventEmitter {
     return this.groups;
   }
 
+  getGroupWithID(groupID) {
+    for (var group of this.groups) {
+      if (group.groupID == groupID) {
+        return group;
+      }
+    }
+  }
+
   handleActions(action) {
     // warnung für kein default case ausschalten
     // eslint-disable-next-line
