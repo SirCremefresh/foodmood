@@ -4,7 +4,7 @@ const sessionLoginAction = require('./actions/sessionLoginAction');
 const getGroupsAction = require('./actions/getGroupsAction');
 const registerNewUserAction = require('./actions/registerNewUserAction');
 const isUsernameTakenAction = require('./actions/isUsernameTakenAction');
-
+const userLeaveGroupAction = require('./actions/userLeaveGroupAction');
 
 // VARIABLES FOR LATER USE
 var port = 61910;
@@ -91,8 +91,6 @@ wsServer.on('request', function(request) {
 
         if (message.type === 'utf8') {
 
-          console.log(data);
-
           switch (data.type) {
             case 'LOGIN':
                 loginAction(data.username, data.password, sqlconnection, connection);
@@ -108,6 +106,9 @@ wsServer.on('request', function(request) {
               break;
             case "REGISTER_NEW_USER":
                 registerNewUserAction(data.value, sqlconnection, connection);
+              break;
+            case "LEAVE_GROUP":
+                userLeaveGroupAction(data.value.sessionKey, data.value.groupID, sqlconnection, connection);
               break;
             default:
               console.log(data);
