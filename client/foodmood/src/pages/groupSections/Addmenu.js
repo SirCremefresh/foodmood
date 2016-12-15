@@ -42,6 +42,8 @@ var Addmenu = React.createClass({
       value: {
         sessionKey: LoginInformationStore.getSessionKey(),
         groupID: this.props.groupID,
+        menuName: document.getElementById("menuName").value,
+        menuDescription: document.getElementById("menuDescription").value,
       }
     })
 
