@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Dez 2016 um 20:00
+-- Erstellungszeit: 15. Dez 2016 um 13:11
 -- Server-Version: 10.1.19-MariaDB
 -- PHP-Version: 7.0.13
 
@@ -19,6 +19,18 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `foodmood`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `groupinvite`
+--
+
+CREATE TABLE `groupinvite` (
+  `inviteID` int(11) NOT NULL,
+  `groupID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -79,6 +91,19 @@ CREATE TABLE `logs` (
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `menu`
+--
+
+CREATE TABLE `menu` (
+  `menuID` int(11) NOT NULL,
+  `groupID` int(11) NOT NULL,
+  `title` varchar(80) NOT NULL,
+  `description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `session`
 --
 
@@ -95,7 +120,8 @@ CREATE TABLE `session` (
 
 INSERT INTO `session` (`userID`, `sessionKey`, `ip`, `datetime`) VALUES
 ('1', 'b86254ba-8bb1-4e10-ab98-f1ee277b3e92', '::1', '2016-12-02 20:38:05'),
-('2', '95d9a513-7f4a-47e1-83cb-77e515b982b3', '::1', '2016-12-05 15:11:28');
+('2', 'd76773a4-d165-4285-bd19-83383c911c16', '::1', '2016-12-15 10:26:46'),
+('3', '2f355cb4-65ad-4343-b8d9-fd284f0a7582', '::1', '2016-12-15 07:15:54');
 
 -- --------------------------------------------------------
 
@@ -122,11 +148,18 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userID`, `username`, `password`, `berechtigung`, `name`, `lastname`, `adress`, `phone`, `mail`, `status`) VALUES
 (1, 'DonatoPot', 'Donato', 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Pot', 'Pot', 0, 'Pottie', 'Potter', 'Potstreet 10', '0000000', 'pot@dot.com', 'Hey Mami!!!!');
+(2, 'Pot', 'Pot', 0, 'Pottie', 'Potter', 'Potstreet 10', '0000000', 'pot@dot.com', 'Hey Mami!!!!'),
+(3, 'DonatoPotato', 'password', 0, 'Donato', 'Wolfibserg', NULL, NULL, NULL, NULL);
 
 --
 -- Indizes der exportierten Tabellen
 --
+
+--
+-- Indizes für die Tabelle `groupinvite`
+--
+ALTER TABLE `groupinvite`
+  ADD PRIMARY KEY (`inviteID`);
 
 --
 -- Indizes für die Tabelle `groups`
@@ -147,6 +180,12 @@ ALTER TABLE `logs`
   ADD PRIMARY KEY (`logID`);
 
 --
+-- Indizes für die Tabelle `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`menuID`);
+
+--
 -- Indizes für die Tabelle `session`
 --
 ALTER TABLE `session`
@@ -165,6 +204,11 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT für Tabelle `groupinvite`
+--
+ALTER TABLE `groupinvite`
+  MODIFY `inviteID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT für Tabelle `groups`
 --
 ALTER TABLE `groups`
@@ -175,10 +219,15 @@ ALTER TABLE `groups`
 ALTER TABLE `logs`
   MODIFY `logID` int(255) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT für Tabelle `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `menuID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
