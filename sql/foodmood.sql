@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 15. Dez 2016 um 13:11
--- Server-Version: 10.1.19-MariaDB
--- PHP-Version: 7.0.13
+-- Erstellungszeit: 15. Dez 2016 um 16:09
+-- Server-Version: 10.1.16-MariaDB
+-- PHP-Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -65,14 +65,6 @@ CREATE TABLE `groupsuser` (
   `joinDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Daten für Tabelle `groupsuser`
---
-
-INSERT INTO `groupsuser` (`userID`, `groupID`, `admin`, `joinDate`) VALUES
-(2, 1, 0, '2016-12-02 07:12:23'),
-(2, 2, 1, '2016-12-05 12:49:35');
-
 -- --------------------------------------------------------
 
 --
@@ -101,6 +93,14 @@ CREATE TABLE `menu` (
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `menu`
+--
+
+INSERT INTO `menu` (`menuID`, `groupID`, `title`, `description`) VALUES
+(1, 1, 'sdf', 'sd'),
+(2, 1, 'Hallo', 'Saaalihoi');
+
 -- --------------------------------------------------------
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `session` (
 
 INSERT INTO `session` (`userID`, `sessionKey`, `ip`, `datetime`) VALUES
 ('1', 'b86254ba-8bb1-4e10-ab98-f1ee277b3e92', '::1', '2016-12-02 20:38:05'),
-('2', 'd76773a4-d165-4285-bd19-83383c911c16', '::1', '2016-12-15 10:26:46'),
+('2', 'a117f577-229d-4511-8348-3fcb51d6fb32', '::1', '2016-12-15 12:29:31'),
 ('3', '2f355cb4-65ad-4343-b8d9-fd284f0a7582', '::1', '2016-12-15 07:15:54');
 
 -- --------------------------------------------------------
@@ -222,7 +222,7 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT für Tabelle `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menuID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `menuID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
