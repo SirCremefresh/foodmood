@@ -180,7 +180,7 @@ var Register = React.createClass({
       <Paper zDepth={1} id="register">
         <div>
           <Paper zDepth={1} style={RegisterTitleStyle}>
-            <h1>Register</h1>
+            <h1>Registrieren</h1>
             <p id="errorTextField" style={errorMsgstyle}></p>
           </Paper>
           <TextField
@@ -190,7 +190,7 @@ var Register = React.createClass({
             onChange={this.handleChangeUsername}
             value={this.state.username}
             className="RegisterInput"
-            hintText="Max"
+            hintText="MaxMüller21"
             floatingLabelText="Benutzername"
             type="text"
             errorText={this.state.usernameErrMsg}
@@ -207,7 +207,7 @@ var Register = React.createClass({
             maxLength={40}
             className="RegisterInput"
             hintText="Max"
-            floatingLabelText="name"
+            floatingLabelText="Vorname"
             type="text"
             id="nameField"
           /><br />
@@ -219,9 +219,9 @@ var Register = React.createClass({
             onChange={this.handleChangeLastname}
             value={this.state.lastname}
             className="RegisterInput"
-            hintText="Max"
+            hintText="Müller"
             maxLength={40}
-            floatingLabelText="lastname"
+            floatingLabelText="Nachname"
             type="text"
             id="lastnameField"
           /><br />
@@ -233,8 +233,8 @@ var Register = React.createClass({
             onChange={this.handleChangePassword}
             value={this.state.password}
             className="RegisterInput"
-            hintText="Max"
-            floatingLabelText="password"
+            hintText="geheimesPasswort21"
+            floatingLabelText="Passwort"
             type="password"
             maxLength={200}
             errorText={this.state.passwordErrMsg}
@@ -248,8 +248,8 @@ var Register = React.createClass({
             onChange={this.handleChangePasswordrep}
             value={this.state.passwordrep}
             className="RegisterInput"
-            hintText="Max"
-            floatingLabelText="password Repeat"
+            hintText="geheimesPasswort21"
+            floatingLabelText="Passwort wiederholen"
             type="password"
             maxLength={200}
             errorText={this.state.passwordrepErrMsg}
@@ -264,7 +264,7 @@ var Register = React.createClass({
             onTouchTap={this.sendInput}
             id="registerButton"
             type="register"
-            label="Register"
+            label="Registrieren"
           />
         </div>
       </Paper>
