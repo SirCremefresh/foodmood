@@ -1,4 +1,5 @@
 import React from 'react';
+var Router = require('react-router');
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -27,6 +28,7 @@ var LeaveGroupDialog = React.createClass({
       }
     });
     this.handleChangeDialogState();
+    Router.browserHistory.push('/profile');
   },
 
   handleChangeDialogState() {
