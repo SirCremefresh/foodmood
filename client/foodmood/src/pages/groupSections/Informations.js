@@ -40,7 +40,6 @@ var Informations = React.createClass({
   render() {
     var users =  GroupInformationStore.getUsersFromGroupWithID(this.props.groupID);
     const userTable = users.map((arr, index) => {
-      console.log(arr);
       return(
         <TableRow key={index + arr.username + "UserTable"}>
           <TableRowColumn>{arr.username}</TableRowColumn>
