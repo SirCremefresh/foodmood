@@ -5,7 +5,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
+import GroupInformationStore from '../../stores/GroupInformationStore'
+
 import LeaveGroupDialog from '../../components/group/LeaveGroupDialog';
+
 
 /*
  *  STYLES
@@ -35,6 +38,18 @@ var Informations = React.createClass({
     });
   },
   render() {
+    var users =  GroupInformationStore.getUsersFromGroupWithID(this.props.groupID);
+    const userTable = users.map((arr, index) => {
+      console.log(arr);
+      return(
+        <TableRow key={index + arr.username + "UserTable"}>
+          <TableRowColumn>{arr.username}</TableRowColumn>
+          <TableRowColumn>{arr.joinDate}</TableRowColumn>
+          <TableRowColumn>{arr.admin == 1 ? "Ja" : "Nein"}</TableRowColumn>
+        </TableRow>
+      );
+    });
+
     return (
       <div>
         <header>
@@ -62,51 +77,7 @@ var Informations = React.createClass({
               <TableBody
                 displayRowCheckbox={false}
               >
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                    <TableRowColumn>Randal White</TableRowColumn>
-                    <TableRowColumn>14.08.2016</TableRowColumn>
-                    <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                    <TableRowColumn>Stephanie Sanders</TableRowColumn>
-                    <TableRowColumn>09.03.2016</TableRowColumn>
-                    <TableRowColumn>Nein</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>Steve Brown</TableRowColumn>
-                  <TableRowColumn>28.09.2016</TableRowColumn>
-                  <TableRowColumn>Nein</TableRowColumn>
-                </TableRow>
+              {userTable}
               </TableBody>
             </Table>
             <RaisedButton
