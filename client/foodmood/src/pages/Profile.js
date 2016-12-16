@@ -118,7 +118,7 @@ var Profile = React.createClass({
         );
       });
     } else {
-      groupsInvites = <p style={contentPStyle}>Du bist in keiner Gruppe</p>;
+      groupsInvites = <p style={contentPStyle}>Du hast keine offenen Einladungen</p>;
     }
     return (
     <div className="grid flex">
@@ -128,7 +128,7 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div>
-          <CustomTextField value={this.state.username} FontIcon="perm_identity" multiLine={false} hintText="username" id="username"/>
+          <CustomTextField value={this.state.username} FontIcon="perm_identity" multiLine={false} hintText="Benutzername" id="username"/>
           <Divider />
           <CustomTextField value={this.state.name} FontIcon="account_box" multiLine={false} hintText="Vorname" id="name"/>
           <Divider />
