@@ -47,6 +47,12 @@ function getGroupInvitesAction4(valid, report, userData) {
         groupsInvites: userData,
       }
     ));
+  } else {
+    GLOBconnection.sendUTF(JSON.stringify(
+      {
+        type : "NO_GROUP_INVITES",
+      }
+    ));
   }
 }
 

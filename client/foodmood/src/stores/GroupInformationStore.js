@@ -58,6 +58,10 @@ class GroupInformationStore extends EventEmitter {
         this.setGroupsInvites(action.groupsInvites);
         this.emit("newGroupsIvites");
         break;
+      case "NO_GROUP_INVITES":
+        this.setGroupsInvites([]);
+        this.emit("newGroupsIvites");
+        break;
     }
   }
 }

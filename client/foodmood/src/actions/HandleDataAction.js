@@ -70,6 +70,11 @@ class HandleDataAction {
               groupsInvites: data.groupsInvites,
             });
             break;
+          case "NO_GROUP_INVITES":
+            dispatcher.dispatch({
+              type: "NO_GROUP_INVITES",
+            });
+            break;
           default:
 
         }
