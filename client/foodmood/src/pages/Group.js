@@ -1,5 +1,7 @@
 import React from 'react';
 
+var Router = require('react-router');
+
 import GroupInformationStore from '../stores/GroupInformationStore';
 
 import Sidebar from './groupSections/Sidebar';
@@ -13,6 +15,9 @@ import Paper from 'material-ui/Paper';
 
 var Group = React.createClass({
   getInitialState: function() {
+    if (typeof this.props.params.id == "undefined") {
+      Router.browserHistory.push('/profile');
+    }
     return {
       content: "menu",
       groupName: "Gruppe",
