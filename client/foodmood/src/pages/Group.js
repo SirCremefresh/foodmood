@@ -1,5 +1,7 @@
 import React from 'react';
 
+import GroupInformationStore from '../stores/GroupInformationStore';
+
 import Sidebar from './groupSections/Sidebar';
 
 import Bills from './groupSections/Bills';
@@ -13,7 +15,27 @@ var Group = React.createClass({
   getInitialState: function() {
     return {
       content: "menu",
+      groupName: "Gruppe",
+      groupDescription: "Gruppenbeschreibung",
     };
+  },
+
+  componentWillMount() {
+    if (GroupInformationStore.getIsLoaded()) {
+      this.refreshData();
+    }
+
+    GroupInformationStore.on("newGroups", this.refreshData);
+  },
+  componentWillUnmount() {
+    GroupInformationStore.removeListener("newGroups", this.refreshData);
+  },
+
+  refreshData() {
+    this.setState({
+      groupName: GroupInformationStore.getGroupWithID(this.props.params.id).Name,
+      groupDescription: GroupInformationStore.getGroupWithID(this.props.params.id).Beschreibung,
+    });
   },
 
   changeContentState(newcontent) {
@@ -32,7 +54,7 @@ var Group = React.createClass({
           content = <Bills />;
         break;
       case "informations":
-          content = <Informations groupDescription={this.props.params.id} groupName={this.props.params.id} groupID={this.props.params.id}/>;
+          content = <Informations groupDescription={this.state.groupDescription} groupName={this.state.groupName} groupID={this.props.params.id}/>;
         break;
       case "addmenu":
           content = <Addmenu groupID={this.props.params.id} />
@@ -43,7 +65,7 @@ var Group = React.createClass({
 
     return (
       <div className="grid flex">
-        <Sidebar changeContentState={this.changeContentState} groupName={this.props.params.id} admin="1" />
+        <Sidebar changeContentState={this.changeContentState} groupName={this.state.groupName} admin="1" />
         <Paper className="col_9">
           {content}
         </Paper>

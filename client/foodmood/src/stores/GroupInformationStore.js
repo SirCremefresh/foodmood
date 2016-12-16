@@ -8,10 +8,12 @@ class GroupInformationStore extends EventEmitter {
     super()
     this.groups = [];
     this.groupsInvites = [];
+    this.isLoaded = false;
   }
 
   setGroups(newgroups) {
     this.groups = newgroups;
+    this.isLoaded = true;
   }
 
   getGroups() {
@@ -23,7 +25,6 @@ class GroupInformationStore extends EventEmitter {
   }
 
   getGroupsInvites() {
-    console.log(this.groupsInvites + " getGroupsInvites");
     return this.groupsInvites;
   }
 
@@ -33,6 +34,10 @@ class GroupInformationStore extends EventEmitter {
         return group;
       }
     }
+  }
+
+  getIsLoaded() {
+    return this.isLoaded;
   }
 
   getUsersFromGroupWithID(groupID) {

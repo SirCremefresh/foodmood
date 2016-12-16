@@ -63,6 +63,7 @@ var Addmenu = React.createClass({
             hintText="Pizza"
             floatingLabelText="Menu"
             id="menuName"
+            maxLength={20}
           /><br />
           <TextField
             hintText="Fertigpizza und viel Salami, dauert ca. 20min zum backen."
@@ -71,6 +72,7 @@ var Addmenu = React.createClass({
             multiLine={true}
             rows={2}
             rowsMax={12}
+            maxLength={250}
           /><br />
 
           <RaisedButton
