@@ -15,32 +15,39 @@ import Paper from 'material-ui/Paper';
 
 var Group = React.createClass({
   getInitialState: function() {
-    if (typeof this.props.params.id == "undefined") {
-      Router.browserHistory.push('/profile');
-    }
+
     return {
       content: "menu",
       groupName: "Gruppe",
       groupDescription: "Gruppenbeschreibung",
+      admin: false,
     };
   },
 
   componentWillMount() {
+    if (typeof this.props.params.id == "undefined") {
+      Router.browserHistory.push('/profile');
+    }
+
     if (GroupInformationStore.getIsLoaded()) {
       this.refreshData();
     }
-
     GroupInformationStore.on("newGroups", this.refreshData);
+
   },
+
   componentWillUnmount() {
     GroupInformationStore.removeListener("newGroups", this.refreshData);
   },
 
   refreshData() {
-    this.setState({
-      groupName: GroupInformationStore.getGroupWithID(this.props.params.id).Name,
-      groupDescription: GroupInformationStore.getGroupWithID(this.props.params.id).Beschreibung,
-    });
+    if (typeof this.props.params.id != "undefined") {
+      this.setState({
+        groupName: GroupInformationStore.getGroupWithID(this.props.params.id).Name,
+        groupDescription: GroupInformationStore.getGroupWithID(this.props.params.id).Beschreibung,
+        admin: GroupInformationStore.getGroupWithID(this.props.params.id).admin,
+      });
+    }
   },
 
   changeContentState(newcontent) {
@@ -70,7 +77,7 @@ var Group = React.createClass({
 
     return (
       <div className="grid flex">
-        <Sidebar changeContentState={this.changeContentState} groupName={this.state.groupName} admin="1" />
+        <Sidebar changeContentState={this.changeContentState} groupName={this.state.groupName} admin={this.state.admin} />
         <Paper className="col_9">
           {content}
         </Paper>
