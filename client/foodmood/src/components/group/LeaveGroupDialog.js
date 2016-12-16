@@ -64,7 +64,7 @@ var LeaveGroupDialog = React.createClass({
           open={this.state.open}
           onRequestClose={this.changeDialogState}
         >
-          Bist du sicher das du die Gruppe verlassen möchtest?
+          Bist du sicher, dass du die Gruppe verlassen möchtest?
           Dies kann von dir nicht rückgängig gemacht werden!
         </Dialog>
       </div>
