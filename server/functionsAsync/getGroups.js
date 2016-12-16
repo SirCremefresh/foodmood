@@ -18,7 +18,6 @@ function getGroups(userID, callbackFunction, sqlconnection) {
       var isfinal = false;
 
       for (var i = 0; i < rows.length; i++) {
-        console.log(rows[i].groupID);
         if (i == rows.length - 1) {
           isfinal = true;
         }
@@ -43,14 +42,9 @@ function getGroups(userID, callbackFunction, sqlconnection) {
 }
 
 function getGroups2(userData) {
-  console.log(userData[0]);
-
   GLOBrows[userData[0].groupindex].groupUser = userData;
-
   if (userData[0].isfinal) {
-    console.log("final");
     GLOBcallbackFunction(true, "SESSION_FOUND", GLOBrows);
-    console.log(GLOBrows);
   }
 }
 
