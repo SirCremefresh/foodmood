@@ -109,7 +109,7 @@ var Register = React.createClass({
       this.setState({
         isUsernameTaken: true,
         valid: false,
-        usernameErrMsg: "username already taken",
+        usernameErrMsg: "Benutzername schon vergeben",
       });
     } else {
       this.setState({
@@ -123,7 +123,7 @@ var Register = React.createClass({
   validatePassword(value) {
     if (value.length <= 6) {
       this.setState({
-        passwordErrMsg: "Password is too short",
+        passwordErrMsg: "Passwort zu kurz",
         valid: false,
       });
     } else {
@@ -157,7 +157,7 @@ var Register = React.createClass({
     } else {
       if (pwdRepVal != "") {
         this.setState({
-          passwordrepErrMsg: "password not identical"
+          passwordrepErrMsg: "Passwörter nicht identisch"
         });
       }
     }

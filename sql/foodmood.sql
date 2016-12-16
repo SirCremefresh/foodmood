@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 15. Dez 2016 um 16:09
+-- Erstellungszeit: 16. Dez 2016 um 08:32
 -- Server-Version: 10.1.16-MariaDB
 -- PHP-Version: 7.0.9
 
@@ -65,6 +65,26 @@ CREATE TABLE `groupsuser` (
   `joinDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `groupsuser`
+--
+
+INSERT INTO `groupsuser` (`userID`, `groupID`, `admin`, `joinDate`) VALUES
+(1, 2, 0, '2016-12-16 07:16:53'),
+(2, 1, 0, '2016-12-16 07:16:17'),
+(2, 2, 0, '2016-12-16 07:16:24'),
+(3, 1, 1, '2016-12-16 07:17:03'),
+(3, 2, 1, '2016-12-16 07:17:31'),
+(4, 2, 0, '2016-12-16 07:25:26'),
+(5, 2, 0, '2016-12-16 07:25:32'),
+(6, 2, 0, '2016-12-16 07:25:36'),
+(7, 2, 0, '2016-12-16 07:25:42'),
+(8, 2, 0, '2016-12-16 07:25:46'),
+(9, 2, 0, '2016-12-16 07:27:50'),
+(10, 2, 0, '2016-12-16 07:27:56'),
+(11, 2, 0, '2016-12-16 07:28:02'),
+(12, 2, 0, '2016-12-16 07:28:07');
+
 -- --------------------------------------------------------
 
 --
@@ -120,8 +140,18 @@ CREATE TABLE `session` (
 
 INSERT INTO `session` (`userID`, `sessionKey`, `ip`, `datetime`) VALUES
 ('1', 'b86254ba-8bb1-4e10-ab98-f1ee277b3e92', '::1', '2016-12-02 20:38:05'),
-('2', 'a117f577-229d-4511-8348-3fcb51d6fb32', '::1', '2016-12-15 12:29:31'),
-('3', '2f355cb4-65ad-4343-b8d9-fd284f0a7582', '::1', '2016-12-15 07:15:54');
+('10', 'f53ff7fb-fc16-42c0-83e4-18c99da9e348', '::1', '2016-12-16 07:26:57'),
+('11', '6e94b650-e8f2-4731-942e-0408a5682b6b', '::1', '2016-12-16 07:27:09'),
+('12', '08d15c04-3119-4e5f-98b6-db1f2298ad3d', '::1', '2016-12-16 07:27:17'),
+('13', 'e76b4d35-0dce-4a50-aef6-ff4077363929', '::1', '2016-12-16 07:27:34'),
+('2', '6977881c-c80a-4c7e-963e-cfd543a8511e', '::1', '2016-12-16 07:29:46'),
+('3', '2f355cb4-65ad-4343-b8d9-fd284f0a7582', '::1', '2016-12-15 07:15:54'),
+('4', 'abaa2559-99a4-4212-82ac-048d4bb5c930', '::1', '2016-12-16 07:23:58'),
+('5', 'c55a0ccb-d5f5-4099-993e-96967468b6e4', '::1', '2016-12-16 07:24:12'),
+('6', 'bb1bfd57-e082-44f3-958c-abe22b2dd2fd', '::1', '2016-12-16 07:24:24'),
+('7', '7c9d0324-d47b-4ae9-ad68-e9d4d2cbd690', '::1', '2016-12-16 07:24:33'),
+('8', 'acc0d803-0d83-4e57-a28e-f1e4525177ae', '::1', '2016-12-16 07:24:44'),
+('9', '0d38f4bb-0b49-4909-bb2c-7d77a67ba43b', '::1', '2016-12-16 07:26:47');
 
 -- --------------------------------------------------------
 
@@ -149,7 +179,17 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`userID`, `username`, `password`, `berechtigung`, `name`, `lastname`, `adress`, `phone`, `mail`, `status`) VALUES
 (1, 'DonatoPot', 'Donato', 0, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'Pot', 'Pot', 0, 'Pottie', 'Potter', 'Potstreet 10', '0000000', 'pot@dot.com', 'Hey Mami!!!!'),
-(3, 'DonatoPotato', 'password', 0, 'Donato', 'Wolfibserg', NULL, NULL, NULL, NULL);
+(3, 'DonatoPotato', 'password', 0, 'Donato', 'Wolfibserg', NULL, NULL, NULL, NULL),
+(4, 'A', 'AAAAAAA', 0, 'A', 'A', NULL, NULL, NULL, NULL),
+(5, 'B', 'BBBBBBB', 0, 'B', 'B', NULL, NULL, NULL, NULL),
+(6, 'C', 'CCCCCCC', 0, 'C', 'C', NULL, NULL, NULL, NULL),
+(7, 'D', 'DDDDDDD', 0, 'D', 'D', NULL, NULL, NULL, NULL),
+(8, 'E', 'EEEEEEE', 0, 'E', 'E', NULL, NULL, NULL, NULL),
+(9, 'F', 'FFFFFFF', 0, 'F', 'F', NULL, NULL, NULL, NULL),
+(10, 'G', 'GGGGGGG', 0, 'G', 'G', NULL, NULL, NULL, NULL),
+(11, 'H', 'HHHHHHH', 0, 'H', 'H', NULL, NULL, NULL, NULL),
+(12, 'I', 'IIIIIII', 0, 'I', 'I', NULL, NULL, NULL, NULL),
+(13, 'J', 'JJJJJJJ', 0, 'J', 'J', NULL, NULL, NULL, NULL);
 
 --
 -- Indizes der exportierten Tabellen
@@ -227,7 +267,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

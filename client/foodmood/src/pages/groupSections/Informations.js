@@ -43,7 +43,7 @@ var Informations = React.createClass({
       return(
         <TableRow key={index + arr.username + "UserTable"}>
           <TableRowColumn>{arr.username}</TableRowColumn>
-          <TableRowColumn>{arr.joinDate}</TableRowColumn>
+          <TableRowColumn>{new Date(arr.joinDate).getDate() + "." + (new Date(arr.joinDate).getMonth() + 1) + "." + new Date(arr.joinDate).getFullYear()}</TableRowColumn>
           <TableRowColumn>{arr.admin == 1 ? "Ja" : "Nein"}</TableRowColumn>
         </TableRow>
       );
@@ -60,7 +60,7 @@ var Informations = React.createClass({
           <p>{this.props.groupDescription}</p>
           <h2>Mitglieder</h2>
             <Table
-              height="400px"
+              height="260px"
               fixedHeader={true}
             >
               <TableHeader
