@@ -64,6 +64,12 @@ class HandleDataAction {
               userTaken: data.userTaken
             });
             break;
+          case "GROUP_INVITES":
+            dispatcher.dispatch({
+              type: "GROUP_INVITES",
+              groupsInvites: data.groupsInvites,
+            });
+            break;
           default:
 
         }

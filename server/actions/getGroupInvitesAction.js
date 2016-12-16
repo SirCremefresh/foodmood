@@ -44,7 +44,7 @@ function getGroupInvitesAction4(valid, report, userData) {
     GLOBconnection.sendUTF(JSON.stringify(
       {
         type : "GROUP_INVITES",
-        groupsIvites: userData,
+        groupsInvites: userData,
       }
     ));
   }

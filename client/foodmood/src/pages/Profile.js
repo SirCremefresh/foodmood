@@ -36,7 +36,40 @@ var Profile = React.createClass({
       mail : "",
       status : "",
       groups: [],
+      groupsInvites: [],
     };
+  },
+
+
+
+
+
+  componentWillMount() {
+    LoginInformationStore.on("newUserInformation", this.setData);
+    GroupInformationStore.on("newGroups", this.setGroups);
+    GroupInformationStore.on("newGroupsIvites", this.setGroupsInvites);
+  },
+
+  componentDidMount() {
+    if (LoginInformationStore.getlogedInState()) {
+      this.setData();
+    }
+
+    this.setGroups();
+    this.setGroupsInvites();
+  },
+
+  componentWillUnmount() {
+    LoginInformationStore.removeListener("newUserInformation", this.setData);
+    GroupInformationStore.removeListener("newGroups", this.setGroups);
+    GroupInformationStore.removeListener("newGroupsIvites", this.setGroupsInvites);
+  },
+
+  setGroupsInvites() {
+    console.log("settinf");
+    this.setState({
+      groupsInvites: GroupInformationStore.getGroupsInvites(),
+    });
   },
 
   setData() {
@@ -57,34 +90,33 @@ var Profile = React.createClass({
     });
   },
 
-  componentWillMount() {
-    if (LoginInformationStore.getlogedInState()) {
-      this.setData();
-    }
-    this.setGroups();
-
-    LoginInformationStore.on("newUserInformation", this.setData);
-    GroupInformationStore.on("newGroups", this.setGroups);
-  },
-
-  componentWillUnmount() {
-    LoginInformationStore.removeListener("newUserInformation", this.setData);
-    GroupInformationStore.removeListener("newGroups", this.setGroups);
-  },
-
 
   render() {
     var messages;
     if (this.state.groups.length !== 0) {
       messages = this.state.groups.map((arr, index) => {
-        console.log(arr);
         return <GroupListItem groupName={arr.Name} groupStatus={arr.Beschreibung} key={arr.Name + index + "GroupListProfilePage"} groupID={arr.groupID} />;
       });
     } else {
       messages = <p style={contentPStyle}>Du bist in keiner Gruppe</p>
     }
 
-
+    var groupsInvites;
+    console.log(this.state.groupsInvites);
+    console.log(this.state.groupsInvites.length);
+    if (this.state.groupsInvites.length !==0) {
+      groupsInvites = this.state.groupsInvites.map((obj, index) => {
+        console.log(obj);
+        return (<InviteListItem
+          groupName={obj.Name}
+          groupStatus={obj.Beschreibung}
+          groupID={obj.groupID}
+          key={"Groupinvite"+obj.Name+obj.groupID}/>
+        );
+      });
+    } else {
+      groupsInvites = <p style={contentPStyle}>Du bist in keiner Gruppe</p>;
+    }
     return (
     <div className="grid flex">
       <Paper zDepth={1} className="col_4">
@@ -127,7 +159,8 @@ var Profile = React.createClass({
         </header>
         <div>
           <List>
-            <InviteListItem groupName="sdfsdfsdgdsg" groupStatus="dfsdfsdg" groupID="123" key="sfdfsdfdsgsdgfdgdfgfdgfdgdfg"/>
+            {groupsInvites}
+
           </List>
         </div>
       </Paper>

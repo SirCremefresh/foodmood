@@ -7,6 +7,7 @@ class GroupInformationStore extends EventEmitter {
   constructor() {
     super()
     this.groups = [];
+    this.groupsInvites = [];
   }
 
   setGroups(newgroups) {
@@ -15,6 +16,15 @@ class GroupInformationStore extends EventEmitter {
 
   getGroups() {
     return this.groups;
+  }
+
+  setGroupsInvites(newgroupsInvites) {
+    this.groupsInvites = newgroupsInvites;
+  }
+
+  getGroupsInvites() {
+    console.log(this.groupsInvites + " getGroupsInvites");
+    return this.groupsInvites;
   }
 
   getGroupWithID(groupID) {
@@ -38,6 +48,10 @@ class GroupInformationStore extends EventEmitter {
       case "USER_GROUPS":
         this.setGroups(action.groups);
         this.emit("newGroups");
+        break;
+      case "GROUP_INVITES":
+        this.setGroupsInvites(action.groupsInvites);
+        this.emit("newGroupsIvites");
         break;
     }
   }
