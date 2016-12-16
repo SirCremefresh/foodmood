@@ -2,16 +2,31 @@ import React from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import {ListItem} from 'material-ui/List';
 
+import HandleDataAction from "../../actions/HandleDataAction";
+import LoginInformationStore from "../../stores/LoginInformationStore";
+
 const iconStyle = {
   float: "right",
 };
 
 var InviteListItem = React.createClass({
-  handleLeaveClick(id) {
-    alert("REJECTED INVITE FROM GROUP " + id);
+  handleLeaveClick() {
+    HandleDataAction.sendData({
+      type: "INVITE_REJECTED",
+      value: {
+        sessionKey: LoginInformationStore.getSessionKey(),
+        groupID: this.props.groupID,
+      }
+    });
   },
-  handleAcceptClick(id) {
-    alert("ACCEPTED INVITE FROM GROUP " + id);
+  handleAcceptClick() {
+    HandleDataAction.sendData({
+      type: "INVITE_ACCEPTED",
+      value: {
+        sessionKey: LoginInformationStore.getSessionKey(),
+        groupID: this.props.groupID,
+      }
+    });
   },
 
   render() {
@@ -25,7 +40,7 @@ var InviteListItem = React.createClass({
           style={iconStyle}
           color="#000000"
           hoverColor="#FF0000"
-          onTouchTap={this.handleLeaveClick.bind(this, this.props.groupID)}
+          onTouchTap={this.handleLeaveClick}
         >
           clear
         </FontIcon>
@@ -35,7 +50,7 @@ var InviteListItem = React.createClass({
           style={iconStyle}
           color="#000000"
           hoverColor="#4CAF50"
-          onTouchTap={this.handleAcceptClick.bind(this, this.props.groupID)}
+          onTouchTap={this.handleAcceptClick}
         >
           done
         </FontIcon>
