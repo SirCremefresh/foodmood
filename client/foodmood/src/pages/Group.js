@@ -10,6 +10,7 @@ import Bills from './groupSections/Bills';
 import Informations from './groupSections/Informations';
 import Menu from './groupSections/Menu';
 import Addmenu from './groupSections/Addmenu';
+import UserSettings from './groupSections/UserSettings'
 
 import Paper from 'material-ui/Paper';
 
@@ -28,9 +29,8 @@ var Group = React.createClass({
     if (typeof this.props.params.id == "undefined") {
       Router.browserHistory.push('/profile');
     }
-    if (!GroupInformationStore.isValidGroupID(this.props.params.id)) {
-      Router.browserHistory.push('/profile');
-    }
+
+
 
     if (GroupInformationStore.getIsLoaded()) {
       this.refreshData();
@@ -39,11 +39,24 @@ var Group = React.createClass({
 
   },
 
+  componentDidMount: function() {
+    if (GroupInformationStore.getIsLoaded()) {
+      if (!GroupInformationStore.isValidGroupID(this.props.params.id)) {
+        Router.browserHistory.push('/profile');
+      }
+    }
+  },
+
   componentWillUnmount() {
     GroupInformationStore.removeListener("newGroups", this.refreshData);
   },
 
   refreshData() {
+    if (GroupInformationStore.getIsLoaded()) {
+      if (!GroupInformationStore.isValidGroupID(this.props.params.id)) {
+        Router.browserHistory.push('/profile');
+      }
+    }
     if (typeof this.props.params.id != "undefined") {
       if (GroupInformationStore.isValidGroupID(this.props.params.id)) {
         this.setState({
@@ -62,6 +75,10 @@ var Group = React.createClass({
   },
 
   render() {
+
+
+
+
     var content;
     switch (this.state.content) {
       case "menu":
@@ -75,6 +92,9 @@ var Group = React.createClass({
         break;
       case "addmenu":
           content = <Addmenu groupID={this.props.params.id} />
+        break;
+      case "userSettings":
+          content = <UserSettings groupID={this.props.params.id} />
         break;
       default:
           content = <h1>{this.state.content}</h1>;
