@@ -70,11 +70,16 @@ var Profile = React.createClass({
 
 
   render() {
+    var messages;
+    if (this.state.groups.length !== 0) {
+      messages = this.state.groups.map((arr, index) => {
+        console.log(arr);
+        return <GroupListItem groupName={arr.Name} groupStatus={arr.Beschreibung} key={arr.Name + index + "GroupListProfilePage"} groupID={arr.groupID} />;
+      });
+    } else {
+      messages = <p>Du bist in keiner gruppe</p>
+    }
 
-    const messages = this.state.groups.map((arr, index) => {
-      console.log(arr);
-      return <GroupListItem groupName={arr.Name} groupStatus={arr.Beschreibung} key={arr.Name + index + "GroupListProfilePage"} groupID={arr.groupID} />;
-    });
 
     return (
     <div className="grid flex">
