@@ -11,6 +11,7 @@ import SignOutAction from '../../../actions/SignOutAction'
 var LoggedIn = React.createClass({
   signOut() {
     SignOutAction.signOut();
+    Router.browserHistory.push('/login');
   },
 
   toProfilePage() {

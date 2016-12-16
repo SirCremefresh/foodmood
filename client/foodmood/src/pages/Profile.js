@@ -20,7 +20,9 @@ const titleDividerStyle = {
   height: 3,
 };
 
-
+const contentPStyle = {
+  marginLeft: 30,
+};
 
 var Profile = React.createClass({
   getInitialState: function() {
@@ -77,7 +79,7 @@ var Profile = React.createClass({
         return <GroupListItem groupName={arr.Name} groupStatus={arr.Beschreibung} key={arr.Name + index + "GroupListProfilePage"} groupID={arr.groupID} />;
       });
     } else {
-      messages = <p>Du bist in keiner gruppe</p>
+      messages = <p style={contentPStyle}>Du bist in keiner Gruppe</p>
     }
 
 
@@ -107,6 +109,18 @@ var Profile = React.createClass({
       <Paper zDepth={1} className="col_8">
         <header>
           <h1 style={titleStyle}>Gruppen</h1>
+          <Divider style={titleDividerStyle}/>
+        </header>
+        <div>
+          <List>
+          {messages}
+          </List>
+        </div>
+      </Paper>
+
+      <Paper zDepth={1} className="col_8">
+        <header>
+          <h1 style={titleStyle}>Einladungen</h1>
           <Divider style={titleDividerStyle}/>
         </header>
         <div>

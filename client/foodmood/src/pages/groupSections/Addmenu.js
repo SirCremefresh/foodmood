@@ -55,19 +55,22 @@ var Addmenu = React.createClass({
     return (
       <div>
         <header>
-          <h1 className="contentTitle">Addmdenu</h1>
+          <h1 className="contentTitle">Menü hinzufügen</h1>
           <Divider style={titleDividerStyle}/>
         </header>
         <div style={contentStyle}>
           <TextField
-            hintText="Salami"
-            floatingLabelText="Menu name"
+            hintText="Pizza"
+            floatingLabelText="Menu"
             id="menuName"
           /><br />
           <TextField
-            hintText="Viel Salami"
+            hintText="Fertigpizza und viel Salami, dauert ca. 20min zum backen."
             floatingLabelText="Beschreibung"
             id="menuDescription"
+            multiLine={true}
+            rows={2}
+            rowsMax={12}
           /><br />
 
           <RaisedButton
@@ -78,7 +81,7 @@ var Addmenu = React.createClass({
             onTouchTap={this.addMenu}
             id="registerButton"
             type="send"
-            label="Add Menu"
+            label="Hinzufügen"
           />
         </div>
       </div>
