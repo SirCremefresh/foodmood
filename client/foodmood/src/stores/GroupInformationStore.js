@@ -28,6 +28,17 @@ class GroupInformationStore extends EventEmitter {
     return this.groupsInvites;
   }
 
+  isValidGroupID(groupID) {
+    if (this.groups.length >= 1) {
+      for (var group of this.groups) {
+        if (group.groupID == groupID) {
+          return true;
+        }
+      }
+    }
+    return false
+  }
+
   getGroupWithID(groupID) {
     for (var group of this.groups) {
       if (group.groupID == groupID) {
