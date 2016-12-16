@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 16. Dez 2016 um 08:32
+-- Erstellungszeit: 16. Dez 2016 um 10:54
 -- Server-Version: 10.1.16-MariaDB
 -- PHP-Version: 7.0.9
 
@@ -27,10 +27,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `groupinvite` (
-  `inviteID` int(11) NOT NULL,
-  `groupID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL
+  `inviteID` int(255) NOT NULL,
+  `userID` int(255) NOT NULL,
+  `groupID` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `groupinvite`
+--
+
+INSERT INTO `groupinvite` (`inviteID`, `userID`, `groupID`) VALUES
+(1, 2, 2),
+(2, 1, 1),
+(3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -119,7 +128,11 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu` (`menuID`, `groupID`, `title`, `description`) VALUES
 (1, 1, 'sdf', 'sd'),
-(2, 1, 'Hallo', 'Saaalihoi');
+(2, 1, 'Hallo', 'Saaalihoi'),
+(3, 1, '', ''),
+(4, 1, '', ''),
+(5, 1, '', ''),
+(6, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -143,14 +156,14 @@ INSERT INTO `session` (`userID`, `sessionKey`, `ip`, `datetime`) VALUES
 ('10', 'f53ff7fb-fc16-42c0-83e4-18c99da9e348', '::1', '2016-12-16 07:26:57'),
 ('11', '6e94b650-e8f2-4731-942e-0408a5682b6b', '::1', '2016-12-16 07:27:09'),
 ('12', '08d15c04-3119-4e5f-98b6-db1f2298ad3d', '::1', '2016-12-16 07:27:17'),
-('13', 'e76b4d35-0dce-4a50-aef6-ff4077363929', '::1', '2016-12-16 07:27:34'),
-('2', '6977881c-c80a-4c7e-963e-cfd543a8511e', '::1', '2016-12-16 07:29:46'),
+('13', 'c4e969ee-cfba-48b1-8e3c-8c921f40ce11', '::1', '2016-12-16 07:55:45'),
+('2', '2fbd0063-718a-4350-99f1-e6742e0dbce6', '::1', '2016-12-16 08:13:17'),
 ('3', '2f355cb4-65ad-4343-b8d9-fd284f0a7582', '::1', '2016-12-15 07:15:54'),
 ('4', 'abaa2559-99a4-4212-82ac-048d4bb5c930', '::1', '2016-12-16 07:23:58'),
 ('5', 'c55a0ccb-d5f5-4099-993e-96967468b6e4', '::1', '2016-12-16 07:24:12'),
 ('6', 'bb1bfd57-e082-44f3-958c-abe22b2dd2fd', '::1', '2016-12-16 07:24:24'),
 ('7', '7c9d0324-d47b-4ae9-ad68-e9d4d2cbd690', '::1', '2016-12-16 07:24:33'),
-('8', 'acc0d803-0d83-4e57-a28e-f1e4525177ae', '::1', '2016-12-16 07:24:44'),
+('8', '229b123a-90af-45f4-828e-acdd9e7ff061', '::1', '2016-12-16 07:50:34'),
 ('9', '0d38f4bb-0b49-4909-bb2c-7d77a67ba43b', '::1', '2016-12-16 07:26:47');
 
 -- --------------------------------------------------------
@@ -247,7 +260,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `groupinvite`
 --
 ALTER TABLE `groupinvite`
-  MODIFY `inviteID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `inviteID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT für Tabelle `groups`
 --
@@ -262,7 +275,7 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT für Tabelle `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menuID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `menuID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
