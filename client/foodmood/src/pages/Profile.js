@@ -66,7 +66,6 @@ var Profile = React.createClass({
   },
 
   setGroupsInvites() {
-    console.log("settinf");
     this.setState({
       groupsInvites: GroupInformationStore.getGroupsInvites(),
     });
@@ -74,8 +73,6 @@ var Profile = React.createClass({
 
   setData() {
     var userInfo = LoginInformationStore.getUserInformation();
-    console.log(userInfo);
-    console.log("userinfo");
     this.setState({
       username  : userInfo["username"],
       name      : userInfo["name"],
@@ -105,11 +102,8 @@ var Profile = React.createClass({
     }
 
     var groupsInvites;
-    console.log(this.state.groupsInvites);
-    console.log(this.state.groupsInvites.length);
     if (this.state.groupsInvites.length !==0) {
       groupsInvites = this.state.groupsInvites.map((obj, index) => {
-        console.log(obj);
         return (<InviteListItem
           groupName={obj.Name}
           groupStatus={obj.Beschreibung}
