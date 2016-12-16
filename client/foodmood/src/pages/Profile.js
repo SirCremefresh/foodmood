@@ -2,14 +2,16 @@ import React from 'react';
 
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import {List} from 'material-ui/List';
+import {List, ListItem} from 'material-ui/List';
 
-import CustomTextField from '../components/CustomTextField'
+import CustomTextField from '../components/CustomTextField';
+import FontIcon from 'material-ui/FontIcon';
 
 import LoginInformationStore from "../stores/LoginInformationStore";
 import GroupInformationStore from "../stores/GroupInformationStore";
 
 import GroupListItem from "../components/profile/GroupListItem";
+import InviteListItem from "../components/profile/InviteListItem";
 
 const titleStyle = {
   fontSize: 30,
@@ -125,7 +127,7 @@ var Profile = React.createClass({
         </header>
         <div>
           <List>
-          {messages}
+            <InviteListItem groupName="sdfsdfsdgdsg" groupStatus="dfsdfsdg" groupID="123" key="sfdfsdfdsgsdgfdgdfgfdgfdgdfg"/>
           </List>
         </div>
       </Paper>

@@ -7,7 +7,7 @@ import {ListItem} from 'material-ui/List';
 
 var Router = require('react-router');
 
-var CustomTextField = React.createClass({
+var GroupListItem = React.createClass({
   handleClick() {
     Router.browserHistory.push('/group/' + this.props.groupID);
   },
@@ -32,4 +32,4 @@ var CustomTextField = React.createClass({
   }
 });
 
-module.exports = CustomTextField;
+module.exports = GroupListItem;
