@@ -1,11 +1,12 @@
 //REQUIRE Actions
-const loginAction = require('./actions/loginAction');
-const sessionLoginAction = require('./actions/sessionLoginAction');
-const getGroupsAction = require('./actions/getGroupsAction');
-const registerNewUserAction = require('./actions/registerNewUserAction');
-const isUsernameTakenAction = require('./actions/isUsernameTakenAction');
-const userLeaveGroupAction = require('./actions/userLeaveGroupAction');
-const newMenuAction = require('./actions/newMenuAction');
+const loginAction                   = require('./actions/loginAction');
+const sessionLoginAction            = require('./actions/sessionLoginAction');
+const getGroupsAction               = require('./actions/getGroupsAction');
+const registerNewUserAction         = require('./actions/registerNewUserAction');
+const isUsernameTakenAction         = require('./actions/isUsernameTakenAction');
+const userLeaveGroupAction          = require('./actions/userLeaveGroupAction');
+const newMenuAction                 = require('./actions/newMenuAction');
+const rejectGroupInvitationAction   = require('./actions/rejectGroupInvitationAction');
 
 // VARIABLES FOR LATER USE
 var port = 61910;
@@ -113,6 +114,9 @@ wsServer.on('request', function(request) {
               break;
             case "NEW_GROUP_MENU":
                 newMenuAction(data.value, sqlconnection, connection);
+              break;
+            case "INVITE_REJECTED":
+                rejectGroupInvitationAction(data.value.groupID, data.value.sessionKey, sqlconnection, connection);
               break;
             default:
               console.log(data);
