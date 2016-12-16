@@ -40,7 +40,7 @@ var CustomTextField = React.createClass({
         primaryText={
           <TextField
             hintText={this.props.hintText}
-            value={this.state.value}
+            value={this.state.value || ""}
             style={this.state.style}
             underlineShow={false}
             onChange={this.handleChange}

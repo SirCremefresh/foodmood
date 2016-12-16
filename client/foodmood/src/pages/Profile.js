@@ -74,7 +74,10 @@ var Profile = React.createClass({
 
   setData() {
     var userInfo = LoginInformationStore.getUserInformation();
+    console.log(userInfo);
+    console.log("userinfo");
     this.setState({
+      username  : userInfo["username"],
       name      : userInfo["name"],
       lastname  : userInfo["lastname"],
       adress    : userInfo["adress"],
@@ -125,6 +128,8 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div>
+          <CustomTextField value={this.state.username} FontIcon="perm_identity" multiLine={false} hintText="username" id="username"/>
+          <Divider />
           <CustomTextField value={this.state.name} FontIcon="account_box" multiLine={false} hintText="Vorname" id="name"/>
           <Divider />
           <CustomTextField value={this.state.lastname} FontIcon="face" multiLine={false} hintText="Nachname" id="lastname"/>
