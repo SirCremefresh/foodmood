@@ -8,7 +8,8 @@ const userLeaveGroupAction          = require('./actions/userLeaveGroupAction');
 const newMenuAction                 = require('./actions/newMenuAction');
 const rejectGroupInvitationAction   = require('./actions/rejectGroupInvitationAction');
 const acceptGroupInvitationAction   = require('./actions/acceptGroupInvitationAction');
-const makeGroupInvitationAction = require('./actions/makeGroupInvitationAction');
+const makeGroupInvitationAction     = require('./actions/makeGroupInvitationAction');
+const makeToAdminAction             = require('./actions/makeToAdminAction');
 
 // VARIABLES FOR LATER USE
 var port = 61910;
@@ -125,6 +126,9 @@ wsServer.on('request', function(request) {
               break;
             case "SEND_GROUP_INVITATION":
                 makeGroupInvitationAction(data.value.groupID, data.value.sessionKey, data.value.username, sqlconnection, connection)
+              break;
+            case "MAKE_TO_ADMIN":
+                makeToAdminAction(data.value.groupID, data.value.sessionKey, data.value.username, sqlconnection, connection);
               break;
             default:
               console.log(data);
