@@ -11,7 +11,6 @@ const makeGroupInvitation = require('../functionsAsync/makeGroupInvitation');
 const checkSessionKey = require('../functionsAsync/checkSessionKey');
 const isMemberOfGroup = require('../functionsAsync/isMemberOfGroup');
 const makeGroupAdmin = require('../functionsAsync/makeGroupAdmin');
-const getGroupsAction = require('./getGroupsAction');
 
 //sync
 
