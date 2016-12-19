@@ -1,6 +1,6 @@
 function makeGroupAdmin(userID, groupID, callbackFunc, sqlconnection) {
 
-  sqlconnection.query('UPDATE `groupsuser` SET `admin`= 1 WHERE `userID` = ? AND `userID` = ?', [userID, groupID], function(err, results) {
+  sqlconnection.query('UPDATE `groupsuser` SET `admin`= 1 WHERE `userID` = ? AND `groupID` = ?', [userID, groupID], function(err, results) {
     if(err) {
       callbackFunc(false);
       throw err;

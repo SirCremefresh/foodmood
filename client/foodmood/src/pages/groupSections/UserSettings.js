@@ -108,8 +108,8 @@ var UserSettings = React.createClass({
                 </TableRow>
               </TableBody>
             </Table>
-            <RemoveFromGroupDialog open={this.state.dialogRemoveOpen} groupName="LALA" groupID="123" username="Peter Fox"/>
-            <MakeToAdminDialog open={this.state.dialogMakeadminOpen} groupID="123" username="Peter Fox"/>
+            <RemoveFromGroupDialog open={this.state.dialogRemoveOpen} groupName="LALA" groupID={this.props.groupID} username="Peter Fox"/>
+            <MakeToAdminDialog open={this.state.dialogMakeadminOpen} groupID={this.props.groupID} username="DonatoPot"/>
           </div>
           <div>
             <h2>Benutzer einladen</h2>
