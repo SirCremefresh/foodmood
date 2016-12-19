@@ -12,6 +12,7 @@ import HandleDataAction from "../../actions/HandleDataAction";
 import LoginInformationStore from "../../stores/LoginInformationStore";
 
 import RemoveFromGroupDialog from '../../components/group/RemoveFromGroupDialog';
+import MakeToAdminDialog from '../../components/group/MakeToAdminDialog';
 
 var color = Color.getColor();
 
@@ -42,22 +43,30 @@ const contentStyle = {
 var UserSettings = React.createClass({
   getInitialState: function() {
     return {
-      dialogOpen : false,
+      dialogRemoveOpen : false,
+      dialogMakeadminOpen : false,
     };
   },
   sendInvitation() {
-    HandleDataAction.sendData({
-      type: "SEND_GROUP_INVITATION",
-      value: {
-        sessionKey: LoginInformationStore.getSessionKey(),
-        groupID: this.props.groupID,
-        username: document.getElementById("invitationUsername").value,
-      }
+    if(document.getElementById("invitationUsername").value) {
+      HandleDataAction.sendData({
+        type: "SEND_GROUP_INVITATION",
+        value: {
+          sessionKey: LoginInformationStore.getSessionKey(),
+          groupID: this.props.groupID,
+          username: document.getElementById("invitationUsername").value,
+        }
+      });
+    }
+  },
+  changeRemoveDialogState() {
+    this.setState({
+      dialogRemoveOpen : !(this.state.dialogRemoveOpen)
     });
   },
-  changeDialogState() {
+  changeMakeadminDialogState() {
     this.setState({
-      dialogOpen : !(this.state.dialogOpen)
+      dialogMakeadminOpen : !(this.state.dialogMakeadminOpen)
     });
   },
   render() {
@@ -93,13 +102,14 @@ var UserSettings = React.createClass({
                   <TableRowColumn>{new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear()}</TableRowColumn>
                   <TableRowColumn>Nein</TableRowColumn>
                   <TableRowColumn>
-                    <FontIcon className="material-icons" onTouchTap={this.changeDialogState}>delete</FontIcon>
-                    <FontIcon className="material-icons" onTouchTap={this.changeDialogState}>school</FontIcon>
+                    <FontIcon className="material-icons" onTouchTap={this.changeRemoveDialogState}>delete</FontIcon>
+                    <FontIcon className="material-icons" onTouchTap={this.changeMakeadminDialogState}>school</FontIcon>
                   </TableRowColumn>
                 </TableRow>
               </TableBody>
             </Table>
-            <RemoveFromGroupDialog open={this.state.dialogOpen} groupName="LALA" groupID="123" username="Peter Fox"/>
+            <RemoveFromGroupDialog open={this.state.dialogRemoveOpen} groupName="LALA" groupID="123" username="Peter Fox"/>
+            <MakeToAdminDialog open={this.state.dialogMakeadminOpen} groupID="123" username="Peter Fox"/>
           </div>
           <div>
             <h2>Benutzer einladen</h2>

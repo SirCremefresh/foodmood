@@ -49,7 +49,7 @@ var RemoveFromGroupDialog = React.createClass({
         onTouchTap={this.handleChangeDialogState}
       />,
       <FlatButton
-        label="Aus Gruppe entfernen"
+        label="entfernen"
         secondary={true}
         onTouchTap={this.sendRemove}
       />,
@@ -58,7 +58,7 @@ var RemoveFromGroupDialog = React.createClass({
     return (
       <div>
         <Dialog
-          title={this.props.username + "aus der Gruppe '" + this.props.groupName + "' entfernen"}
+          title={this.props.username + " aus der Gruppe '" + this.props.groupName + "' entfernen"}
           modal={true}
           actions={actions}
           open={this.state.open}
