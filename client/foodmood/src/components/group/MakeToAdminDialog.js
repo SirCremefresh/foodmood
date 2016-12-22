@@ -8,16 +8,7 @@ import HandleDataAction from "../../actions/HandleDataAction";
 import LoginInformationStore from "../../stores/LoginInformationStore";
 
 var MakeToAdminDialog = React.createClass({
-  getInitialState: function() {
-    return {
-      open : false
-    };
-  },
-  componentWillReceiveProps(nextProps, nextState) {
-    this.setState({
-      open: nextProps.open,
-    });
-  },
+
 
   sendMakeToAdmin() {
     HandleDataAction.sendData({
@@ -32,9 +23,7 @@ var MakeToAdminDialog = React.createClass({
   },
 
   handleChangeDialogState() {
-    this.setState({
-      open: !(this.state.open),
-    });
+    this.props.changeMakeadminDialogState();
   },
 
   render() {
@@ -61,7 +50,7 @@ var MakeToAdminDialog = React.createClass({
           title={this.props.username + " zum Administrator befördern?"}
           modal={true}
           actions={actions}
-          open={this.state.open}
+          open={this.props.open}
           onRequestClose={this.changeDialogState}
         >
           Bist du sicher, dass du {this.props.username} zum Administrator machen möchtest? Er verfügt danach auch über volle Rechte und kann die Gruppe verwalten.
