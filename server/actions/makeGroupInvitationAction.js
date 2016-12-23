@@ -21,7 +21,7 @@ var GLOBsessionKey;
 var GLOBuserID;
 
 var GLOBnewusername;
-var GLOBnewUserID
+var GLOBnewUserID;
 
 function makeGroupInvitationAction(groupID, sessionKey, username, sqlconnection, connection) {
   GLOBsqlconnection = sqlconnection;
