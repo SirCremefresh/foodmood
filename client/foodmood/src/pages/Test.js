@@ -4,8 +4,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import HandleDataAction from "../actions/HandleDataAction";
 
-
-
 var Test = React.createClass({
   testFunction() {
     HandleDataAction.sendData({

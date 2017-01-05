@@ -12,8 +12,11 @@ class HandleDataAction {
     client.onopen = function() {
         console.log('WebSocket Client Connected');
         // var data = {
-        //   type:"GET_GROUPS",
-        //   sessionKey:"5b8a5feb-a5a8-4a56-90ee-c1b967abb1fe",
+        //   type:"GET_MENUPLAN",
+        //   value: {
+        //     sessionKey:"426fc893-0b39-4546-b13e-d68880f0c75a",
+        //     groupID: "1"
+        //   }
         // };
         //
         // client.send(JSON.stringify(data));
