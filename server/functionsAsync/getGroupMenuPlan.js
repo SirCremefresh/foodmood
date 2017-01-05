@@ -1,10 +1,11 @@
 /*
- * Fügt der Datenbank einen neuen Eintrag in der Tabelle "menu" ein.
+ * Lädt den aktuellen Menuplan einer Gruppe aus der Datenbank.
  * Bei einem Fehler wird dieser geworfen, anstonsten wird die Callback-Methode aufgerufen
  *
- * @param     menuInformation -> [sessionKey, groupID, menuName, menuDescription], callbackFunc(Funktionsreferenz), sqlconnection(SQL-Connection Objekt)
+ * @param     groupID, callbackFunc(Funktionsreferenz), sqlconnection(SQL-Connection Objekt)
  *
- * @return    true, ADDED_MENU_SUCCESSFULLY
+ * @return    true, MENUPLAN, menuplan[]
+ *            false, NO_MENUPLAN_FOUND
  */
 function getGroupMenuPlan(groupID, callbackFunc, sqlconnection) {
 

@@ -11,6 +11,7 @@ const acceptGroupInvitationAction   = require('./actions/acceptGroupInvitationAc
 const makeGroupInvitationAction     = require('./actions/makeGroupInvitationAction');
 const makeToAdminAction             = require('./actions/makeToAdminAction');
 const removeUserFromGroupAction     = require('./actions/removeUserFromGroupAction');
+const getMenuPlanAction             = require('./actions/getMenuPlanAction');
 
 
 // VARIABLES FOR LATER USE
@@ -134,6 +135,9 @@ wsServer.on('request', function(request) {
               break;
             case "REMOVE_FROM_GROUP":
                 removeUserFromGroupAction(data.value.groupID, data.value.sessionKey, data.value.username, sqlconnection, connection);
+              break;
+            case "GET_MENUPLAN":
+                getMenuPlanAction(data.value.groupID, data.value.sessionKey, sqlconnection, connection);
               break;
             default:
               console.log(data);

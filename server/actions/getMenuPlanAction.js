@@ -1,8 +1,11 @@
 // Async
-const checkSessionKey = require('../functionsAsync/checkSessionKey');
-const getUserIDBySessionKey = require('../functionsAsync/getUserIDBySessionKey');
-const isMemberOfGroup = require('../functionsAsync/isMemberOfGroup');
-
+const checkSessionKey         = require('../functionsAsync/checkSessionKey');
+const getUserIDBySessionKey   = require('../functionsAsync/getUserIDBySessionKey');
+const isMemberOfGroup         = require('../functionsAsync/isMemberOfGroup');
+const isGroupMenuAgeValide    = require('../functionsAsync/isGroupMenuAgeValide');
+const getGroupMenuPlan        = require('../functionsAsync/getGroupMenuPlan');
+const getGroupMenus           = require('../functionsAsync/getGroupMenus');
+const generateGroupMenuPlan   = require('../functionsAsync/generateGroupMenuPlan');
 
 //sync
 
@@ -38,31 +41,41 @@ function getMenuPlanAction3(valid, msg, userID) {
 function getMenuPlanAction4(valid, msg, userID) {
   if (valid) {
     //IS MENUPLAN VALID
-
+    isGroupMenuAgeValide(GLOBgroupID, getMenuPlanAction5, GLOBsqlconnection);
   }
 }
 
-function getMenuPlanAction5(valid) {
+function getMenuPlanAction5(valid, msg) {
   if (valid) {
      //GET MENU PLAN
-    GLOBconnection.sendUTF(JSON.stringify(
-      {
-        type : "INVITE_SUCCESS",
-      }
-    ));
+     getGroupMenuPlan(GLOBgroupID, getMenuPlanAction8, GLOBsqlconnection);
   }
   else {
-    //GENERATE MENU PLAN
-      -> getMenuPlanAction6
+    //GET GROUP MENUS
+    getGroupMenus(GLOBgroupID, getMenuPlanAction6, GLOBsqlconnection);
   }
 }
 
-function getMenuPlanAction6(valid) {
+function getMenuPlanAction6(valid, msg, menus) {
   if (valid) {
-     //GET MENU PLAN
+     //GENERATE
+     generateGroupMenuPlan(GLOBgroupID, menus, getMenuPlanAction7, GLOBsqlconnection);
+  }
+}
+
+function getMenuPlanAction7(valid, msg) {
+  if (valid) {
+     //GET MENUPLAN
+     getGroupMenuPlan(GLOBgroupID, getMenuPlanAction8, GLOBsqlconnection);
+  }
+}
+
+function getMenuPlanAction8(valid, msg, menuplan) {
+  if (valid) {
     GLOBconnection.sendUTF(JSON.stringify(
       {
-        type : "INVITE_SUCCESS",
+        type : "MENUPLAN",
+        content: menuplan[0],
       }
     ));
   }
