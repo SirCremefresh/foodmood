@@ -6,17 +6,22 @@
  *
  * @return    true, ADDED_MENU_SUCCESSFULLY
  */
-function addMenu(menuInformation, callbackFunc, sqlconnection) {
+function getGroupMenuPlan(groupID, callbackFunc, sqlconnection) {
 
-  sqlconnection.query('INSERT INTO `menu`(`groupID`, `title`, `description`) VALUES (?,?,?)', [menuInformation.groupID,menuInformation.menuName,menuInformation.menuDescription], function(err, results) {
+  sqlconnection.query('SELECT * FROM `menuplan` WHERE `groupID` = ?', [groupID], function(err, results) {
+
     if(err) {
       throw err;
     }
-    else {
-      callbackFunc(true, "ADDED_MENU_SUCCESSFULLY");
+    else if(typeof results[0] === 'undefined') {
+      callbackFunc(false, "NO_MENUPLAN_FOUND");
+
+    } else {
+      callbackFunc(true, "MENUPLAN", results);
     }
+
   });
 }
 
 
-module.exports = addMenu;
+module.exports = getGroupMenuPlan;

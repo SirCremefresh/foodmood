@@ -37,13 +37,29 @@ function getMenuPlanAction3(valid, msg, userID) {
 
 function getMenuPlanAction4(valid, msg, userID) {
   if (valid) {
-    //GET MENU PLAN
+    //IS MENUPLAN VALID
 
   }
 }
 
 function getMenuPlanAction5(valid) {
   if (valid) {
+     //GET MENU PLAN
+    GLOBconnection.sendUTF(JSON.stringify(
+      {
+        type : "INVITE_SUCCESS",
+      }
+    ));
+  }
+  else {
+    //GENERATE MENU PLAN
+      -> getMenuPlanAction6
+  }
+}
+
+function getMenuPlanAction6(valid) {
+  if (valid) {
+     //GET MENU PLAN
     GLOBconnection.sendUTF(JSON.stringify(
       {
         type : "INVITE_SUCCESS",
