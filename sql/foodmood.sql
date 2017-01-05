@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 16. Dez 2016 um 10:54
+-- Erstellungszeit: 05. Jan 2017 um 14:33
 -- Server-Version: 10.1.16-MariaDB
 -- PHP-Version: 7.0.9
 
@@ -37,9 +37,7 @@ CREATE TABLE `groupinvite` (
 --
 
 INSERT INTO `groupinvite` (`inviteID`, `userID`, `groupID`) VALUES
-(1, 2, 2),
-(2, 1, 1),
-(3, 1, 2);
+(17, 14, 2);
 
 -- --------------------------------------------------------
 
@@ -79,9 +77,9 @@ CREATE TABLE `groupsuser` (
 --
 
 INSERT INTO `groupsuser` (`userID`, `groupID`, `admin`, `joinDate`) VALUES
-(1, 2, 0, '2016-12-16 07:16:53'),
-(2, 1, 0, '2016-12-16 07:16:17'),
-(2, 2, 0, '2016-12-16 07:16:24'),
+(1, 1, 1, '2016-12-16 12:48:15'),
+(1, 2, 1, '2016-12-16 07:16:53'),
+(2, 2, 1, '2016-12-16 07:16:24'),
 (3, 1, 1, '2016-12-16 07:17:03'),
 (3, 2, 1, '2016-12-16 07:17:31'),
 (4, 2, 0, '2016-12-16 07:25:26'),
@@ -92,7 +90,8 @@ INSERT INTO `groupsuser` (`userID`, `groupID`, `admin`, `joinDate`) VALUES
 (9, 2, 0, '2016-12-16 07:27:50'),
 (10, 2, 0, '2016-12-16 07:27:56'),
 (11, 2, 0, '2016-12-16 07:28:02'),
-(12, 2, 0, '2016-12-16 07:28:07');
+(12, 2, 0, '2016-12-16 07:28:07'),
+(14, 1, 0, '2016-12-16 14:47:25');
 
 -- --------------------------------------------------------
 
@@ -118,7 +117,7 @@ CREATE TABLE `logs` (
 CREATE TABLE `menu` (
   `menuID` int(11) NOT NULL,
   `groupID` int(11) NOT NULL,
-  `title` varchar(80) NOT NULL,
+  `title` varchar(20) NOT NULL,
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -132,7 +131,35 @@ INSERT INTO `menu` (`menuID`, `groupID`, `title`, `description`) VALUES
 (3, 1, '', ''),
 (4, 1, '', ''),
 (5, 1, '', ''),
-(6, 1, '', '');
+(6, 1, '', ''),
+(7, 2, 'Name', 'Beschreibung'),
+(8, 2, 'Name', 'Desc'),
+(9, 2, 'ABC', 'ABC');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `menuplan`
+--
+
+CREATE TABLE `menuplan` (
+  `groupID` int(255) NOT NULL,
+  `week` int(5) NOT NULL,
+  `monday` int(255) NOT NULL,
+  `tuesday` int(255) NOT NULL,
+  `wednesday` int(255) NOT NULL,
+  `thursday` int(255) NOT NULL,
+  `friday` int(255) NOT NULL,
+  `saturday` int(255) NOT NULL,
+  `sunday` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `menuplan`
+--
+
+INSERT INTO `menuplan` (`groupID`, `week`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`) VALUES
+(1, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -152,13 +179,15 @@ CREATE TABLE `session` (
 --
 
 INSERT INTO `session` (`userID`, `sessionKey`, `ip`, `datetime`) VALUES
-('1', 'b86254ba-8bb1-4e10-ab98-f1ee277b3e92', '::1', '2016-12-02 20:38:05'),
+('1', '31bd3a74-6ddd-43a9-8e4d-580a24dba3f1', '::1', '2016-12-16 12:25:02'),
 ('10', 'f53ff7fb-fc16-42c0-83e4-18c99da9e348', '::1', '2016-12-16 07:26:57'),
 ('11', '6e94b650-e8f2-4731-942e-0408a5682b6b', '::1', '2016-12-16 07:27:09'),
 ('12', '08d15c04-3119-4e5f-98b6-db1f2298ad3d', '::1', '2016-12-16 07:27:17'),
 ('13', 'c4e969ee-cfba-48b1-8e3c-8c921f40ce11', '::1', '2016-12-16 07:55:45'),
-('2', '2fbd0063-718a-4350-99f1-e6742e0dbce6', '::1', '2016-12-16 08:13:17'),
-('3', '2f355cb4-65ad-4343-b8d9-fd284f0a7582', '::1', '2016-12-15 07:15:54'),
+('14', '860a0e33-a7d0-4d5f-a7c3-e6d84e8e2aec', '::1', '2016-12-19 08:13:46'),
+('15', '13146394-7827-4fa2-92cd-ee049b537943', '::1', '2016-12-23 07:32:29'),
+('2', '4683cfc5-801a-45ac-a009-bc19ba9e6c3e', '::1', '2016-12-23 07:36:30'),
+('3', 'c9ff0198-c33b-448f-b0a5-5fc0481ce188', '::1', '2016-12-23 07:47:40'),
 ('4', 'abaa2559-99a4-4212-82ac-048d4bb5c930', '::1', '2016-12-16 07:23:58'),
 ('5', 'c55a0ccb-d5f5-4099-993e-96967468b6e4', '::1', '2016-12-16 07:24:12'),
 ('6', 'bb1bfd57-e082-44f3-958c-abe22b2dd2fd', '::1', '2016-12-16 07:24:24'),
@@ -202,7 +231,9 @@ INSERT INTO `user` (`userID`, `username`, `password`, `berechtigung`, `name`, `l
 (10, 'G', 'GGGGGGG', 0, 'G', 'G', NULL, NULL, NULL, NULL),
 (11, 'H', 'HHHHHHH', 0, 'H', 'H', NULL, NULL, NULL, NULL),
 (12, 'I', 'IIIIIII', 0, 'I', 'I', NULL, NULL, NULL, NULL),
-(13, 'J', 'JJJJJJJ', 0, 'J', 'J', NULL, NULL, NULL, NULL);
+(13, 'J', 'JJJJJJJ', 0, 'J', 'J', NULL, NULL, NULL, NULL),
+(14, 'Nichtgian420', '123456789', 0, 'Nicht', 'Mami', NULL, NULL, NULL, NULL),
+(15, 'HerrMüller', '1234567', 0, 'Müller', 'Franzose', NULL, NULL, NULL, NULL);
 
 --
 -- Indizes der exportierten Tabellen
@@ -239,6 +270,12 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`menuID`);
 
 --
+-- Indizes für die Tabelle `menuplan`
+--
+ALTER TABLE `menuplan`
+  ADD PRIMARY KEY (`groupID`);
+
+--
 -- Indizes für die Tabelle `session`
 --
 ALTER TABLE `session`
@@ -260,7 +297,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `groupinvite`
 --
 ALTER TABLE `groupinvite`
-  MODIFY `inviteID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `inviteID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT für Tabelle `groups`
 --
@@ -275,12 +312,12 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT für Tabelle `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menuID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `menuID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `userID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
