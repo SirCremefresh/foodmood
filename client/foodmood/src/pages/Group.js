@@ -94,7 +94,7 @@ var Group = React.createClass({
           content = <Addmenu groupID={this.props.params.id} />
         break;
       case "userSettings":
-          content = <UserSettings groupID={this.props.params.id} />
+          content = <UserSettings groupID={this.props.params.id} groupName={this.state.groupName} />
         break;
       default:
           content = <h1>{this.state.content}</h1>;

@@ -11,8 +11,12 @@ import Color from "../../stores/configs/Color";
 import HandleDataAction from "../../actions/HandleDataAction";
 import LoginInformationStore from "../../stores/LoginInformationStore";
 
+import GroupInformationStore from '../../stores/GroupInformationStore'
+
 import RemoveFromGroupDialog from '../../components/group/RemoveFromGroupDialog';
 import MakeToAdminDialog from '../../components/group/MakeToAdminDialog';
+
+import UserSettingsListItem from '../../components/group/UserSettingsListItem'
 
 var color = Color.getColor();
 
@@ -44,7 +48,9 @@ var UserSettings = React.createClass({
   getInitialState: function() {
     return {
       dialogRemoveOpen : false,
+      removeUserUsername : "",
       dialogMakeadminOpen : false,
+      makeAdminUsername : "",
     };
   },
   sendInvitation() {
@@ -59,17 +65,49 @@ var UserSettings = React.createClass({
       });
     }
   },
+
+
+
+  changeRemoveDialogSetData(obj) {
+    this.setState({
+      removeUserUsername: obj.username,
+    },
+    this.setState({
+      dialogRemoveOpen : !(this.state.dialogRemoveOpen)
+    })
+    );
+  },
+
   changeRemoveDialogState() {
     this.setState({
       dialogRemoveOpen : !(this.state.dialogRemoveOpen)
     });
   },
+
+  changeMakeadminDialogSetData(obj) {
+    this.setState({
+      makeAdminUsername: obj.username,
+    },
+    this.setState({
+      dialogMakeadminOpen : !(this.state.dialogMakeadminOpen)
+    })
+    );
+  },
+
   changeMakeadminDialogState() {
     this.setState({
       dialogMakeadminOpen : !(this.state.dialogMakeadminOpen)
     });
   },
   render() {
+    var users =  GroupInformationStore.getUsersFromGroupWithID(this.props.groupID);
+    const userTable = users.map((arr, index) => {
+      return(
+        <UserSettingsListItem key={index + arr.username + "UserTableuSERsETTINGS"} username={arr.username} date={new Date(arr.joinDate).getDate() + "." + (new Date(arr.joinDate).getMonth() + 1) + "." + new Date(arr.joinDate).getFullYear()} admin={arr.admin == 1 ? "Ja" : "Nein"}  changeMakeadminDialogSetData={this.changeMakeadminDialogSetData} changeRemoveDialogSetData={this.changeRemoveDialogSetData} />
+
+      );
+    });
+
     return (
       <div>
         <header>
@@ -97,19 +135,11 @@ var UserSettings = React.createClass({
               <TableBody
                 displayRowCheckbox={false}
               >
-                <TableRow>
-                  <TableRowColumn>maX</TableRowColumn>
-                  <TableRowColumn>{new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear()}</TableRowColumn>
-                  <TableRowColumn>Nein</TableRowColumn>
-                  <TableRowColumn>
-                    <FontIcon className="material-icons" onTouchTap={this.changeRemoveDialogState}>delete</FontIcon>
-                    <FontIcon className="material-icons" onTouchTap={this.changeMakeadminDialogState}>school</FontIcon>
-                  </TableRowColumn>
-                </TableRow>
+                {userTable}
               </TableBody>
             </Table>
-            <RemoveFromGroupDialog changeRemoveDialogState={this.changeRemoveDialogState} open={this.state.dialogRemoveOpen} groupName="LALA" groupID={this.props.groupID} username="Peter Fox"/>
-            <MakeToAdminDialog changeMakeadminDialogState={this.changeMakeadminDialogState} open={this.state.dialogMakeadminOpen} groupID={this.props.groupID} username="DonatoPot"/>
+            <RemoveFromGroupDialog changeRemoveDialogState={this.changeRemoveDialogState} open={this.state.dialogRemoveOpen} groupName={this.props.groupName} groupID={this.props.groupID} username={this.state.removeUserUsername} />
+            <MakeToAdminDialog changeMakeadminDialogState={this.changeMakeadminDialogState} open={this.state.dialogMakeadminOpen} groupName={this.props.groupName} groupID={this.props.groupID} username={this.state.makeAdminUsername} />
           </div>
           <div>
             <h2>Benutzer einladen</h2>

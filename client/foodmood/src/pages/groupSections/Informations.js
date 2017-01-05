@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
-import GroupInformationStore from '../../stores/GroupInformationStore'
+import GroupInformationStore from '../../stores/GroupInformationStore';
 
 import LeaveGroupDialog from '../../components/group/LeaveGroupDialog';
 

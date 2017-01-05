@@ -106,6 +106,7 @@ class HandleDataAction {
 
 
   sendData(content = '') {
+    console.log(content);
     client.send(JSON.stringify(content));
   }
 
