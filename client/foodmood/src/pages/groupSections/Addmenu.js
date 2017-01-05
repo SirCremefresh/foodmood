@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import Color from "../../stores/configs/Color";
-
+ 
 import HandleDataAction from "../../actions/HandleDataAction";
 import LoginInformationStore from "../../stores/LoginInformationStore";
 
