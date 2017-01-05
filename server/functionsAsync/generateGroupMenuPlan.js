@@ -13,7 +13,7 @@ function generateGroupMenuPlan(groupID, menus, callbackFunc, sqlconnection) {
     menusRnd[i] = menus[Math.floor((Math.random() * menus.length) + 0)];
   }
 
-  sqlconnection.query('UPDATE `menuplan` SET `week`=?,`monday`=?,`tuesday`=?,`wednesday`=?,`thursday`=?,`friday`=?,`saturday`=?,`sunday`=? WHERE `groupID` = ?', [groupID, getWeekNumber(new Date()), menusRnd[0].menuID, menusRnd[1].menuID, menusRnd[2].menuID, menusRnd[3].menuID, menusRnd[4].menuID, menusRnd[5].menuID, menusRnd[6].menuID, groupID], function(err, results) {
+  sqlconnection.query('UPDATE `menuplan` SET `week`=?,`monday`=?,`tuesday`=?,`wednesday`=?,`thursday`=?,`friday`=?,`saturday`=?,`sunday`=? WHERE `groupID` = ?', [getWeekNumber(new Date())[1], menusRnd[0].menuID, menusRnd[1].menuID, menusRnd[2].menuID, menusRnd[3].menuID, menusRnd[4].menuID, menusRnd[5].menuID, menusRnd[6].menuID, groupID], function(err, results) {
     if(err) {
       throw err;
     } else {

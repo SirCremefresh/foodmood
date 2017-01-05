@@ -34,7 +34,7 @@ function getMenuPlanAction3(valid, msg, userID) {
   if (valid) {
     GLOBuserID = userID;
 
-    isMemberOfGroup(GLOBnewUserID, GLOBgroupID, getMenuPlanAction4, GLOBsqlconnection);
+    isMemberOfGroup(GLOBuserID, GLOBgroupID, getMenuPlanAction4, GLOBsqlconnection);
   }
 }
 

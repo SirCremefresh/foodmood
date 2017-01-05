@@ -9,7 +9,7 @@ var Test = React.createClass({
     HandleDataAction.sendData({
       type: "GET_MENUPLAN",
       value: {
-        sessionKey:"426fc893-0b39-4546-b13e-d68880f0c75a",
+        sessionKey:"8ff92883-a3d1-41c9-bacc-96c636a96b23",
         groupID: "1",
       }
     });
