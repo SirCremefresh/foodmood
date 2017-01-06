@@ -2,14 +2,16 @@ import React from 'react';
 
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import {List} from 'material-ui/List';
+import {List, ListItem} from 'material-ui/List';
 
-import CustomTextField from '../components/CustomTextField'
+import CustomTextField from '../components/CustomTextField';
+import FontIcon from 'material-ui/FontIcon';
 
 import LoginInformationStore from "../stores/LoginInformationStore";
 import GroupInformationStore from "../stores/GroupInformationStore";
 
 import GroupListItem from "../components/profile/GroupListItem";
+import InviteListItem from "../components/profile/InviteListItem";
 
 const titleStyle = {
   fontSize: 30,
@@ -20,7 +22,9 @@ const titleDividerStyle = {
   height: 3,
 };
 
-
+const contentPStyle = {
+  marginLeft: 30,
+};
 
 var Profile = React.createClass({
   getInitialState: function() {
@@ -32,12 +36,45 @@ var Profile = React.createClass({
       mail : "",
       status : "",
       groups: [],
+      groupsInvites: [],
     };
+  },
+
+
+
+
+
+  componentWillMount() {
+    LoginInformationStore.on("newUserInformation", this.setData);
+    GroupInformationStore.on("newGroups", this.setGroups);
+    GroupInformationStore.on("newGroupsIvites", this.setGroupsInvites);
+  },
+
+  componentDidMount() {
+    if (LoginInformationStore.getlogedInState()) {
+      this.setData();
+    }
+
+    this.setGroups();
+    this.setGroupsInvites();
+  },
+
+  componentWillUnmount() {
+    LoginInformationStore.removeListener("newUserInformation", this.setData);
+    GroupInformationStore.removeListener("newGroups", this.setGroups);
+    GroupInformationStore.removeListener("newGroupsIvites", this.setGroupsInvites);
+  },
+
+  setGroupsInvites() {
+    this.setState({
+      groupsInvites: GroupInformationStore.getGroupsInvites(),
+    });
   },
 
   setData() {
     var userInfo = LoginInformationStore.getUserInformation();
     this.setState({
+      username  : userInfo["username"],
       name      : userInfo["name"],
       lastname  : userInfo["lastname"],
       adress    : userInfo["adress"],
@@ -53,28 +90,30 @@ var Profile = React.createClass({
     });
   },
 
-  componentWillMount() {
-    if (LoginInformationStore.getlogedInState()) {
-      this.setData();
-    }
-    this.setGroups();
-
-    LoginInformationStore.on("newUserInformation", this.setData);
-    GroupInformationStore.on("newGroups", this.setGroups);
-  },
-
-  componentWillUnmount() {
-    LoginInformationStore.removeListener("newUserInformation", this.setData);
-    GroupInformationStore.removeListener("newGroups", this.setGroups);
-  },
-
 
   render() {
+    var messages;
+    if (this.state.groups.length !== 0) {
+      messages = this.state.groups.map((arr, index) => {
+        return <GroupListItem groupName={arr.Name} groupStatus={arr.Beschreibung} key={arr.Name + index + "GroupListProfilePage"} groupID={arr.groupID} />;
+      });
+    } else {
+      messages = <p style={contentPStyle}>Du bist in keiner Gruppe</p>
+    }
 
-    const messages = this.state.groups.map((arr, index) => {
-      return <GroupListItem groupName={arr.Name} groupStatus={arr.Beschreibung} key={arr.Name + index + "GroupListProfilePage"} />;
-    });
-
+    var groupsInvites;
+    if (this.state.groupsInvites.length !==0) {
+      groupsInvites = this.state.groupsInvites.map((obj, index) => {
+        return (<InviteListItem
+          groupName={obj.Name}
+          groupStatus={obj.Beschreibung}
+          groupID={obj.groupID}
+          key={"Groupinvite"+obj.Name+obj.groupID}/>
+        );
+      });
+    } else {
+      groupsInvites = <p style={contentPStyle}>Du hast keine offenen Einladungen</p>;
+    }
     return (
     <div className="grid flex">
       <Paper zDepth={1} className="col_4">
@@ -83,6 +122,8 @@ var Profile = React.createClass({
           <Divider style={titleDividerStyle}/>
         </header>
         <div>
+          <CustomTextField value={this.state.username} FontIcon="perm_identity" multiLine={false} hintText="Benutzername" id="username"/>
+          <Divider />
           <CustomTextField value={this.state.name} FontIcon="account_box" multiLine={false} hintText="Vorname" id="name"/>
           <Divider />
           <CustomTextField value={this.state.lastname} FontIcon="face" multiLine={false} hintText="Nachname" id="lastname"/>
@@ -106,6 +147,19 @@ var Profile = React.createClass({
         <div>
           <List>
           {messages}
+          </List>
+        </div>
+      </Paper>
+
+      <Paper zDepth={1} className="col_8">
+        <header>
+          <h1 style={titleStyle}>Einladungen</h1>
+          <Divider style={titleDividerStyle}/>
+        </header>
+        <div>
+          <List>
+            {groupsInvites}
+
           </List>
         </div>
       </Paper>

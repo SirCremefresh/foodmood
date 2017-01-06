@@ -17,6 +17,7 @@ var Bills = React.createClass({
         </header>
         <div>
           <p>
+            Coming soon!
           </p>
         </div>
       </div>

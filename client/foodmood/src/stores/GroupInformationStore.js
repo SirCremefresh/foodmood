@@ -7,14 +7,53 @@ class GroupInformationStore extends EventEmitter {
   constructor() {
     super()
     this.groups = [];
+    this.groupsInvites = [];
+    this.isLoaded = false;
   }
 
   setGroups(newgroups) {
     this.groups = newgroups;
+    this.isLoaded = true;
   }
 
   getGroups() {
     return this.groups;
+  }
+
+  setGroupsInvites(newgroupsInvites) {
+    this.groupsInvites = newgroupsInvites;
+  }
+
+  getGroupsInvites() {
+    return this.groupsInvites;
+  }
+
+  isValidGroupID(groupID) {
+    if (this.groups.length >= 1) {
+      for (var group of this.groups) {
+        if (group.groupID == groupID) {
+          return true;
+        }
+      }
+    }
+    return false
+  }
+
+  getGroupWithID(groupID) {
+    for (var group of this.groups) {
+      if (group.groupID == groupID) {
+        return group;
+      }
+    }
+  }
+
+  getIsLoaded() {
+    return this.isLoaded;
+  }
+
+  getUsersFromGroupWithID(groupID) {
+  var group = this.getGroupWithID(groupID);
+  return group.groupUser;
   }
 
   handleActions(action) {
@@ -25,6 +64,14 @@ class GroupInformationStore extends EventEmitter {
       case "USER_GROUPS":
         this.setGroups(action.groups);
         this.emit("newGroups");
+        break;
+      case "GROUP_INVITES":
+        this.setGroupsInvites(action.groupsInvites);
+        this.emit("newGroupsIvites");
+        break;
+      case "NO_GROUP_INVITES":
+        this.setGroupsInvites([]);
+        this.emit("newGroupsIvites");
         break;
     }
   }

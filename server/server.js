@@ -1,9 +1,18 @@
 //REQUIRE Actions
-const loginAction = require('./actions/loginAction');
-const sessionLoginAction = require('./actions/sessionLoginAction');
-const getGroupsAction = require('./actions/getGroupsAction');
-const registerNewUserAction = require('./actions/registerNewUserAction');
-const isUsernameTakenAction = require('./actions/isUsernameTakenAction');
+const loginAction                   = require('./actions/loginAction');
+const sessionLoginAction            = require('./actions/sessionLoginAction');
+const getGroupsAction               = require('./actions/getGroupsAction');
+const registerNewUserAction         = require('./actions/registerNewUserAction');
+const isUsernameTakenAction         = require('./actions/isUsernameTakenAction');
+const userLeaveGroupAction          = require('./actions/userLeaveGroupAction');
+const newMenuAction                 = require('./actions/newMenuAction');
+const rejectGroupInvitationAction   = require('./actions/rejectGroupInvitationAction');
+const acceptGroupInvitationAction   = require('./actions/acceptGroupInvitationAction');
+const makeGroupInvitationAction     = require('./actions/makeGroupInvitationAction');
+const makeToAdminAction             = require('./actions/makeToAdminAction');
+const removeUserFromGroupAction     = require('./actions/removeUserFromGroupAction');
+const getMenuPlanAction             = require('./actions/getMenuPlanAction');
+const makeGroupAction             = require('./actions/makeGroupAction');
 
 
 // VARIABLES FOR LATER USE
@@ -106,6 +115,33 @@ wsServer.on('request', function(request) {
               break;
             case "REGISTER_NEW_USER":
                 registerNewUserAction(data.value, sqlconnection, connection);
+              break;
+            case "LEAVE_GROUP":
+                userLeaveGroupAction(data.value.sessionKey, data.value.groupID, sqlconnection, connection);
+              break;
+            case "NEW_GROUP_MENU":
+                newMenuAction(data.value, sqlconnection, connection);
+              break;
+            case "INVITE_REJECTED":
+                rejectGroupInvitationAction(data.value.groupID, data.value.sessionKey, sqlconnection, connection);
+              break;
+            case "INVITE_ACCEPTED":
+                acceptGroupInvitationAction(data.value.groupID, data.value.sessionKey, sqlconnection, connection);
+              break;
+            case "SEND_GROUP_INVITATION":
+                makeGroupInvitationAction(data.value.groupID, data.value.sessionKey, data.value.username, sqlconnection, connection)
+              break;
+            case "MAKE_TO_ADMIN":
+                makeToAdminAction(data.value.groupID, data.value.sessionKey, data.value.username, sqlconnection, connection);
+              break;
+            case "REMOVE_FROM_GROUP":
+                removeUserFromGroupAction(data.value.groupID, data.value.sessionKey, data.value.username, sqlconnection, connection);
+              break;
+            case "GET_MENUPLAN":
+                getMenuPlanAction(data.value.groupID, data.value.sessionKey, sqlconnection, connection);
+              break;
+            case "CREATE_GROUP":
+                makeGroupAction(data.value.sessionKey, data.value.groupName, data.value.groupDescription, data.value.groupMembers, sqlconnection, connection)
               break;
             default:
               console.log(data);

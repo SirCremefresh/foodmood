@@ -5,6 +5,7 @@ const updateSessionKey = require('../functionsAsync/updateSessionKey');
 const getUserInformation = require('../functionsAsync/getUserInformation');
 
 const getGroupsAction = require('./getGroupsAction');
+const getGroupInvitesAction = require('./getGroupInvitesAction');
 
 //sync
 const generateSessionKey = require('../functionssync/generateSessionKey');
@@ -70,6 +71,7 @@ function loginAction5(valid, report, userData) {
       }
     ));
     getGroupsAction(userData["sessionKey"], GLOBsqlconnection, GLOBconnection);
+    getGroupInvitesAction(userData["sessionKey"], GLOBsqlconnection, GLOBconnection)
   } else {
     console.log(report);
   }

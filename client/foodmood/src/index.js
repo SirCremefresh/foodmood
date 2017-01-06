@@ -13,6 +13,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Group from "./pages/Group";
+import AddGroup from "./pages/AddGroup";
+import Test from "./pages/Test";
 
 import initial from "./initial"
 
@@ -25,6 +27,8 @@ ReactDOM.render(
         <IndexRoute component={Home} />
         <Route path="/home" component={Home} />
         <Route path="/profile" component={Profile} />
+        <Route path="/addgroup" component={AddGroup} />
+        <Route path="/test" component={Test} />
         <Route path="/group(/:id)" component={Group} />
       </Route>
       <Route path="/login" component={Login} />

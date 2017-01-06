@@ -37,6 +37,11 @@ var Sidebar = React.createClass({
     this.changeSidebarState();
   },
 
+  gotoAddgroup() {
+    Router.browserHistory.push('/addgroup');
+    this.changeSidebarState();
+  },
+
   render() {
     return (
       <div>
@@ -48,6 +53,7 @@ var Sidebar = React.createClass({
             <MenuItem onTouchTap={this.gotoNotFound}>404</MenuItem>
             <MenuItem onTouchTap={this.gotoLogin}>Login</MenuItem>
             <MenuItem onTouchTap={this.gotoRegister}>Register</MenuItem>
+            <MenuItem onTouchTap={this.gotoAddgroup}>gotoAddgroup</MenuItem>
           </Drawer>
       </div>
     );

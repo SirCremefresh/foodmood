@@ -5,39 +5,16 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import {ListItem} from 'material-ui/List';
 
-var CustomTextField = React.createClass({
-  getInitialState: function() {
-    return {
-      open : false
-    };
-  },
+var Router = require('react-router');
 
-  handleOpen() {
-    this.setState({open: true});
-  },
-
-  handleClose() {
-    this.setState({open: false});
+var GroupListItem = React.createClass({
+  handleClick() {
+    Router.browserHistory.push('/group/' + this.props.groupID);
   },
 
   render() {
-    const actions = [
-      <FlatButton
-          label="Abbrechen"
-          primary={true}
-          keyboardFocused={true}
-          onTouchTap={this.handleClose}
-      />,
-      <FlatButton
-        label="Verlassen"
-        secondary={true}
-        onTouchTap={this.handleClose}
-      />,
-    ];
-
     return (
       <div>
-
         <ListItem
           primaryText={this.props.groupName}
           secondaryText={this.props.groupStatus}
@@ -48,27 +25,11 @@ var CustomTextField = React.createClass({
               supervisor_account
             </FontIcon>
           }
-          rightIcon={
-            <FontIcon
-              onTouchTap={this.handleOpen}
-              className="material-icons"
-            >
-              delete
-            </FontIcon>
-          }
+          onTouchTap={this.handleClick}
         />
-        <Dialog
-          title={"Gruppe '" + this.props.groupName + "' verlassen"}
-          modal={true}
-          actions={actions}
-          open={this.state.open}
-        >
-          Bist du sicher das du die Gruppe verlassen möchtest?
-          Dies kann von dir nicht rückgängig gemacht werden!
-        </Dialog>
       </div>
     );
   }
 });
 
-module.exports = CustomTextField;
+module.exports = GroupListItem;

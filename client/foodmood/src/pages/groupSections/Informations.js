@@ -5,15 +5,21 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
+import GroupInformationStore from '../../stores/GroupInformationStore';
+
+import LeaveGroupDialog from '../../components/group/LeaveGroupDialog';
+
+
+/*
+ *  STYLES
+ */
 const titleDividerStyle = {
   height: 3,
 };
-
 const contentStyle = {
   marginLeft: 30,
   marginRight: 30,
 };
-
 const buttonStyle = {
   marginTop: 30,
   marginRight: 30,
@@ -21,7 +27,28 @@ const buttonStyle = {
 };
 
 var Informations = React.createClass({
+  getInitialState: function() {
+    return {
+      dialogOpen : false,
+    };
+  },
+  changeDialogState() {
+    this.setState({
+      dialogOpen : !(this.state.dialogOpen)
+    });
+  },
   render() {
+    var users =  GroupInformationStore.getUsersFromGroupWithID(this.props.groupID);
+    const userTable = users.map((arr, index) => {
+      return(
+        <TableRow key={index + arr.username + "UserTable"}>
+          <TableRowColumn>{arr.username}</TableRowColumn>
+          <TableRowColumn>{new Date(arr.joinDate).getDate() + "." + (new Date(arr.joinDate).getMonth() + 1) + "." + new Date(arr.joinDate).getFullYear()}</TableRowColumn>
+          <TableRowColumn>{arr.admin == 1 ? "Ja" : "Nein"}</TableRowColumn>
+        </TableRow>
+      );
+    });
+
     return (
       <div>
         <header>
@@ -33,7 +60,7 @@ var Informations = React.createClass({
           <p>{this.props.groupDescription}</p>
           <h2>Mitglieder</h2>
             <Table
-              height="400px"
+              height="260px"
               fixedHeader={true}
             >
               <TableHeader
@@ -49,54 +76,17 @@ var Informations = React.createClass({
               <TableBody
                 displayRowCheckbox={false}
               >
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>John Smith</TableRowColumn>
-                  <TableRowColumn>08.02.2016</TableRowColumn>
-                  <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                    <TableRowColumn>Randal White</TableRowColumn>
-                    <TableRowColumn>14.08.2016</TableRowColumn>
-                    <TableRowColumn>Ja</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                    <TableRowColumn>Stephanie Sanders</TableRowColumn>
-                    <TableRowColumn>09.03.2016</TableRowColumn>
-                    <TableRowColumn>Nein</TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>Steve Brown</TableRowColumn>
-                  <TableRowColumn>28.09.2016</TableRowColumn>
-                  <TableRowColumn>Nein</TableRowColumn>
-                </TableRow>
+              {userTable}
               </TableBody>
             </Table>
-            <RaisedButton label="Gruppe verlassen" secondary={true} fullWidth={true} style={buttonStyle}/>
+            <RaisedButton
+              label="Gruppe verlassen"
+              secondary={true}
+              fullWidth={true}
+              style={buttonStyle}
+              onTouchTap={this.changeDialogState}
+            />
+          <LeaveGroupDialog open={this.state.dialogOpen} groupName={this.props.groupName} groupID={this.props.groupID}/>
         </div>
       </div>
     );
