@@ -7,6 +7,7 @@ class GroupInformationStore extends EventEmitter {
   constructor() {
     super()
     this.groups = [];
+    this.menuplan = [];
     this.groupsInvites = [];
     this.isLoaded = false;
   }
@@ -14,10 +15,27 @@ class GroupInformationStore extends EventEmitter {
   setGroups(newgroups) {
     this.groups = newgroups;
     this.isLoaded = true;
+    console.log(this.groups);
   }
 
   getGroups() {
     return this.groups;
+  }
+
+  setMenuPlan(newmenuplan) {
+    if (this.menuplan == []) {
+      this.menuplan = newmenuplan;
+    } else {
+      for (var i = 0; i < this.menuplan.length; i++) {
+        for (var menu in this.menuplan[i]) {
+          if (menu.hasOwnProperty("groupID")) {
+            if (newmenuplan.groupID == menu.groupID) {
+              this.menuplan[i] = newmenuplan;
+            }
+          }
+        }
+      }
+    }
   }
 
   setGroupsInvites(newgroupsInvites) {

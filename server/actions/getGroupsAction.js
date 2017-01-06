@@ -3,6 +3,8 @@ const getUserIDBySessionKey = require('../functionsAsync/getUserIDBySessionKey')
 const checkSessionKey = require('../functionsAsync/checkSessionKey');
 const getGroups = require('../functionsAsync/getGroups');
 
+const getMenuPlanAction = require('./getMenuPlanAction');
+
 var GLOBsqlconnection;
 var GLOBconnection;
 
@@ -45,6 +47,16 @@ function getGroupsAction4(valid, report, userData) {
         groups: userData,
       }
     ));
+
+
+    for (group of userData) {
+
+        var groupID = group["groupID"];
+
+        getMenuPlanAction(groupID, GLOBsessionKey, GLOBsqlconnection, GLOBconnection)
+
+
+    }
   }
 }
 
