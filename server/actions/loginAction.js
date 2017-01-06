@@ -8,7 +8,7 @@ const getGroupsAction = require('./getGroupsAction');
 const getGroupInvitesAction = require('./getGroupInvitesAction');
 
 //sync
-const generateSessionKey = require('../functionssync/generateSessionKey');
+const generateSessionKey = require('../functionsSync/generateSessionKey');
 
 var GLOBsqlconnection;
 var GLOBconnection;
