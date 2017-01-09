@@ -12,33 +12,33 @@ var Sidebar = React.createClass({
   },
 
   gotoHome() {
-    Router.browserHistory.push('/home');
+    Router.hashHistory.push('/home');
     this.changeSidebarState();
   },
   gotoProfile() {
-    Router.browserHistory.push('/profile');
+    Router.hashHistory.push('/profile');
     this.changeSidebarState();
   },
   gotoGroup() {
-    Router.browserHistory.push('/group');
+    Router.hashHistory.push('/group');
     this.changeSidebarState();
   },
   gotoNotFound() {
-    Router.browserHistory.push('/404');
+    Router.hashHistory.push('/404');
     this.changeSidebarState();
   },
   gotoLogin() {
-    Router.browserHistory.push('/login');
+    Router.hashHistory.push('/login');
     this.changeSidebarState();
   },
 
   gotoRegister() {
-    Router.browserHistory.push('/register');
+    Router.hashHistory.push('/register');
     this.changeSidebarState();
   },
 
   gotoAddgroup() {
-    Router.browserHistory.push('/addgroup');
+    Router.hashHistory.push('/addgroup');
     this.changeSidebarState();
   },
 

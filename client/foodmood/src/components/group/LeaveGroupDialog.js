@@ -28,7 +28,7 @@ var LeaveGroupDialog = React.createClass({
       }
     });
     this.handleChangeDialogState();
-    Router.browserHistory.push('/profile');
+    Router.hashHistory.push('/profile');
   },
 
   handleChangeDialogState() {

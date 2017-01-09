@@ -121,7 +121,7 @@ var AddGroup = React.createClass({
           groupMembers: this.state.groupMembers,
         }
       });
-      Router.browserHistory.push('/profile');
+      Router.hashHistory.push('/profile');
     }
   },
 

@@ -27,7 +27,7 @@ var Group = React.createClass({
 
   componentWillMount() {
     if (typeof this.props.params.id == "undefined") {
-      Router.browserHistory.push('/profile');
+      Router.hashHistory.push('/profile');
     }
 
 
@@ -42,7 +42,7 @@ var Group = React.createClass({
   componentDidMount: function() {
     if (GroupInformationStore.getIsLoaded()) {
       if (!GroupInformationStore.isValidGroupID(this.props.params.id)) {
-        Router.browserHistory.push('/profile');
+        Router.hashHistory.push('/profile');
       }
     }
   },
@@ -54,7 +54,7 @@ var Group = React.createClass({
   refreshData() {
     if (GroupInformationStore.getIsLoaded()) {
       if (!GroupInformationStore.isValidGroupID(this.props.params.id)) {
-        Router.browserHistory.push('/profile');
+        Router.hashHistory.push('/profile');
       }
     }
     if (typeof this.props.params.id != "undefined") {

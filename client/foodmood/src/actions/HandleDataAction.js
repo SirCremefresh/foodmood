@@ -34,7 +34,7 @@ class HandleDataAction {
 
         switch (data.type) {
           case "LOGIN_SUCCESS":
-            Router.browserHistory.push('/home');
+            Router.hashHistory.push('/home');
           // eslint-disable-next-line
           case "LOGIN_SESSION_SUCCESS":
             dispatcher.dispatch({

@@ -30,7 +30,7 @@ var SideNavBar = React.createClass({
   },
 
   linkToHomePage() {
-    Router.browserHistory.push('/home')
+    Router.hashHistory.push('/home')
   },
 
   render() {

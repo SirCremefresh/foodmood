@@ -81,7 +81,7 @@ var Home = React.createClass({
     document.getElementById("errorTextField").innerHTML = "Deine Angeben sind ungültig!";
   },
   redirectToRegister() {
-    Router.browserHistory.push('/register');
+    Router.hashHistory.push('/register');
   },
 
   handleSubmit() {

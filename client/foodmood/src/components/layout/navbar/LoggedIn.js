@@ -11,11 +11,11 @@ import SignOutAction from '../../../actions/SignOutAction'
 var LoggedIn = React.createClass({
   signOut() {
     SignOutAction.signOut();
-    Router.browserHistory.push('/login');
+    Router.hashHistory.push('/login');
   },
 
   toProfilePage() {
-    Router.browserHistory.push('/profile');
+    Router.hashHistory.push('/profile');
   },
 
   render() {
