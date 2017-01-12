@@ -1,6 +1,6 @@
 import dispatcher from "../dispatcher";
 var W3CWebSocket = require('websocket').w3cwebsocket;
-var client = new W3CWebSocket('ws://localhost:61910/', 'echo-protocol');
+var client = new W3CWebSocket('ws://192.168.100.20:61910/', 'echo-protocol');
 var Router = require('react-router');
 
 class HandleDataAction {
@@ -34,7 +34,7 @@ class HandleDataAction {
 
         switch (data.type) {
           case "LOGIN_SUCCESS":
-            Router.browserHistory.push('/home');
+            Router.hashHistory.push('/home');
           // eslint-disable-next-line
           case "LOGIN_SESSION_SUCCESS":
             dispatcher.dispatch({
@@ -77,6 +77,13 @@ class HandleDataAction {
             dispatcher.dispatch({
               type: "NO_GROUP_INVITES",
             });
+            break;
+          case "MENUPLAN":
+          dispatcher.dispatch({
+            type: "MENUPLAN",
+            groupID: data.groupID,
+            menuplan: data.menuplan,
+          });
             break;
           default:
 

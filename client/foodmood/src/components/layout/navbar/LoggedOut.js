@@ -8,11 +8,11 @@ var Router = require('react-router');
 
 var LoggedOut = React.createClass({
   logIn() {
-    Router.browserHistory.push('/login');
+    Router.hashHistory.push('/login');
   },
 
   register() {
-    Router.browserHistory.push('/register');
+    Router.hashHistory.push('/register');
   },
 
   render() {

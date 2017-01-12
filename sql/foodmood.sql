@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 06. Jan 2017 um 12:49
+-- Erstellungszeit: 12. Jan 2017 um 10:40
 -- Server-Version: 10.1.19-MariaDB
 -- PHP-Version: 7.0.13
 
@@ -44,6 +44,14 @@ CREATE TABLE `groups` (
   `Beschreibung` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `groups`
+--
+
+INSERT INTO `groups` (`groupID`, `Name`, `Beschreibung`) VALUES
+(1, '1', '1Description'),
+(2, '2', '2decription');
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +64,15 @@ CREATE TABLE `groupsuser` (
   `admin` tinyint(1) NOT NULL COMMENT 'TRUE / FALSE',
   `joinDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `groupsuser`
+--
+
+INSERT INTO `groupsuser` (`userID`, `groupID`, `admin`, `joinDate`) VALUES
+(1, 1, 1, '2017-01-12 07:29:30'),
+(1, 2, 1, '2017-01-12 07:30:27'),
+(2, 2, 1, '2017-01-12 07:30:09');
 
 -- --------------------------------------------------------
 
@@ -85,6 +102,19 @@ CREATE TABLE `menu` (
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `menu`
+--
+
+INSERT INTO `menu` (`menuID`, `groupID`, `title`, `description`) VALUES
+(1, 1, 'Menu1', 'MESU1DESC'),
+(2, 2, 'Test2', 'Test2Desc'),
+(3, 2, 'TEst3', 'Test3 BEschreuibunbgasd'),
+(4, 2, 'Menu243', 'kjahsdjhfkjask fahsjkdhfks jdjfhasjd fjdh fshdkfa sdkf aksjdfhagsd f'),
+(5, 2, 'dfg', 'gsdfsg'),
+(6, 2, 'eqrwsdfa', 'sdfasdfasdfasdf da df sd f sdfasd f asd fasdf as'),
+(7, 2, 'ssdafa', 'sdfasd sa fas df asd');
+
 -- --------------------------------------------------------
 
 --
@@ -103,6 +133,14 @@ CREATE TABLE `menuplan` (
   `sunday` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `menuplan`
+--
+
+INSERT INTO `menuplan` (`groupID`, `week`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`) VALUES
+(1, 2, 1, 1, 1, 1, 1, 1, 1),
+(2, 2, 2, 2, 2, 2, 2, 2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +153,14 @@ CREATE TABLE `session` (
   `ip` varchar(60) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `session`
+--
+
+INSERT INTO `session` (`userID`, `sessionKey`, `ip`, `datetime`) VALUES
+('1', '1528a93e-9411-4d11-87ba-2dcdaf37cf53', '::1', '2017-01-12 08:06:54'),
+('2', 'f20b38fd-039b-4b9b-96ef-cdec84dfe6b3', '::1', '2017-01-12 08:05:10');
 
 -- --------------------------------------------------------
 
@@ -134,6 +180,14 @@ CREATE TABLE `user` (
   `mail` varchar(120) DEFAULT NULL COMMENT 'Private E-Mail Adresse',
   `status` varchar(400) DEFAULT NULL COMMENT 'Status kann selbst gesetzt und formatiert werden'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `user`
+--
+
+INSERT INTO `user` (`userID`, `username`, `password`, `berechtigung`, `name`, `lastname`, `adress`, `phone`, `mail`, `status`) VALUES
+(1, 'Donato', '1234567', 0, 'Donato', 'Donato', NULL, NULL, NULL, NULL),
+(2, 'Jonas', '1234567', 0, 'Jonas', 'Jonas', NULL, NULL, NULL, NULL);
 
 --
 -- Indizes der exportierten Tabellen
@@ -198,12 +252,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `groupinvite`
 --
 ALTER TABLE `groupinvite`
-  MODIFY `inviteID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `inviteID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT für Tabelle `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `groupID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `groupID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `logs`
 --
@@ -213,12 +267,12 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT für Tabelle `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menuID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `menuID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `userID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

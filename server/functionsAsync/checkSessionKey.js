@@ -1,4 +1,4 @@
-const checkSessionDate = require('../functionssync/checkSessionDate');
+const checkSessionDate = require('../functionsSync/checkSessionDate');
 
 function checkSessionKey(sessionKey, callbackFunction, sqlconnection) {
   sqlconnection.query('SELECT `datetime` FROM `session` WHERE `sessionKey` = ?', [sessionKey], function(err, rows, result) {

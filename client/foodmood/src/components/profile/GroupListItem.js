@@ -9,7 +9,7 @@ var Router = require('react-router');
 
 var GroupListItem = React.createClass({
   handleClick() {
-    Router.browserHistory.push('/group/' + this.props.groupID);
+    Router.hashHistory.push('/group/' + this.props.groupID);
   },
 
   render() {

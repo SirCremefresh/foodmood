@@ -39,7 +39,7 @@ const buttonStyle = {
 var NotFound = React.createClass({
 
   redirect() {
-    Router.browserHistory.push('/home');
+    Router.hashHistory.push('/home');
   },
   render() {
     return (

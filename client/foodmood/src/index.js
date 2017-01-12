@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory, IndexRoute  } from 'react-router';
+import { Router, Route, browserHistory, hashHistory, IndexRoute  } from 'react-router';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -22,7 +22,7 @@ initial();
 
 ReactDOM.render(
   <MuiThemeProvider>
-    <Router history={browserHistory}>
+    <Router history={hashHistory}>
       <Route path="/" component={Layout} >
         <IndexRoute component={Home} />
         <Route path="/home" component={Home} />

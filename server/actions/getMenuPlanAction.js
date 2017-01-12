@@ -9,20 +9,17 @@ const generateGroupMenuPlan   = require('../functionsAsync/generateGroupMenuPlan
 
 //sync
 
-var GLOBsqlconnection;
-var GLOBconnection;
-var GLOBgroupID;
-var GLOBsessionKey;
-var GLOBuserID;
 
-function getMenuPlanAction(groupID, sessionKey, sqlconnection, connection) {
-  GLOBsqlconnection = sqlconnection;
-  GLOBconnection    = connection;
-  GLOBgroupID       = groupID;
-  GLOBsessionKey    = sessionKey;
+
+function getMenuPlanAction(groupID, sessionKey, sqlconnection, connection, refreshPlan = false) {
+  var GLOBsqlconnection = sqlconnection;
+  var GLOBconnection    = connection;
+  var GLOBgroupID       = groupID;
+  var GLOBsessionKey    = sessionKey;
+  var GLOBrefreshPlan   = refreshPlan;
 
   checkSessionKey(GLOBsessionKey, getMenuPlanAction2, GLOBsqlconnection);
-}
+
 
 function getMenuPlanAction2(valid) {
   if (valid) {
@@ -46,7 +43,7 @@ function getMenuPlanAction4(valid, msg, userID) {
 }
 
 function getMenuPlanAction5(valid, msg) {
-  if (valid) {
+  if (valid && (!refreshPlan)) {
      //GET MENU PLAN
      getGroupMenuPlan(GLOBgroupID, getMenuPlanAction8, GLOBsqlconnection);
   }
@@ -75,10 +72,12 @@ function getMenuPlanAction8(valid, msg, menuplan) {
     GLOBconnection.sendUTF(JSON.stringify(
       {
         type : "MENUPLAN",
-        content: menuplan[0],
+        groupID: GLOBgroupID,
+        menuplan: menuplan[0],
       }
     ));
   }
+}
 }
 
 module.exports = getMenuPlanAction;
