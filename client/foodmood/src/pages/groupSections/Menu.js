@@ -4,6 +4,13 @@ import Divider from 'material-ui/Divider';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
 import GroupInformationStore from "../../stores/GroupInformationStore";
+import moIcon from './mo-icon.svg';
+import diIcon from './di-icon.svg';
+import miIcon from './mi-icon.svg';
+import doIcon from './do-icon.svg';
+import frIcon from './fr-icon.svg';
+import saIcon from './sa-icon.svg';
+import soIcon from './so-icon.svg';
 
 const titleDividerStyle = {
   height: 3,
@@ -99,7 +106,7 @@ var Menu = React.createClass({
           >
              <Tab
                value="mo"
-               icon={<img src="../icons/mo-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src={moIcon} width="30px" role="presentation"></img>}
                label={loaded ? this.state.menuplan.MontagT : ""}
                style={tabStyle}
              >
@@ -112,7 +119,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="di"
-               icon={<img src="../icons/di-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src={diIcon} width="30px" role="presentation"></img>}
                label={loaded ? this.state.menuplan.DienstagT : ""}
                style={tabStyle}
              >
@@ -125,7 +132,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="mi"
-               icon={<img src="../icons/mi-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src={miIcon} width="30px" role="presentation"></img>}
                label={loaded ? this.state.menuplan.MitwochT : ""}
                style={tabStyle}
              >
@@ -138,7 +145,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="do"
-               icon={<img src="../icons/do-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src={doIcon} width="30px" role="presentation"></img>}
                label={loaded ? this.state.menuplan.DonnerstagT : ""}
                style={tabStyle}
              >
@@ -151,7 +158,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="fr"
-               icon={<img src="../icons/fr-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src={frIcon} width="30px" role="presentation"></img>}
                label={loaded ? this.state.menuplan.FreitagT : ""}
                style={tabStyle}
              >
@@ -164,7 +171,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="sa"
-               icon={<img src="../icons/sa-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src={saIcon} width="30px" role="presentation"></img>}
                label={loaded ? this.state.menuplan.SamstagT : ""}
                style={tabStyle}
              >
@@ -177,7 +184,7 @@ var Menu = React.createClass({
              </Tab>
              <Tab
                value="so"
-               icon={<img src="../icons/so-icon.svg" width="30px" role="presentation"></img>}
+               icon={<img src={soIcon} width="30px" role="presentation"></img>}
                label={loaded ? this.state.menuplan.SonntagT : ""}
                style={tabStyle}
              >
