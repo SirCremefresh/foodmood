@@ -140,6 +140,9 @@ wsServer.on('request', function(request) {
             case "GET_MENUPLAN":
                 getMenuPlanAction(data.value.groupID, data.value.sessionKey, sqlconnection, connection);
               break;
+            case "REFRESH_MENUPLAN":
+                getMenuPlanAction(data.value.groupID, data.value.sessionKey, sqlconnection, connection, true);
+              break;
             case "CREATE_GROUP":
                 makeGroupAction(data.value.sessionKey, data.value.groupName, data.value.groupDescription, data.value.groupMembers, sqlconnection, connection)
               break;

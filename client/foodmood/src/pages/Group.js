@@ -10,7 +10,8 @@ import Bills from './groupSections/Bills';
 import Informations from './groupSections/Informations';
 import Menu from './groupSections/Menu';
 import Addmenu from './groupSections/Addmenu';
-import UserSettings from './groupSections/UserSettings'
+import UserSettings from './groupSections/UserSettings';
+import Settings from './groupSections/Settings';
 
 import Paper from 'material-ui/Paper';
 
@@ -95,6 +96,9 @@ var Group = React.createClass({
         break;
       case "userSettings":
           content = <UserSettings groupID={this.props.params.id} groupName={this.state.groupName} />
+        break;
+      case "settings":
+          content = <Settings groupID={this.props.params.id} />
         break;
       default:
           content = <h1>{this.state.content}</h1>;

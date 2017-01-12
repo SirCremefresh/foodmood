@@ -11,11 +11,12 @@ const generateGroupMenuPlan   = require('../functionsAsync/generateGroupMenuPlan
 
 
 
-function getMenuPlanAction(groupID, sessionKey, sqlconnection, connection) {
+function getMenuPlanAction(groupID, sessionKey, sqlconnection, connection, refreshPlan = false) {
   var GLOBsqlconnection = sqlconnection;
   var GLOBconnection    = connection;
   var GLOBgroupID       = groupID;
   var GLOBsessionKey    = sessionKey;
+  var GLOBrefreshPlan   = refreshPlan;
 
   checkSessionKey(GLOBsessionKey, getMenuPlanAction2, GLOBsqlconnection);
 
@@ -42,7 +43,7 @@ function getMenuPlanAction4(valid, msg, userID) {
 }
 
 function getMenuPlanAction5(valid, msg) {
-  if (valid) {
+  if (valid && (!refreshPlan)) {
      //GET MENU PLAN
      getGroupMenuPlan(GLOBgroupID, getMenuPlanAction8, GLOBsqlconnection);
   }
