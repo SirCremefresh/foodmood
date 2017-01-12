@@ -16,7 +16,7 @@ function getMenuPlanAction(groupID, sessionKey, sqlconnection, connection) {
   var GLOBconnection    = connection;
   var GLOBgroupID       = groupID;
   var GLOBsessionKey    = sessionKey;
-  
+
   checkSessionKey(GLOBsessionKey, getMenuPlanAction2, GLOBsqlconnection);
 
 
@@ -72,7 +72,7 @@ function getMenuPlanAction8(valid, msg, menuplan) {
       {
         type : "MENUPLAN",
         groupID: GLOBgroupID,
-        content: menuplan[0],
+        menuplan: menuplan[0],
       }
     ));
   }

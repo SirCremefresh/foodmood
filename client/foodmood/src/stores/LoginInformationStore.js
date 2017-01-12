@@ -25,6 +25,17 @@ class LoginInformationStore extends EventEmitter {
     this.logedIn = false;
     this.username = "";
 
+    this.userInformation = {
+      adress:"",
+      berechtigung:"",
+      lastname:"",
+      mail:"",
+      name:"",
+      phone:"",
+      status:"",
+      username: "",
+    };
+    
     setCookie("sessionKey", "", 0);
 
     this.emit("newsessionKey");

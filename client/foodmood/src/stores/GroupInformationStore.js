@@ -15,27 +15,47 @@ class GroupInformationStore extends EventEmitter {
   setGroups(newgroups) {
     this.groups = newgroups;
     this.isLoaded = true;
-    console.log(this.groups);
   }
 
   getGroups() {
     return this.groups;
   }
 
-  setMenuPlan(newmenuplan) {
-    if (this.menuplan == []) {
-      this.menuplan = newmenuplan;
-    } else {
-      for (var i = 0; i < this.menuplan.length; i++) {
-        for (var menu in this.menuplan[i]) {
-          if (menu.hasOwnProperty("groupID")) {
-            if (newmenuplan.groupID == menu.groupID) {
-              this.menuplan[i] = newmenuplan;
-            }
-          }
+  setMenuPlan(newmenuplan, groupID) {
+    var newMenuplanObject = {
+      menuplan: newmenuplan,
+      groupID: groupID,
+    };
+    for (var i = 0; i < this.menuplan.length; i++) {
+      var menuObject = this.menuplan[i];
+      if (newMenuplanObject.hasOwnProperty("groupID") && menuObject.hasOwnProperty("groupID")) {
+        if (newMenuplanObject.groupID == menuObject.groupID) {
+          this.menuplan[i] = newMenuplanObject;
+          console.log(this.menuplan);
+          return;
         }
       }
     }
+    this.menuplan.push(newMenuplanObject);
+    console.log(this.menuplan);
+  }
+
+  isMenuplanLoaded(groupID) {
+    for (var i = 0; i < this.menuplan.length; i++) {
+      if (this.menuplan[i].groupID == groupID) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  getMenuplan(groupID) {
+    for (var i = 0; i < this.menuplan.length; i++) {
+      if (this.menuplan[i].groupID == groupID) {
+        return this.menuplan[i].menuplan;
+      }
+    }
+    return false;
   }
 
   setGroupsInvites(newgroupsInvites) {
@@ -74,6 +94,13 @@ class GroupInformationStore extends EventEmitter {
   return group.groupUser;
   }
 
+  logout() {
+    this.groups = [];
+    this.menuplan = [];
+    this.groupsInvites = [];
+    this.isLoaded = false;
+  }
+
   handleActions(action) {
     // warnung für kein default case ausschalten
     // eslint-disable-next-line
@@ -89,6 +116,16 @@ class GroupInformationStore extends EventEmitter {
         break;
       case "NO_GROUP_INVITES":
         this.setGroupsInvites([]);
+        this.emit("newGroupsIvites");
+        break;
+      case "MENUPLAN":
+        this.setMenuPlan(action.menuplan, action.groupID);
+        this.emit("newMenuplan");
+        break;
+      case "SIGN_OUT":
+        this.logout();
+        this.emit("newGroups");
+        this.emit("newMenuplan");
         this.emit("newGroupsIvites");
         break;
     }

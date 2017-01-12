@@ -3,6 +3,7 @@ const getUserIDBySessionKey = require('../functionsAsync/getUserIDBySessionKey')
 const isMemberOfGroup = require('../functionsAsync/isMemberOfGroup');
 const addMenu = require('../functionsAsync/addMenu');
 
+const getGroupsAction = require('./getGroupsAction');
 // Sync
 
 var GLOBsqlconnection;
@@ -39,6 +40,8 @@ function newMenuAction3(isInGroup) {
 function newMenuAction4(success, msg) {
   if(!success) {
     console.log(msg);
+  } else {
+    getGroupsAction(GLOBsessionKey, GLOBsqlconnection, GLOBconnection);
   }
 }
 

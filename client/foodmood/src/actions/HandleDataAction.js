@@ -78,6 +78,13 @@ class HandleDataAction {
               type: "NO_GROUP_INVITES",
             });
             break;
+          case "MENUPLAN":
+          dispatcher.dispatch({
+            type: "MENUPLAN",
+            groupID: data.groupID,
+            menuplan: data.menuplan,
+          });
+            break;
           default:
 
         }

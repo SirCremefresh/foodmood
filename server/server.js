@@ -18,9 +18,9 @@ const makeGroupAction             = require('./actions/makeGroupAction');
 // VARIABLES FOR LATER USE
 var port = 61910;
 
-var sqlHost = '192.168.100.10';
-var sqlUser = 'lino';
-var sqlPassword = '123';
+var sqlHost = 'localhost';
+var sqlUser = 'activeuser';
+var sqlPassword = 'activeuser';
 var sqlDatabase = 'foodmood';
 
 /*

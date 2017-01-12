@@ -3,6 +3,8 @@ import React from 'react';
 import Divider from 'material-ui/Divider';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
+import GroupInformationStore from "../../stores/GroupInformationStore";
+
 const titleDividerStyle = {
   height: 3,
 };
@@ -23,8 +25,29 @@ const tabStyle = {
 var Menu = React.createClass({
   getInitialState: function() {
     return {
-      value : this.getDay(),
+      value: this.getDay(),
+      menuplan: {},
     };
+  },
+
+  componentWillMount() {
+    GroupInformationStore.on("newMenuplan", this.setMenuPlan);
+  },
+
+  componentDidMount: function() {
+    this.setMenuPlan();
+  },
+
+  componentWillUnmount() {
+    GroupInformationStore.removeListener("newMenuplan", this.setMenuPlan);
+  },
+
+  setMenuPlan() {
+    if (GroupInformationStore.isMenuplanLoaded(this.props.groupID)) {
+      this.setState({
+        menuplan: GroupInformationStore.getMenuplan(this.props.groupID),
+      });
+    }
   },
 
   getDay() {
@@ -57,6 +80,11 @@ var Menu = React.createClass({
   },
 
   render() {
+    var loaded = false;
+    if (this.state.menuplan != {}) {
+      loaded = true
+    }
+
     return (
       <div>
         <header>
@@ -72,105 +100,91 @@ var Menu = React.createClass({
              <Tab
                value="mo"
                icon={<img src="../icons/mo-icon.svg" width="30px" role="presentation"></img>}
-               label="Lasagne"
+               label={loaded ? this.state.menuplan.MontagT : ""}
                style={tabStyle}
              >
                <div>
-                 <h2 style={menuStyle.headline}>Controllable Tab A</h2>
+                 <h2 style={menuStyle.headline}>{loaded ? this.state.menuplan.MontagT : ""}</h2>
                  <p>
-                   Tabs are also controllable if you want to programmatically pass them their values.
-                   This allows for more functionality in Tabs such as not
-                   having any Tab selected or assigning them different values.
+                   {loaded ? this.state.menuplan.MontagD : ""}
                  </p>
                </div>
              </Tab>
              <Tab
                value="di"
                icon={<img src="../icons/di-icon.svg" width="30px" role="presentation"></img>}
-               label="Burger"
+               label={loaded ? this.state.menuplan.DienstagT : ""}
                style={tabStyle}
              >
                <div>
-                 <h2 style={menuStyle.headline}>sdf Tab A</h2>
+                 <h2 style={menuStyle.headline}>{loaded ? this.state.menuplan.DienstagT : ""}</h2>
                  <p>
-                   Tabs are also controllable if you want to programmatically pass them their values.
-                   This allows for more functionality in Tabs such as not
-                   having any Tab selected or assigning them different values.
+                   {loaded ? this.state.menuplan.DienstagD : ""}
                  </p>
                </div>
              </Tab>
              <Tab
                value="mi"
                icon={<img src="../icons/mi-icon.svg" width="30px" role="presentation"></img>}
-               label="Suppe"
+               label={loaded ? this.state.menuplan.MitwochT : ""}
                style={tabStyle}
              >
                <div>
-                 <h2 style={menuStyle.headline}>Controllable Tab A</h2>
+                 <h2 style={menuStyle.headline}>{loaded ? this.state.menuplan.MitwochT : ""}</h2>
                  <p>
-                   Tabs are also controllable if you want to programmatically pass them their values.
-                   This allows for more functionality in Tabs such as not
-                   having any Tab selected or assigning them different values.
+                   {loaded ? this.state.menuplan.MitwochD : ""}
                  </p>
                </div>
              </Tab>
              <Tab
                value="do"
                icon={<img src="../icons/do-icon.svg" width="30px" role="presentation"></img>}
-               label="Kuchen"
+               label={loaded ? this.state.menuplan.DonnerstagT : ""}
                style={tabStyle}
              >
                <div>
-                 <h2 style={menuStyle.headline}>Controllable Tab A</h2>
+                 <h2 style={menuStyle.headline}>{loaded ? this.state.menuplan.DonnerstagT : ""}</h2>
                  <p>
-                   Tabs are also controllable if you want to programmatically pass them their values.
-                   This allows for more functionality in Tabs such as not
-                   having any Tab selected or assigning them different values.
+                   {loaded ? this.state.menuplan.DonnerstagD : ""}
                  </p>
                </div>
              </Tab>
              <Tab
                value="fr"
                icon={<img src="../icons/fr-icon.svg" width="30px" role="presentation"></img>}
-               label="Chicken Nuggets"
+               label={loaded ? this.state.menuplan.FreitagT : ""}
                style={tabStyle}
              >
                <div>
-                 <h2 style={menuStyle.headline}>Controllable Tab A</h2>
+                 <h2 style={menuStyle.headline}>{loaded ? this.state.menuplan.FreitagT : ""}</h2>
                  <p>
-                   Tabs are also controllable if you want to programmatically pass them their values.
-                   This allows for more functionality in Tabs such as not
-                   having any Tab selected or assigning them different values.
+                   {loaded ? this.state.menuplan.FreitagD : ""}
                  </p>
                </div>
              </Tab>
              <Tab
                value="sa"
                icon={<img src="../icons/sa-icon.svg" width="30px" role="presentation"></img>}
-               label="Fischstäbchen"
+               label={loaded ? this.state.menuplan.SamstagT : ""}
                style={tabStyle}
              >
                <div>
-                 <h2 style={menuStyle.headline}>Controllable Tab A</h2>
+                 <h2 style={menuStyle.headline}>{loaded ? this.state.menuplan.SamstagT : ""}</h2>
                  <p>
-                   Tabs are also controllable if you want to programmatically pass them their values.
-                   This allows for more functionality in Tabs such as not
-                   having any Tab selected or assigning them different values.
+                   {loaded ? this.state.menuplan.SamstagD : ""}
                  </p>
                </div>
              </Tab>
              <Tab
                value="so"
                icon={<img src="../icons/so-icon.svg" width="30px" role="presentation"></img>}
-               label="Lasagne"
+               label={loaded ? this.state.menuplan.SonntagT : ""}
                style={tabStyle}
              >
                <div>
-                 <h2 style={menuStyle.headline}>Controllable Tab A</h2>
+                 <h2 style={menuStyle.headline}>{loaded ? this.state.menuplan.SonntagT : ""}</h2>
                  <p>
-                   Tabs are also controllable if you want to programmatically pass them their values.
-                   This allows for more functionality in Tabs such as not
-                   having any Tab selected or assigning them different values.
+                   {loaded ? this.state.menuplan.SonntagD : ""}
                  </p>
                </div>
              </Tab>

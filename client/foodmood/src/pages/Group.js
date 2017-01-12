@@ -82,7 +82,7 @@ var Group = React.createClass({
     var content;
     switch (this.state.content) {
       case "menu":
-          content = <Menu />;
+          content = <Menu groupID={this.props.params.id} />;
         break;
       case "bills":
           content = <Bills />;
